@@ -1,0 +1,256 @@
+% Bsp. eines Hauptteils
+
+\chapter{Functions in C}
+\label{ch:functions}
+
+These chapter is about the C-Code we developed to work via Raspberry Pi with the sensors.
+
+
+\section{I$^2$C}
+
+%-------------  write I2C 0 ---------------------%
+\begin{lstlisting}[language=C, basicstyle=\small, caption=Write on I2C-1]
+unsigned int g_lldI2c_WriteI2c_bl(unsigned char, const unsigned char*, unsigned int);
+\end{lstlisting}
+
+
+\begin{tabular}{lll}
+Parameter: & unsigned char & slave address of device\\
+					 & const unsigned char* & buffer with data to write\\
+					 & unsigned int & number of bytes to write\\
+					 &	\\
+Return: & unsigned int & error detection, 0=OK 1=failure\\
+							&&\\
+Description: & \multicolumn{2}{l}{function to write several data on the I2C-1 Bus of the Raspberry PI}\\
+\end{tabular}
+\\
+
+%-------------  read I2C 0 ---------------------%
+
+\begin{lstlisting}[language=C, basicstyle=\small, caption=Read from I2C-1]
+unsigned int g_lldI2c_ReadI2c_bl(unsigned char, const unsigned char*, unsigned int);
+\end{lstlisting}
+
+\begin{tabular}{lll}
+Parameter: & unsigned char & slave address of device\\
+					 & const unsigned char* & array to store read data\\
+					 & unsigned int & number of bytes to read\\
+					 &	\\
+Return: & unsigned int & error detection, 0=OK 1=failure\\
+							&&\\
+Description: & \multicolumn{2}{l}{function to read several data on the I2C-1 Bus of the Raspberry PI}\\
+\end{tabular}
+\\
+
+%-------------  write I2C 1 ---------------------%
+
+\begin{lstlisting}[language=C, basicstyle=\small, caption=Write on I2C-0]
+unsigned int g_lldI2c_WriteI2c0_bl(unsigned char, const unsigned char*, unsigned int);
+\end{lstlisting}
+
+
+\begin{tabular}{lll}
+Parameter: & unsigned char & slave address of device\\
+					 & const unsigned char* & buffer with data to write\\
+					 & unsigned int & number of bytes to write\\
+					 &	\\
+Return: & unsigned int & error detection, 0=OK 1=failure\\
+							&&\\
+Description: & \multicolumn{2}{l}{function to write several data on the I2C-0 Bus of the Raspberry PI}\\
+\end{tabular}
+\\
+
+
+%-------------  read I2C 1 ---------------------%
+
+\begin{lstlisting}[language=C, basicstyle=\small, caption=Read from I2C-0]
+unsigned int g_lldI2c_ReadI2c0_bl(unsigned char, const unsigned char*, unsigned int);
+\end{lstlisting}
+
+\begin{tabular}{lll}
+Parameter: & unsigned char & slave address of device\\
+					 & const unsigned char* & array to store read data\\
+					 & unsigned int & number of bytes to read\\
+					 &	\\
+Return: & unsigned int & error detection, 0=OK 1=failure\\
+							&&\\
+Description: & \multicolumn{2}{l}{function to read several data on the I2C-0 Bus of the Raspberry PI}\\
+\end{tabular}
+\\
+
+
+
+
+
+\subsection{Configuration}
+
+$\#include <linux/i2c-dev.h>$ is doing the (local) device handling. We only use the slave address to communicate with the connected devices. Read or write commands are provided by fcntl.h.
+
+\subsection{I$^2$C Write}
+
+Writes the number of stated bytes from the write buffer with the "write" command to the chosen I$^2$c-device, depending on called function.
+
+\subsection{I$^2$C Read}
+
+Reads the number of stated bytes from the read buffer with the "read" command from the chosen I$^2$c-device, depending on called function.
+
+
+
+\newpage
+\section{Analog-Digital-Converter (ADC)}
+
+\begin{lstlisting}[language=C, basicstyle=\small, caption=Read from ADC]
+float g_halADC_get_ui16(unsigned char );
+\end{lstlisting}
+
+
+\begin{tabular}{lll}
+Parameter: & unsigned char & A0-A3 input selection\\
+					 &	\\
+Return: & float & converted analog values\\
+							&&\\
+Description: & \multicolumn{2}{l}{Interface to read ADS1015 (ADC)}\\
+\end{tabular}
+\\
+
+
+\subsection{Configuration}
+
+Sensor Board Name: Pololu ADS1015\\
+Sensor Name: GP2Y0A60SZLF\\
+
+l\_mux\_ui8 = 0xC2;\\
+" C "\textsubscript{16}:\\
+The first Hex-Value depends on Starting Conversion + the Input, which Pin to read A0-3
+
+" 2 "\textsubscript{16}: \\
+The second Value is PGA (001)=+-4,099V and continuous Mode (0)\\
+
+
+These three bytes are written to the ADS1015 to set the config register and start the conversion 
+
+l\_writeBuf\_rg24[0] = 1;		\\ 
+This sets the pointer register to write the following two bytes to the config register
+
+l\_writeBuf\_rg24[1] = l\_mux\_ui8;   	\\ 
+This sets the 8 MSBs of the config register (bits 15-8) to 11000011
+
+l\_writeBuf\_rg24[2] = 0x23;  		\\ 
+This sets the 8 LSBs of the config register (bits  7-0) to 00100011\\   
+
+
+" 2 "\textsubscript{16}:\\
+  // First Hex is sample Rate. (001) sets to 250SPS + Comp Mode (0)
+	
+" 3 "\textsubscript{16}:\\
+  // Second Hex is Comp. config. (0011) disable the comparator
+	
+	
+	
+The l\_writeBuf\_rg24 is written to the configuration register of the ADC. After that, we can read the converted analog values from the chosen input.
+
+
+
+\subsection{ADC Read}
+
+To read a converted analog value, you need to set the pointer register to 0.\\
+
+When the pointer register is set to 0 this signals that the converted analog value should be provided. You will get the these values when performing a i$^2$c-read command the next time. This value is 16 Bit large and will be calculated as a float-value, depending on the resolution which is adjusted.
+
+
+
+
+
+
+\section{Infrared Sensor}
+
+\begin{lstlisting}[language=C, basicstyle=\small, caption=Read Infrared]
+float g_halADC_get_ui16(unsigned char );
+\end{lstlisting}
+
+\begin{tabular}{lll}
+Parameter: & char & select Input on which IR is connected\\
+					 &	\\
+Return: & float & Voltage from Sensor\\
+							&&\\
+Description: & \multicolumn{2}{l}{Since our IR Sensor only provides analog output, we need to use the ADC}\\
+\end{tabular}
+\\
+
+
+
+\subsection{Configuration}
+
+There is no configuration of the Infrared sensor needed.
+
+\subsection{Read Sensor Values}
+
+We get the analog values with the ADC-Function.
+
+
+
+
+
+\section{LIDAR-Lite Laser Sensor}
+
+
+
+
+
+
+
+
+\begin{lstlisting}[language=C, basicstyle=\small, caption=get Laser Distance]
+double g_LIDAR_getDistance_f64(void);
+\end{lstlisting}
+
+\begin{tabular}{lll}
+Parameter: & void & \\
+					 &	\\
+Return: & double & distance in meter\\
+							&&\\
+Description: & \multicolumn{2}{l}{returns calculated distance value in meters}\\
+\end{tabular}
+\\
+
+\begin{lstlisting}[language=C, basicstyle=\small, caption=trigger Laser measurement]
+int g_LIDAR_readDistanceFromI2C_i32(void);
+\end{lstlisting}
+
+\begin{tabular}{lll}
+Parameter: & void & \\
+					 &	\\
+Return: & int & error detection, 0=OK -1=failure\\
+							&&\\
+Description: & \multicolumn{2}{l}{triggers a measurement and stores the result}\\
+\end{tabular}
+\\
+
+
+\subsection{Configuration}
+
+Trigger Measurement of Distance (DC stabilization cycle, Signal Acquisition, DataProcessing)\\
+
+First Config Byte: 0x00;\\
+Representation of configuration register 0x00 of the laser sensor.\\
+Second Config Byte: 0x04;\\
+Take acquisition and correlation processing with DC correction\\
+
+Set Reg 0x8f as Output-Register to read a two-byte value which gives the distance in cm.\\
+
+\subsection{Read Sensor Values}
+
+Read two-byte distance in cm from register 0x8f. This value is stored as a decimal value in cm.\\
+Alternative you can read the high-byte of the measured value from register 0x0f and the low-byte from register 0x10.\\
+
+
+%\chapter{Ergebnisse}
+%\label{sec:ergeb}
+%\enquote{Neuigkeiten} Messergebnisse
+%
+%\section{Literaturverweise}
+%\label{sec:real-literatur}
+%
+%Verweise im Text: \cite{doc:stz} und \cite{doc:gun}.
+
+

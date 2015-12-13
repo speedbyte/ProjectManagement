@@ -1,0 +1,96 @@
+% % Preamble BEGINN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Preamble (Dokumentenklasse)
+\input{preamble/pre-class}
+
+%%% Alle Namen usw. im Titel und im hyperref-Paket
+\input{preamble/pre-work}
+
+%%% Preamble (Pakete)
+\input{preamble/pre-packages}
+
+%%% Neue Befehle
+\input{preamble/pre-newcommands}
+\input{preamble/pre-tablecommands} % Fuer Tabellen
+
+%%% Silbentrennung
+\input{preamble/pre-hyphenation}
+
+% % Nur diese Kapitel (Dateien) einbinden
+%\includeonly{
+%chapters/ch-aa-titel,
+%chapters/ch-aa-vorspiel,
+%chapters/ch-einleitung,
+%chapters/ch-hauptteil,
+%chapters/ch-schluss,
+%chapters/ch-zz-anhang
+%}
+% % Preamble ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % Inhalt BEGINN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% Tabellen-Einstellungen
+\input{preamble/pre-tablesettings}
+% % %%%%%% Vorspiel
+\begin{spacing}{1} % Vorspiel immer mit Standard-Zeilenabstand setzen
+	\frontmatter
+	% % Titelblatt
+	\include{chapters/ch-aa-titel}
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\lstlistoflistings
+	% % Verzeichnisse
+%\pagebreak
+	%\lstlistoflistings % Verzeichnis für Code-Listing
+\end{spacing}
+% % %%%%%% Textteil (Eigentliche Arbeit)
+%Versioning
+\include{chapters/Versioning}
+\mainmatter
+%
+%\include{chapters/ch-hauptteil}
+%% Project Goals
+\include{chapters/ch-project-goals}
+%% Landing concept
+\include{chapters/ch-landing_concept}
+%% Raspberry Pi based hardware platform (hardware)
+\include{chapters/ch-rpi-hardware}
+%% Development Environment (Virtual Machine Image)
+\include{chapters/ch-dev-environment-vm}
+%% Realtime-capable Linux Operating System
+\include{chapters/ch-rt-linux-os}
+%% Software structure
+\include{chapters/ch-software-structure}
+%% UDP-based network connection to MATLAB
+\include{chapters/ch-matlab-lib}
+%% Sensor fusion for Inertial Measurement Unit
+\include{chapters/ch-sensor-fusion-imu}
+%% Remote Control Unit: Graupner PPM Decoding
+\include{chapters/ch-ppm-kernel-driver}
+%% Sensor fusion for Inertial Measurement Unit
+\include{chapters/ch-sensor_testing_concept}
+%% Sensor fusion for Inertial Measurement Unit
+\include{chapters/ch-sensor-overview}
+%% Remote Control Unit: Graupner PPM Decoding
+\include{chapters/ch-distance_measurement}
+%% Functions
+\include{chapters/ch-functions}
+%% Sensor fusion for Inertial Measurement Unit
+\include{chapters/ch-i2c_configuration}
+%% Conclusion and outlook
+\include{chapters/ch-conclusion-outlook}
+
+% % %%%%%% Anhang
+\appendix
+
+\include{chapters/ch-zz-appendix}
+
+% % %%%%%% Literaturverzeichnis (darf im deutschen nicht in den Anhang!)
+% Einfaches Literaturverzeichnis
+\input{chapters/ch-zz-bibEinfach}
+% Literaturverzeichnis mit Bibtex
+%\bibliography{bib/bib}
+
+% %  Inhalt ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
