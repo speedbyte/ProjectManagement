@@ -1,0 +1,141 @@
+
+
+% Definitionen
+
+
+\include{parts/Header} % Include Packages
+
+% to fix grouping in the list of .......
+\let\Chapter\chapter
+\def\chapter{\addtocontents{lol}{\protect\addvspace{10pt}}\Chapter}
+
+%%%%%%%%% Dokumentenbeginn %%%%%%%%%%%%%%%
+\begin{document}
+
+
+\title{TITLE}
+\author{NAME}
+
+%\nomenclature[gz]{}{\nomunit{}}
+%\changefont{cmr}{m}{n},
+%\fontsize{12}{15}
+%\selectfont
+
+
+%Titelseite
+\pagenumbering{Alph}
+\include{parts/Titlepage} % Erklärung
+\restoregeometry % Manipulierte Seitenränder wiederherstellen.
+\setcounter{page}{2}
+\include{parts/Blankpage}  % Leerseite mit Alpha Buchstaben
+
+
+%%%%%%%%%% Externe Seiten %%%%%%%%%%%%%
+%
+%%%%%%%%%% Verzeichnisse, Erklärungen etc. %%%%%%%%%%%%%
+%{
+\pagestyle{plain} % Leere Seiten
+%\include{parts/blankpage} % Leerseite
+\pagenumbering{Roman} % Römische Seitennummerierung für die ersten Seiten
+
+
+%\include{parts/Sperrvermerk} % Sperrvermerk
+%\include{parts/Erklaerung} % Erklärung
+%\include{parts/Abstract} % Kurzfassung
+
+%------------------
+%Versioning page
+\include{parts/Versioning}
+\pagebreak
+%------------------
+
+\pdfbookmark[1]{Table of contents}{toc} % PDF-Bookmark für Inhaltsverzeichnis setzen
+\tableofcontents % Inhaltsverzeichnis
+\clearpage
+
+\include{parts/Abbreviations}
+%\clearpage
+
+%\include{parts/Symbolverzeichniss}
+%\clearpage
+%------------------------
+%------------------------
+
+\pagenumbering{arabic} % Arabische Seitennummerierung für den Hauptteil
+\onehalfspacing
+
+% Kapitelanfangsseiten umgestalten
+\fancypagestyle{plain}{
+\fancyhf{}
+\cfoot{\thepage}\renewcommand{\headrulewidth}{0pt}} 
+
+
+%%%%%%%%% Hauptteil %%%%%%%%%%%%%
+\pagestyle{fancy}
+%\include{parts/Einleitung}
+\include{parts/Projectdescription}
+%\include{parts/Grundlagen}
+
+
+%\include{parts/Ausblick}
+
+
+
+%\include{parts/Danksagung} % Danksagung
+
+
+
+%%%%%%%%% Anhang, Literaturverzeichnis %%%%%%%%%%%%%
+%\include{parts/anhang} % Anhang
+%\include{parts/Software} % Software
+
+%------------- Altes Abb. Verzeichnis in Gruppen
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures % Bilderverzeichnis
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables % Tabellenverzeichnis}
+\clearpage
+
+
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Listings}
+\renewcommand{\lstlistlistingname}{List of Listings}
+%\renewcommand{\lstlistingname}{List of Listings}
+\lstlistoflistings
+\clearpage
+
+%%\begingroup
+%%\phantomsection
+%%\addcontentsline{toc}{chapter}{\listfigurename}
+%%\renewcommand*{\addvspace}[1]{}
+%%\listoffigures
+%%\cleardoublepage
+%%\phantomsection
+%%\addcontentsline{toc}{chapter}{\listtablename}
+%%\listoftables
+%%\endgroup
+
+%------------- Altes Abb. Verzeichnis ohne Gruppen
+%%\begingroup
+%%\phantomsection
+%%\addcontentsline{toc}{chapter}{\listfigurename}
+%%\renewcommand*{\addvspace}[1]{}
+%%\listoffigures
+%%\cleardoublepage
+%%\phantomsection
+%%\addcontentsline{toc}{chapter}{\listtablename}
+%%\listoftables
+%%\endgroup
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{Quellen}
+\bibliographystyle{alpha}
+
+
+\end{document}
+% ENDE
