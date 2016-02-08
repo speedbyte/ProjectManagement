@@ -1,0 +1,8 @@
+*.synctex
+compiled/*
+*.nlo
+*.lol
+*.hst
+*.ver
+*.synctex.gz
+/output
