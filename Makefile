@@ -16,6 +16,7 @@ QUAD=$(TOP)/QuadrocopterMigration
 all:
 	# try
 	cd $(HELIKOPTER-RASPBERRY) && pdflatex user_manual
+	read
 	cd $(QUAD) && pdflatex QuadrocopterMigration
 clean:
 	rm -f *.log *.dvi *.aux *.toc *.fig.bak *~

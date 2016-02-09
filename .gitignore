@@ -8,3 +8,4 @@ compiled/*
 /output
 /tmp/
 /document.pdf
+*.log
