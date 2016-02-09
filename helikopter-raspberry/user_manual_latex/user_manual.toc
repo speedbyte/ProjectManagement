@@ -1,0 +1,162 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Project's context and goals}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Temporal project scope}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Contentual project scope}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Tasks and responsible team members}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}Repository structure}{6}{section.1.4}
+\contentsline {section}{\numberline {1.5}Documentation}{7}{section.1.5}
+\contentsline {chapter}{\numberline {2}Landing Concept}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}Challenges}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Drift}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Orientation}{8}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Distance}{9}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Landing Zone}{9}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Landing Mode}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Activation}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Abort Landing}{10}{subsection.2.2.2}
+\contentsline {chapter}{\numberline {3}Open Points}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Connecting actuators}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Reacting on sensor values}{11}{section.3.2}
+\contentsline {chapter}{\numberline {4}Raspberry Pi based hardware platform}{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}Hardware and device communication}{12}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Basic components and chosen sensors}{12}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}I2C adressing}{13}{subsection.4.1.2}
+\contentsline {subsubsection}{\nonumberline \relax $\@@underline {\hbox {\textbf {A/D Converter}}}\mathsurround \z@ $\relax }{13}{section*.10}
+\contentsline {subsubsection}{\nonumberline Read}{13}{section*.11}
+\contentsline {subsubsection}{\nonumberline Write}{14}{section*.13}
+\contentsline {subsubsection}{\nonumberline Read conversion register}{14}{section*.15}
+\contentsline {subsubsection}{\nonumberline \relax $\@@underline {\hbox {\textbf {Inertial Measurement Unit (IMU)}}}\mathsurround \z@ $\relax }{14}{section*.17}
+\contentsline {subsubsection}{\nonumberline Read}{15}{section*.19}
+\contentsline {subsubsection}{\nonumberline Write}{15}{section*.22}
+\contentsline {subsubsection}{\nonumberline Read}{16}{section*.26}
+\contentsline {subsubsection}{\nonumberline Write}{17}{section*.29}
+\contentsline {subsubsection}{\nonumberline Read}{18}{section*.33}
+\contentsline {subsubsection}{\nonumberline Write}{18}{section*.36}
+\contentsline {subsubsection}{\nonumberline \relax $\@@underline {\hbox {\textbf {Motor Driver}}}\mathsurround \z@ $\relax }{19}{section*.39}
+\contentsline {subsection}{\numberline {4.1.3}Read}{19}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Write}{19}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}UART communication}{20}{subsection.4.1.5}
+\contentsline {section}{\numberline {4.2}Technical drawings and packaging}{21}{section.4.2}
+\contentsline {section}{\numberline {4.3}Bill of materials}{25}{section.4.3}
+\contentsline {chapter}{\numberline {5}Individual parts}{28}{chapter.5}
+\contentsline {section}{\numberline {5.1}Raspberry Pi B+}{28}{section.5.1}
+\contentsline {section}{\numberline {5.2}Adafruit GPS Hat}{29}{section.5.2}
+\contentsline {section}{\numberline {5.3}Polulu AltIMU v4}{30}{section.5.3}
+\contentsline {section}{\numberline {5.4}Adafruit 12bit ADC over I2C}{31}{section.5.4}
+\contentsline {chapter}{\numberline {6}Assembly}{32}{chapter.6}
+\contentsline {section}{\numberline {6.1}Placing ADC and IMU on GPS Hat}{32}{section.6.1}
+\contentsline {section}{\numberline {6.2}Wedding of GPS Hat and Raspberry Pi B+}{32}{section.6.2}
+\contentsline {chapter}{\numberline {7}Development Environment (Virtual Machine Image and Native Machine)}{33}{chapter.7}
+\contentsline {section}{\numberline {7.1}Ubuntu}{33}{section.7.1}
+\contentsline {section}{\numberline {7.2}Toolchain}{38}{section.7.2}
+\contentsline {section}{\numberline {7.3}Eclipse}{39}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Installation of Eclipse Luna}{39}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Remote Debugging}{40}{subsection.7.3.2}
+\contentsline {chapter}{\numberline {8}Realtime-capable Linux Operating System}{46}{chapter.8}
+\contentsline {section}{\numberline {8.1}Creating a bootable SD-Card with a pre-configured Firmware}{46}{section.8.1}
+\contentsline {section}{\numberline {8.2}Building a Real-Time Linux Kernel}{47}{section.8.2}
+\contentsline {section}{\numberline {8.3}EMLID distribution for development purposes}{53}{section.8.3}
+\contentsline {section}{\numberline {8.4}Configurations of peripherals and busses}{54}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Raspbian distribution specific}{55}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}EMLID distribution specific}{56}{subsection.8.4.2}
+\contentsline {chapter}{\numberline {9}Software structure}{57}{chapter.9}
+\contentsline {section}{\numberline {9.1}Software layer and structure concept}{57}{section.9.1}
+\contentsline {section}{\numberline {9.2}Overview on the functional units}{59}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Application Layer}{59}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Signal Processing Layer}{59}{subsection.9.2.2}
+\contentsline {subsection}{\numberline {9.2.3}Hardware Abstraction Layer}{60}{subsection.9.2.3}
+\contentsline {subsection}{\numberline {9.2.4}Low-Level Driver Layer}{61}{subsection.9.2.4}
+\contentsline {chapter}{\numberline {10}UDP-based network connection to MATLAB}{62}{chapter.10}
+\contentsline {section}{\numberline {10.1}C-Library for UDP-based network access}{62}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Adding librt to the cross-compiler's linker}{62}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}Basic network library}{64}{subsection.10.1.2}
+\contentsline {subsection}{\numberline {10.1.3}IMU specific network library}{65}{subsection.10.1.3}
+\contentsline {subsection}{\numberline {10.1.4}Signal Layer specific network library}{67}{subsection.10.1.4}
+\contentsline {section}{\numberline {10.2}MATLAB/Simulink S-Function}{68}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}Block creation with S-Function builder}{68}{subsection.10.2.1}
+\contentsline {subsection}{\numberline {10.2.2}Extending the C-Code templates}{75}{subsection.10.2.2}
+\contentsline {subsection}{\numberline {10.2.3}Compiling the S-Function block}{81}{subsection.10.2.3}
+\contentsline {section}{\numberline {10.3}3D-Representation of orientation data}{83}{section.10.3}
+\contentsline {chapter}{\numberline {11}Analysing Data and sensor fusion}{87}{chapter.11}
+\contentsline {section}{\numberline {11.1}Calculation of the orientation angles}{87}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Magnetic sensor test}{89}{subsection.11.1.1}
+\contentsline {subsection}{\numberline {11.1.2}Improvement magnetic sensor}{90}{subsection.11.1.2}
+\contentsline {section}{\numberline {11.2}Sensor fusion for Inertial Measurement Unit}{92}{section.11.2}
+\contentsline {subsection}{\numberline {11.2.1}Complementary-Filter}{94}{subsection.11.2.1}
+\contentsline {subsection}{\numberline {11.2.2}Kalman-Filter}{97}{subsection.11.2.2}
+\contentsline {section}{\numberline {11.3}Matrix library}{104}{section.11.3}
+\contentsline {section}{\numberline {11.4}Sensor fusion controlling}{106}{section.11.4}
+\contentsline {chapter}{\numberline {12}Remote Control Unit: PPM Decoding}{111}{chapter.12}
+\contentsline {section}{\numberline {12.1}Graupner PPM sum signal in a nutshell}{111}{section.12.1}
+\contentsline {section}{\numberline {12.2}Building a custom kernel driver}{112}{section.12.2}
+\contentsline {section}{\numberline {12.3}Stimulating the GPIO-Pins for validation}{115}{section.12.3}
+\contentsline {section}{\numberline {12.4}Results on experimental kernel driver}{118}{section.12.4}
+\contentsline {chapter}{\numberline {13}Defined Tests for our sensors}{122}{chapter.13}
+\contentsline {section}{\numberline {13.1}Infrared Distance Sensor}{122}{section.13.1}
+\contentsline {section}{\numberline {13.2}Ultrasonic Distance Sensor}{122}{section.13.2}
+\contentsline {section}{\numberline {13.3}LIDAR-lite Laser Distance Sensor}{122}{section.13.3}
+\contentsline {section}{\numberline {13.4}Inertial Measurement Unit (IMU)}{123}{section.13.4}
+\contentsline {subsection}{\numberline {13.4.1}Acceleration and Magnet Sensor(Compass)}{123}{subsection.13.4.1}
+\contentsline {subsection}{\numberline {13.4.2}Gyroscope Sensor}{123}{subsection.13.4.2}
+\contentsline {subsection}{\numberline {13.4.3}Pressure Sensor}{124}{subsection.13.4.3}
+\contentsline {chapter}{\numberline {14}Sensors and limits}{125}{chapter.14}
+\contentsline {section}{\numberline {14.1}Analog- Digital Converter}{125}{section.14.1}
+\contentsline {section}{\numberline {14.2}Infrared Analog Distance Sensor}{126}{section.14.2}
+\contentsline {section}{\numberline {14.3}GPS}{127}{section.14.3}
+\contentsline {section}{\numberline {14.4}Inertia Measurement Unit (IMU)}{128}{section.14.4}
+\contentsline {subsection}{\numberline {14.4.1}3D accelerometer and 3D magnetometer module}{129}{subsection.14.4.1}
+\contentsline {subsection}{\numberline {14.4.2}MEMS pressure sensor}{129}{subsection.14.4.2}
+\contentsline {subsection}{\numberline {14.4.3}MEMS motion sensor: three-axis digital output gyroscope}{130}{subsection.14.4.3}
+\contentsline {section}{\numberline {14.5}LIDAR-Lite Laser Ranging Module}{131}{section.14.5}
+\contentsline {subsection}{\numberline {14.5.1}Technology}{133}{subsection.14.5.1}
+\contentsline {subsection}{\numberline {14.5.2}possible measurement problems}{134}{subsection.14.5.2}
+\contentsline {chapter}{\numberline {15}Infrared Sensor}{136}{chapter.15}
+\contentsline {section}{\numberline {15.1}First steps}{136}{section.15.1}
+\contentsline {subsection}{\numberline {15.1.1}ADC Configuration}{137}{subsection.15.1.1}
+\contentsline {section}{\numberline {15.2}Measured Values}{138}{section.15.2}
+\contentsline {section}{\numberline {15.3}Conclusion}{141}{section.15.3}
+\contentsline {chapter}{\numberline {16}Ultrasonic Distance Sensor}{142}{chapter.16}
+\contentsline {chapter}{\numberline {17}LIDAR Laser Sensor}{143}{chapter.17}
+\contentsline {section}{\numberline {17.1}Connecting the sensor with I$^2$C}{143}{section.17.1}
+\contentsline {section}{\numberline {17.2}First steps}{144}{section.17.2}
+\contentsline {section}{\numberline {17.3}Measured Values}{145}{section.17.3}
+\contentsline {section}{\numberline {17.4}conclusion}{146}{section.17.4}
+\contentsline {chapter}{\numberline {18}Functions in C}{147}{chapter.18}
+\contentsline {section}{\numberline {18.1}I$^2$C}{147}{section.18.1}
+\contentsline {subsection}{\numberline {18.1.1}Configuration}{148}{subsection.18.1.1}
+\contentsline {subsection}{\numberline {18.1.2}I$^2$C Write}{148}{subsection.18.1.2}
+\contentsline {subsection}{\numberline {18.1.3}I$^2$C Read}{148}{subsection.18.1.3}
+\contentsline {section}{\numberline {18.2}Analog-Digital-Converter (ADC)}{149}{section.18.2}
+\contentsline {subsection}{\numberline {18.2.1}Configuration}{149}{subsection.18.2.1}
+\contentsline {subsection}{\numberline {18.2.2}ADC Read}{150}{subsection.18.2.2}
+\contentsline {section}{\numberline {18.3}Infrared Sensor}{150}{section.18.3}
+\contentsline {subsection}{\numberline {18.3.1}Configuration}{150}{subsection.18.3.1}
+\contentsline {subsection}{\numberline {18.3.2}Read Sensor Values}{150}{subsection.18.3.2}
+\contentsline {section}{\numberline {18.4}LIDAR-Lite Laser Sensor}{150}{section.18.4}
+\contentsline {subsection}{\numberline {18.4.1}Configuration}{151}{subsection.18.4.1}
+\contentsline {subsection}{\numberline {18.4.2}Read Sensor Values}{151}{subsection.18.4.2}
+\contentsline {chapter}{\numberline {19}I$^2$C Configuration}{152}{chapter.19}
+\contentsline {section}{\numberline {19.1}raspi-config}{152}{section.19.1}
+\contentsline {section}{\numberline {19.2}Module File}{153}{section.19.2}
+\contentsline {section}{\numberline {19.3}I$^2$CTools}{153}{section.19.3}
+\contentsline {section}{\numberline {19.4}Test I$^2$C-1}{154}{section.19.4}
+\contentsline {section}{\numberline {19.5}Set up I$^2$C-0}{155}{section.19.5}
+\contentsline {chapter}{\numberline {20}Conclusion and outlook}{157}{chapter.20}
+\contentsline {section}{\numberline {20.1}Achieved project goals and results}{157}{section.20.1}
+\contentsline {section}{\numberline {20.2}Remaining project goals and outlook}{158}{section.20.2}
+\contentsline {chapter}{\numberline {A}- Further technical drawings}{159}{appendix.A}
+\contentsline {section}{\numberline {A.1}Raspberry Pi B+}{160}{section.A.1}
+\contentsline {section}{\numberline {A.2}Adafruit GPS Hat}{161}{section.A.2}
+\contentsline {section}{\numberline {A.3}Polulu AltIMU v4}{162}{section.A.3}
+\contentsline {section}{\numberline {A.4}Adafruit 12bit ADC over I2C}{163}{section.A.4}
+\contentsline {chapter}{\numberline {B}- Code documentation}{164}{appendix.B}
+\contentsline {chapter}{\numberline {C}- Soure code}{165}{appendix.C}
+\contentsline {section}{\numberline {C.1}S-Function Builder generated C-Code}{165}{section.C.1}
+\contentsline {subsection}{\numberline {C.1.1}Raw C-Code template of S-Function}{165}{subsection.C.1.1}
+\contentsline {subsection}{\numberline {C.1.2}Raw template code of wrapper function}{172}{subsection.C.1.2}
+\contentsline {section}{\numberline {C.2}MATLAB-Code for Simulink 3D visualization}{173}{section.C.2}
+\contentsline {section}{\numberline {C.3}Kernel driver \texttt {ppmDemux}}{175}{section.C.3}
+\contentsline {chapter}{\numberline {D}- Default login credentials}{181}{appendix.D}
+\contentsline {section}{\numberline {D.1}Development Environment}{181}{section.D.1}
+\contentsline {section}{\numberline {D.2}Raspberry Pi Firmware}{181}{section.D.2}
+\contentsline {chapter}{\nonumberline Bibliography}{182}{appendix*.154}

@@ -1,0 +1,815 @@
+\chapter{Grundlagen}
+\label{sec:grundl}
+
+\section{Virtuelle Maschine/Destop PC}
+\label{sec:vm}
+Für das Projekt \emph{Quadrocopter} wird eine virtuelle Maschine verwendet. Hierfür wird eine bereits fertig funktionierende Vorlage bereitgestellt. 
+
+Auf dieser VM läuft das  Betriebssystem Ubuntu v14.0.
+
+Für die Verwendung der VM wird ein Programm wie z.b. VirtualBox von Oracle oder VMware Workstation Player (abgespeckte Version von VMware Workstation, kostenlos für private Nutzung) benötigt.
+
+Änderungen an den VMware-Einstellungen müssen nicht vorgenommen werden.
+
+Als Alternative wird bei Problemen oder ähnlichem ein Desktop-PC im EZS Labor bereitgestellt.
+
+\paragraph{LogIn Daten} $\;$ \\
+\\
+Desktop Rechner:\newline
+Computer-Name: EZS-Labor\newline
+Username:	ezs	\newline
+Passwort:	labor
+
+VMware: \newline
+VMware Name:	Ubuntu 64-bit \newline
+Username:	user\newline
+Passwort:	user\newline
+
+Raspberry Pi:\newline
+Username: pi\newline
+Passwort: raspberry\newline
+
+\newpage
+\subsection{Ubuntu}
+
+\paragraph{VPN Zugang einrichten}
+
+\textit{Derzeit kann maximal eine VPN-Konfiguration zur selben Zeit aktiv sein, da die Zertifikate global abgespeichert sind.}
+
+Verbinden Sie nun den PC mit einem schwarzen Ethernet-Port (z.B. Box F1.301.16 ). Die Seite \emph{hs-esslingen.de} sollte nun erreichbar sein. Um von diesem PC mit seinen Hochschuldaten Internet zu haben müssen die folgenden Schritte gegebenenfalls durchgeführt werden.
+
+Eventuell muss die Quelle der Pakete/packages  geändert werden. In der \emph{/etc/apt/sources.list} muss auf eine verfügbare Quelle verwiesen werden, da ohne VPN die Standard-Pfade nicht erreichbar sind. Unter dieser Seite sind alle nötigen Daten verfügbar: \href{ftp-stud.hs-esslingen.de/}{ftp-stud.hs-esslingen.de/}
+Mit der Angabe des folgenden Befehls macht man diesen Pfad bekannt: 
+\begin{lstlisting}[language=bash]
+deb http://ftp-stud.hs-esslingen.de/ubuntu/ trusty main universe restricted multiverse 
+\end{lstlisting}
+
+Für VPN müssen die folgenden Pakete \textit{openvpn} und \textit{easy-rsa} per 
+\begin{lstlisting}[language=bash]
+sudo apt-get install PACKETNAME 
+\end{lstlisting}
+installiert werden.
+
+Als nächsten Schritt erfolgt die Einrichtung des VPN-Zuganges wie
+\href{http://www.hs-esslingen.de/de/hochschule/service/rechenzentrum/mobile-net-wlan-openvpn/anleitungen-mobile-net/linux-kommandozeile.html}{hier} angegeben.
+
+Gestartet wird die OpenVPN-Verbindung mit folgendem Befehl:
+\begin{lstlisting}[language=bash]
+sudo /etc/init.d/openvpn start 
+\end{lstlisting}
+oder alternativ:
+\begin{lstlisting}[language=bash]
+sudo service openvpn start 
+\end{lstlisting}
+
+Der LogIn erfolgt mit dem jeweiligen Benutzerkonto.
+
+
+Die VPN-Verbindung wird mit demselben Kommando und dem Parameter \emph{stop} abgebaut.
+
+\subsubsection{Autostart bei Bootvorgang}
+\textit{Achtung: Das Linux Betriebssystem startet nicht mehr, falls es sich bei dem Script oder Programm um ein Endlos-Script/Programm handelt oder eine User-Interkation erwartet wird!}
+	
+\textit{Es ist für einmalige Einstellungen und Konfigurationen vorgesehen.}
+
+Um ein Script zu schreiben müssen Sie zunächst ein File in dem Verzeichnis \emph{/init.d} erzeugen:
+\begin{lstlisting}[language=bash]{
+sudo nano /etc/init.d/myAutostartScript
+}
+\end{lstlisting}
+
+Als nächstes müssen sie den folgenden Grundaufbau des Inhalt übernehmen:
+
+\begin{lstlisting}[language=bash]
+#! /bin/sh
+### BEGIN INIT INFO
+
+# Short-Description: Starts myProgramm
+# Description:
+### END INIT INFO
+
+case "$1" in
+start)
+echo "noip wird gestartet"
+# Starte Programm
+/usr/local/bin/myProgramm
+;;
+stop)
+echo "myProgramm wird beendet"
+# Beende Programm
+killall myProgramm 
+;;
+*)
+echo "Benutzt: /etc/init.d/myAutostartScript {start|stop}"
+exit 1
+;;
+esac
+
+exit 0
+\end{lstlisting}
+
+Später wird beim Start des PC oder Raspberry das Script automatisch mit dem Parameter \emph{start} ausgeführt.
+Beim Herunterfahren wird natürlich der Parameter \emph{stop} übergeben.
+Für jeden anderen Fall wird hier \emph{Benutzt: /etc/init.d/myAutostartScript {start|stop}} ausgegeben, um auf die Syntax-Anwendung des Scripts zu verweisen.
+
+Anschließend muss das Programm noch durch den folgenden Befehl ausführbar gemacht werden:
+
+\begin{lstlisting}[language=bash]
+sudo chmod 755 /etc/init.d/myAutostartScript
+\end{lstlisting}
+
+Um einen Test durchzuführen kann das Script mit den folgenden Befehlen gestartet bzw. gestoppt werden:
+
+\begin{lstlisting}[language=bash]
+sudo /etc/init.d/myAutostartScript start
+sudo /etc/init.d/myAutostartScript stop
+\end{lstlisting}
+
+Nach erfolgreichem manuellen Test erfolgt die Einstellung, dass das Script beim booten und beim Herunterfahren automatisch aufgerufen wird.
+
+\begin{lstlisting}[language=bash]
+sudo update-rc.d NameDesSkripts defaults
+\end{lstlisting}
+
+Falls das Script nicht mehr automatisch aufgerufen werden soll wird dies mit folgendem Befehl verhindert:
+\begin{lstlisting}[language=bash]
+sudo update-rc.d -f  NameDesSkripts remove
+\end{lstlisting}
+
+\subsubsection{Autostart bei LogIn für User}
+
+Für das Starten von Programmen für bestimmte User können  die \emph{.desktop} Dateien verwendet werden. Diese Dateien müssen in den jeweiligen Home-Verzeichnissen des Users unter folgendem Pfad abgelegt werden: \textit{ .config/autostart/ }
+
+Der Name darf bis auf die Endung \emph{.desktop} frei gewählt werden \\(z.B. \textit{ myAutostart.desktop}).
+
+Ein neues File kann mit 
+\begin{lstlisting}[language=bash]
+sudo nano ~/.config/autostart/myAutostart.desktop
+\end{lstlisting}
+erzeugt werden. Der Aufbau eines \emph{.desktop}-Files ist wie folgt dargestellt:
+
+\begin{lstlisting}[language=bash]
+[Desktop Entry]
+Type=Application
+Terminal=true
+Exec=/home/user/workspace/RaspberryDemoUdpSendHost/Debug/RaspberryDemoUdpSendHo$
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=RaspberryDemoUdpSendHost
+Name=RaspberryDemoUdpSendHost
+Comment[en_US]=
+Comment=
+\end{lstlisting}
+Benötigte Parameter:\\
+Zur Programmerstellung eines Autostarts wird der \emph{Typ} "Application" gewählt.\\
+Der Parameter \emph{Exec} beinhaltet den Pfad zu der ausführbaren Datei, welche im Terminal zu starten ist. \\
+Mit dem Parameter \emph{Name} wird der Prozessname festgelegt.
+
+Optionale Parameter:\\
+Um ein Terminal sichtbar zu machen muss die Einstellung \emph{Terminal} auf "true" gesetzt werden.\\
+Über den Parameter \emph{X-GNOME-Autostart-enabled} kann man das Autostarten des Programmes aussetzen, wenn man diesen Parameter auf "false" stellt. Standardmäßig ist er auf "true! gesetzt.
+
+Falls das Programm bei Beendigung erneut gestartet werden soll ist dies über X-GNOME-AutoRestart möglich.
+\subsection{VMWare Workstation Player}
+\label{sec:vm-vmww}
+
+Der \href{https://www.vmware.com/de/products/player}{VMware Player} steht \href{https://my.vmware.com/de/web/vmware/free#desktop_end_user_computing/vmware_workstation_player/12_0}{hier}  zum Download zur Verfügung.
+
+Eine bereits existierende VM muss geöffnet werden, um die Kopie der VW verwenden zu können. Wählen Sie die .vmx aus und starten Sie di VM. Bei der Frage, ob es sich hierbei um eine \emph{moved} oder \emph{copied} VM handelt, wählen Sie \emph{I copied it} aus.
+Die VM kann verwendet werden.
+
+Die VM kann jetzt verwendet werden.
+
+\subsection{VirtualBox}
+\label{sec:vm-vb}
+Für die \href{https://www.virtualbox.org/wiki/Downloads}{hier} verfügbare VirtualBox können durch Änderungen in den Einstellungen ebenfalls .vmdk-Dateien verwendet werden. Das File sollte aber keinesfalls konvertiert werden und im .vdmk-Format bestehen bleiben.
+
+Zunächst muss eine neue virtuelle Maschine des Typs Linus mit Betriebssystem Ubuntu 64bit-Version erstellt werden. Weisen Sie der VM 2 GB Hauptspeicher zu. Wählen Sie eine bereits vorhandene Festplatte aus. Bestimmen Sie dann den Ordner mit grünem Pfeil sowie die \emph{.vmdk} der kopierten VM aus und erstellen die VM.
+
+Wählen Sie nun die gerade erstellte VM aus und gehen auf ändern. Im Menü \emph{System} muss das IO-APIC aktivieren  aktiviert sein. Unter dem Menüpunkt \emph{Massenspeicher} entfernen Sie, falls vorhanden, die \emph{.vdmk} unter SATA-Controller und fügen diese unter Controller:DIE neu hinzu indem Sie auf \emph{Festplatte hinzufügen} klicken. Bestätigen Sie die Einstellungen.
+
+Nun kann die \emph{.vmdk} auch unter VirtualBox verwendet werden.
+
+\newpage 
+\section{Quadrocopter}
+\label{sec:hw}
+
+Falls es nötig sein sollte, den HELicopter zu demontieren, muss zuvor die Spannungsversorgung abgeschaltet werden. Beim Wiederaufbau sollte der Raspberry so montiert werden, dass das Gyroskop genau mittig sitzt, um keine verfälschten Sensorwerte zu bekommen
+
+
+\subsection{Raspberry Pi B+}
+\label{sec:hw-pi}
+
+Das Raspberry Pi B+ ist ein von der \textit{Raspberry PI Foundation} entwickelter Einplatinen Computer. Auf diesen Mini-PC läuft die Hauptanwendung der Software für das Projekt. Auf dem Pi läuft das Betriebssystem Ubuntu.
+
+\subsubsection{Technische Daten}
+
+\begin{itemize}
+	\item Broadcom BCM2835 Mainboard
+	\item ARM1176JZF-S Prozessor 700 MHz
+	\item Braodcom VideoCore 4 Grafikkarte mit OpenGL ES 2.0, 1080p30 h.264/MPEG-4 AVC high-profile decoder
+	\item 512 MB Arbeitsspeicher
+	\item Audio Ausgänge: 3.5 mm Jack
+	\item Onboard microSD Speicherkartenslot
+	\item 10/100 Ethernet RJ45 onBoard
+	\item Speichermöglichkeit über microSD Speicherkartenslot
+\item 4x USB 2.0.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=9.5cm,height=4.2cm]{fig/Grundlagen/PIb+.jpg}
+	\caption[Raspberry PI B+]{Raspberry PI B+\protect\footnotemark}
+\end{figure}
+\footnotetext{https://www.elektronik-kompendium.de/sites/raspberry-pi/bilder/19052513.jpg}
+\newpage
+\subsubsection{Verbinden mit einem PC}
+
+Benötigt wird eine Ethernet-Verbindung zwischen Host und Raspberry Pi, die SD-Karte mit Image des verwendeten Betriebssystems Ubuntu und die Stromversorgung.
+
+Auf das Raspberry Pi kann über mehrere Möglichkeiten zugegriffen werden.
+Hierfür sind die IP Konfigurationen des Pi´s und Hosts anzupassen (die IP vom Pi sollte unverändert sein).
+
+Host-Ip:\newline
+IP 192.168.22.160\newline
+Maske: 255.255.255.0\newline
+GW: 192.168.22.09
+
+PI-IP:\newline
+IP 192.168.22.161\newline
+Maske: 255.255.255.0\newline
+
+Die Login-Daten auf dem Raspberry lauten:\newline
+User: pi\newline
+Passwort: raspberry\newline
+
+Testen Sie die Einstellungen indem sie das Raspberry Pi von dem jeweiligen verwendeten Host anpingen.
+
+Nach erfolgreich ausgeführtem Ping-Befehl ist es nun möglich, Programme oder Dateien mit dem Kommando scp an das Raspberry zu senden.
+
+Folgende Schritte sind bei einem auftretenden Ping-Befehl-Fehler vorzunehmen:
+
+Das Default Gateway muss zunächst ermittelt werden, um die Ip-Einstellungen zu ändern.
+
+\begin{lstlisting}[language=bash]
+sudo nano /etc/network/interfaces
+\end{lstlisting}
+
+Nun müssen noch die Einstellungen in der Datei \emph{/etc/network/interfaces} anpasst werden.
+
+\begin{lstlisting}[language=bash]
+sudo nano /etc/network/interfaces
+\end{lstlisting}
+
+Das geöffnete File sollte folgendermaßen aussehen:
+
+\begin{lstlisting}[language=bash]
+auto lo
+
+iface lo inet loopback
+iface eth0 inet static
+address 192.168.22.161
+netmask 255.255.255.0
+gateway 192.168.22.9
+#iface eth0 inet dhcp
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+\end{lstlisting}
+
+Das Interface eth0 ist eine statische Adresse mit der dargestellten IP, Maske und Gateway.
+Ein Eintrag für das Routing ist vorzunehmen.
+
+Der Netzwerkdienst muss neu gestartet werden, um die Änderungen übernehmen zu können.
+
+\begin{lstlisting}[language=bash]
+sudo /etc/init.d/networking restart
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+scp Quelle Ziel[USER@IP:PFAD]
+scp RaspberryDemoUdpSendHost pi@192.168.22.161:/home/pi/
+\end{lstlisting}
+
+Es können auch Dateien vom PI auf den Host kopiert werden. Folgender Befehl kopiert die Datei \emph{file} vom Pi in das aktuelle Verzeichnis.
+
+\begin{lstlisting}[language=bash]
+scp pi@192.168.22.161:/home/pi/file .
+\end{lstlisting}
+
+\subparagraph{Benutzung eigener Monitor und Tastatur}
+Es besteht die Möglichkeit über HDMI und USB einen Monitor und Tastatur anzuschließen. Hierfür  muss die Netzwerkkonfiguration angepasst werden.
+
+
+\subparagraph{Über das Terminal}
+Sie können sich über eine \emph{ssh} Verbindung auf das Raspberry Pi einloggen.
+Sollte die Ip-Adresse des Raspberry verändert worden sein, muss diese angepasst werden.
+\begin{lstlisting}[language=bash]
+ssh pi@192.168.22.161 
+ssh USERNAME@IP
+\end{lstlisting}
+
+Die Eingabe des Passwortes des Benutzers \emph{pi} erfolgt über eine Blindeingabe.
+
+\subsection{Peripherie}
+\label{sec:hw-pher}
+
+\subsubsection{Motoren}
+Bei den Motoren handelt es sich um über Treiber "BL-Ctrl V1.2" gesteuerte Brushless DC Motoren "Robbe ROXXY BL-Outrunner 2824-34". Die Ansteuerung des Treibers erfolgt über den I2C Bus. An den Treiber werden 2 Byte Daten gesendet:
+\begin{itemize}
+	\item die I2C Adresse des gewünschten Motors
+	\item den PWM-Wert ( kleiner Wert langsam drehen, hoher Wert schnelles drehen)
+\end{itemize} 
+
+Der Treiber behält die Werte 10 msec lang und verliert diese anschließend. Die Werte müssen also zyklisch gesendet werden.
+
+Die Anzahl und Ordnung der Motoren ist je nach Typ des Helikopters unterschiedlich. Es gibt vier- oder acht Motorvarianten welche verschiedene Grundaufbauten haben können ( + oder x).
+
+Der Code soll so allgemein gehalten werden, dass er für jeden dieser Typen verwendet werden kann. In der main.h wird mittels Definition angegeben für welchen Helikopter das Programm definiert werden soll. In der \emph{/hal/MOTOR/MOTOR.h} sind helikopterspezifische Daten abgelegt, darunter die I2C-Adressen jedes Motors, die Anzahl der Motoren, die min-Werte und max-Werte des PWM-Signales.
+
+\subsubsection{Adafriut Ultimate GPS PI HAT\cite{doc:gpsHat}}
+Dieses Modul wird direkt auf das PI aufgesteckt und leitet alle Pins bis auf die UART Pins weiter. Folgende Pins werden für das Bord benötigt und können nicht mehr verwendet werden:
+
+\begin{table}[H]
+	 \centering
+	\begin{tabular}{|p{3cm}|p{11cm}| p{0.7cm} |}
+		\hline 
+		Pin &  Verwendung & Fest\footnotetext{Beschaltung kann nicht geändert werden}\\ 
+		\hline 
+		UART TXD \newline UART RXD & Die einzige serielle Schnittstelle muss verwendet werden um mit dem GPS-Modul zu kommunizieren & \cmark \\ 
+		\hline 
+		GPIO \#4 &  Kann bei Bedarf verwendet werden, falls die Zeitsynchronisation mit dem Raspberry nicht benötigt wird& \xmark \\
+		\hline
+		EEDATA \newline EECLK & Werden für die Verbindung mit dem EEPROM benötigt, derzeit noch nicht vom Raspberry verwendet & \cmark\\
+		\hline
+	\end{tabular}
+	\caption{Ultimate GPS Pins}
+\end{table}
+
+Dieses Modul liefert das GPS-Modul \textit{FGPMMOPA6H}(\href{https://www.adafruit.com/datasheets/GlobalTop-FGPMMOPA6H-Datasheet-V0A.pdf}{Datasheet}). Das Modul bietet Platz für eine Batteriezelle, für eine Real-Time-Clock und Prototypen Platz, um weitere Bauteile mittels Löten hinzuzufügen. 
+
+\subsubsection{ADS1015 12-Bit ADC\cite{doc:gpsADC}}
+
+Hierbei handelt es sich um einen hochauflösenden \href{https://www.adafruit.com/datasheets/ads1015.pdf}{12bit Analog-Digital-Konverter}. Der Konverter kann bis zu 3300 Umwandlungen in der Sekunde berechnen und besitzt eine I2C-Schnittstelle. Die Standardadresse des Bausteines ist die 7bit-Adresse 0x47. Diese Adresse kann durch die Verbindung folgender Pins mit dem \emph{ADDR-Pin} bei Bedarf angepasst werden: 
+	
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{4cm}|p{4cm}| p{4cm} |}
+		\hline 
+		Adresse &  Pin 1 & ADDR\\ 
+		\hline 
+		0x48 &  GND &ADDR\\ 
+		\hline 
+		0x49 &  VDD & ADDR\\ 
+		\hline 
+		0x4A &  SDA & ADDR\\ 
+		\hline 
+		0x4B &  SCL & ADDR\\ 
+		\hline 
+	\end{tabular}
+	\caption{ADC 12 Bit I2C Adress Manipulation}
+\end{table}
+
+Dieser ADC liefert folgende zwei verschiedene Betriebsmodi, welche über die Anschlüsse \emph{A0} bis \emph{A3} verwendet werden:
+
+
+\begin{itemize}
+	\item \emph{Single Ended}: berechnet den ADC der Spannung zwischen jedem der \emph{Ax-Pins} und Ground. Hiermit ist nur das Messen von positiven Spannungen möglich. Effektiv verliert man dadurch ein Bit der Auflösung. Der Modus bietet doppelt so viele Inputs.
+	\item \emph{Differential}: berechnet den ADC der Spannung zwischen \emph{A0} \& \emph{A1} und \emph{A2} \& \emph{A3}. Der Modus liefert weniger rauschanfällige Signale.
+\end{itemize}
+
+
+Eine Spannung über 5V darf nicht angelegt werden, da diese das Modul zerstören würde.
+
+\subsubsection{Pololu AltIMU-10 v4\cite{doc:imu}}
+
+Dieses Modul besteht aus drei IC´s. Sie beinhalten die folgenden Funktionen:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{4cm}|p{3cm}|p{4cm}|p{3.5cm}|}
+	\hline
+	 Funktion & IC & Default I2C Adresse  & Manipulate I2C  \\
+	 \hline
+	 Beschleunigungsmesser \newline  Magnetometer & \href{https://www.pololu.com/file/download/LSM303D.pdf?file_id=0J703}{LSM303D}  & 0x1D & 0x1E\\
+	  \hline
+	   Gyrometer &
+	  \href{https://www.pololu.com/file/download/L3GD20H.pdf?file_id=0J731}{L3GD20H}& 0x6B& 0x6A \\
+	  \hline
+	 Barometer& \href{https://www.pololu.com/file/download/LPS25H.pdf?file_id=0J761}{LPS25H }& 0x5D & 0x5C \\
+	 \hline 
+	\end{tabular}
+	\caption{IMU ICs}
+\end{table}
+
+Auch dieser Baustein verwendet zur Konfiguration und Kommunikation den I2C-Bus (7bit Adresse). Jeder dieser ICs besitzt eine eigene Adresse, die sich ebenfalls manipulieren lässt, indem man den Pin \emph{SA0} auf \emph{GND} zieht.
+
+\subsubsection{LIDAR-Lite v2\cite{doc:lidar}}
+
+Dieser Lasersensor besitzt eine Reichweite bis zu $ 40 m$ mit einer Genauigkeit von $  \pm 0,025$ , eine Verzögerung von 0,02 Sekunden und kann bis zu $500$ Messwerte pro Sekunde liefern. Der I2C-Bus kann mit $100kbits/s$ oder $400kbits/s$ betrieben werden. Eine eigene Adressierung ist möglich. Als Standard-I2C Adresse ist die 0x62 festgelegt. Falls mehrere LIDAR Light v2 Sensoren an einem I2C-Bus hängen ist dies die Broadcast-Adresse.
+
+
+\section{IDE}
+\label{ide:ecl}
+
+In der VM wird die IDE \emph{Eclipse} mit einem bereits installierten \emph{GCC} verwendet. Dieser \emph{GCC} kann für verschiedene Plattformen compilieren:
+\begin{itemize}
+	\item zum \emph{Native Compiler} (übersetzt in den Maschinencode, der für die aktuelle Plattform benötigt wird)
+	\item  zum \emph{Cross Compiler} (für die Verwendung um den Maschinencode für eine andere Plattform zu generieren) 
+\end{itemize}
+
+Das Storeage Passwort von Eclipse der VMware lautet:\newline
+user\\
+Das Storeage Passwort von Eclipse des Desktop-PC im EZS-Labor lautet:\newline
+labor\\
+
+\subsection{Compiler, Linker und Loader}
+
+Beim Compilieren werden sämtliche definierte Konstanten-, Makros- und Präprozessoranweisungen durch die angegebenen Werte ersetzt.
+
+Der Compiler hat die Hauptaufgabe aus dem Quellcode (.c, .cpp und .h) in nativen Maschinencode zu übersetzen. Der Maschinencode kann nur von einem bestimmten Prozessor gelesen werden. 
+Ausnahmen hierbei sind z.B. Compiler in der .Net (C\#) Umgebung. Bei diesem werden die Source Dateien in sogenannte \emph{Intermedia Languages} übersetzt, welche unabhängig vom Zielsystem sind. Bei der Ausführung des Codes wird der \emph{Intermedia Languages} durch den Compiler bei jedem Start erneut in den prozessorspezifischen Maschinencode übersetzt.
+
+Weitere Aufgaben eines Compilers: 
+\begin{itemize}
+	\item Anzeige von Syntax Fehler und Warnungen
+	\item Codeoptimierungen durchzuführen (verschiedene Stufen möglich)
+	\item Entfernen von Codesegmenten, die nie ausgeführt werden können
+	\item Einfügen von eigenen Funktionscode bei einem Funktionsaufruf
+\end{itemize}
+
+Als Ausgabe liefert der Compiler Code denn sogenannten Objekt Code.
+
+Die einzelnen Objekt-Files müssen noch durch einen sogenannten Linker miteinander verbunden werden. Nach erfolgreicher Verbindung generiert der Linker die ausführbare Datei.
+Vom Linker werden unter anderem Funktionen aus der Standard Libary hinzugefügt und alle Objektdateien, die noch nicht aufgelöste Symbole enthalten, überprüft und gelöst.
+Man unterscheidet zwischen statischen und dynamischen linken. Das statische linken wird einmalig durchgeführt, dynamisches linken hingegen jedes mal zur Laufzeit.
+
+Zuletzt gibt es noch den Loader. Dieser Loader lädt Teile des ausführbaren Codes, die in nächster Zeit benötigt werden, in den Hauptspeicher.
+
+
+\subsection{GNU Debugger GDB}
+
+Der \emph{Gnu DeBugger} ist ein Standard Debugger von Linuxsystemen der die folgenden Sprachen unterstützt:
+C, C++, Objective C, FORTRAN, Java, Pascal...
+
+Neben den Standardaufgaben wie Stacktrace und Breakpoints setzen ermöglicht der GDB auch Manipulationen von Variablen während der Laufzeit des Programmes und Reverse Debugging.
+
+Für Eclipse ist ein PlugIn installiert, das den DBG zur Verfügung stellt.
+
+\subsection{Makefile}
+
+Makefiles sind eine Möglichkeit (mittels des Programmes \emph{make}) um aus mehreren Quell-Files und Bibliotheken über Objekt-Files einen ausführbaren Code zu generieren. Das Besondere an dieser Methode ist, dass beim Ausführen des Makefiles nur geänderte Quell-Dateien neu kompiliert werden müssen. Die daraufhin generierten Objekt-Files und   die unveränderten Objekt-Dateien werden mit dem Linker neu verbunden. Beim herkömmlichen Compilieren werden sämtliche Quell-Dateien generiert und verbunden.
+Kurz: es lassen sich Abhängigkeiten definieren. Dies ist zeitsparend, da nicht bei Änderung eines Files das komplette Projekt compiliert werden muss. Dies ist bei großen Projekten zu berücksichtigen.
+
+Die Makefiles werden in einer Baumstruktur angelegt.
+
+\paragraph{Bearbeitung von Makefiles}
+Für die Kompilierung neuer Source-Files müssen diese in den Makefiles bekanntgemacht werden und die Übersetzungs-Einstellungen bestimmt werden.
+
+Zu bearbeiten sind im Trunk Ordner die Files  \emph{Makefile} und \emph{makeopts} und das jeweilige \emph{makefile} im Ordner, in dem eine neue Quelldatei hinzugefügt wurde. Für Host-Programme sind die files mit der Endung\emph{ -host} zu bearbeiten. Änderungen sind am Beispiel einer neuen c Source Datei \emph{MOTOR.c }im neu erstellen Ordner \emph{hal/MOTOR}.
+
+Im \emph{trunk/Makefile} sind die Verweise auf alle anderen Makefiles aufgelistet. Dies ist das Root-Makefile.
+Folgende Änderungen sind vorzunehmen:
+
+\begin{lstlisting}[language=make]
+product: ... MOTOR ...
+\end{lstlisting}
+
+Für den Make all Befehl:
+
+\begin{lstlisting}[language=make]
+MOTOR:FORCE
+cd hal/MOTOR; make all
+\end{lstlisting}
+
+Für den Clean Befehl muss noch ein weiterer Eintrag erstellt werden.
+
+\begin{lstlisting}[language=make]
+cd hal/MOTOR; make clean
+\end{lstlisting}
+
+In dem \emph{trunk/makeopts} sind Einstellungen für das Makefile oder Generierung mit dem Makefile festgelegt. Fügen Sie die nachfolgende Zeile ein:
+
+\begin{lstlisting}[language=make]
+../hal/MOTOR/MOTOR.lib\
+\end{lstlisting}
+
+Zuletzt muss noch das Makefile im Ordner MOTOR erstellt und bearbeitet werden.
+Dieses legt nun fest, welche Files für die Generierung verwendet werden sollen.
+Hierfür kopiert man am besten ein vorhandenes makefile um und ändert anschließend die Zeilen, die aussagen welches \emph{.obj} und \emph{.lib} file zum kompilieren und builden verwendet werden soll.
+
+\begin{lstlisting}[language=make]
+OBJS= MOTOR.obj MOTOR1.obj
+LIBRARY=MOTOR.lib
+\end{lstlisting}
+
+Sollten sich mehrere \emph{c} files im Ordner \emph{Motor} befinden, können diese durch einen Space getrennt angeben werden. Mit diesem Makefile wird aus \emph{MOTOR.C} wird das object file \emph{MOTOR.obj} generiert.
+
+\subsection{Host Programme}
+\label{sec:ide-host}
+
+Um ein Project für eine Host-Anwendung zu erstellen, muss unter Eclipse ein neues \textit{ C/C++ Projekt }  mit dem Projekttyp \textit{ Executable Empty Projec t} und den Toolchains \textit{ Linux GCC } angelegt werden.
+
+\subsection{Raspberry Pi Programme}
+\label{sec:ide-pi}
+
+Um ein Projekt für eine Raspberry Pi Remote-Anwendung zu erstellen, muss unter Eclipse ein neues \textit{ C/C++ Projekt }  mit dem Projekttyp \textit{ Executable Empty Project } und den Toolchains \textit{ Cross GCC } angelegt werden. 
+
+Bei den Projekteigenschaften muss bei \textit{ C/C++ Build/Settings } beim Tool Settings der Cross Settings ausgewählt werden und der Prefix und Pfad zum verwendeten GCC angepasst werden.
+
+Prefix: \textit{ arm-linux-gnueabihf- }
+
+Pfad: \textit{ /home/user/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin }
+
+\paragraph{Debug Remote Einstellungen}
+
+Bei  \textit{ Run as/Run Configurations } muss unter  \textit{ C/C++ Remmote Apllication } eine neue Konfiguration erstellt werden. Im Feld \emph{Projekt} die  Projektbezeichnung eingetragen. 
+
+Unter \textit{ Remote Absolute File Path for C/C++ Application } wird der Pfad angegeben, in welchem die ausführbare Datei gespeichert ist \newline (z.B. \emph{/home/ezs/git/helicopter-raspberry/NameDerAnwendung.elf})
+
+Falls das Projekt neu gebaut werden muss sind die Target Einstellungen zu wählen.
+
+Connection: Raspberry Target auswählen.
+
+Remote Absolute File Path for C/C++ Application: Hier den Pfad und Dateinamen angeben, in welchen die ausführbare Datei gespeichert werden soll z.B. /home/pi/HELIKOPTER.elf
+
+In das Feld  \textit{ Commands to execute before application } ist folgender Eintrag vorzunehmen: \newline
+sudo -i \newline
+chmod +x RaspberryDemoUdpReceiveTarget \newline
+Dies macht das File zu einer ausführbaren Datei und wird bei jedem Laden des Programmes auf das Raspberry Pi ausgeführt. 
+
+Unter dem Reiter \emph{Debugger} ist das Häckchen bei \emph{Stop on Starup at} zu setzen und in das daneben liegende Feld \emph{main} einzutragen. Dies sorgt dafür das bei einem Programmstart automatisch ein Breakpoint bei Aufruf der Funktion Main erzeugt wird.
+
+Bei Debugger Optionen ist der Pfad des GDB auf den \emph{gcc-linaro-arm-linux-gnueabihf-raspian-x64/bin/arm-linux-gnueabihf-gdb} 
+und \emph{GDB command file} auf \emph{./gdbinit} zu ändern. Der Debugger kann auf \href{https://github.com/raspberrypi}{GitHub} runtergeladen werden.
+
+\subparagraph{Alternativ} kann auch der scp Befehl verwendet werden um die Datei auf das Raspberry Pi zu kopieren. \newline
+scp ProgramName UserNameVonPi@IPAdressePi:SpeicherpfadAufPi \newline
+Dann per ssh Zugriff, die Datei im angegeben Pfad zu einer ausführbaren Datei machen und mit ./PfadZumFile.elf starten.
+\subsection{Beispiel Code}
+\label{sec:ide-example}
+
+Anbei befinden sich zwei Codesegmente, die eine Nachricht über UDP/IP vom Raspberry Pi an den Host senden. Mit diesen Programmen können die zuvor beschriebenen Schritte zum Testen durchgeführt werden.
+
+RaspberryDemoUdpSendHost.cpp:
+
+\begin{lstlisting}[language=C++]{Name = RaspberryDemoUdpSendHost.cpp}
+/*
+* RaspberryDemoUdpSendHost.cpp
+*
+*  Created on: Oct 23, 2015
+*      Author: Chris Mönch
+*/
+
+#include <iostream>
+#include <stdio.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <string.h>
+#include <unistd.h>
+
+using namespace std;
+
+int main(int argc, char * argv[]) {
+
+cout << "Start\n";
+
+int clientSocket, nBytesMessage, nBytesMessage2;
+char message[12] = "Hello_World";
+char message2[16] = "AnotherMessage";
+
+nBytesMessage= sizeof(message)/ sizeof(message[0]);
+nBytesMessage2 =sizeof(message2)/ sizeof(message2[0]);
+
+struct sockaddr_in serverAddress;
+socklen_t addressSize;
+
+/*Create UDP socket*/
+clientSocket = socket(PF_INET, SOCK_DGRAM, 0);
+
+/*Configure settings in address struct*/
+serverAddress.sin_family = AF_INET;
+serverAddress.sin_port = htons(9999);
+serverAddress.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+memset(serverAddress.sin_zero, '\0', sizeof serverAddress.sin_zero);
+
+/*Initialize size variable to be used later on*/
+addressSize = sizeof(serverAddress);
+
+printf("Start Sending Messages\n");
+
+while(1){
+sleep(1);
+sendto(clientSocket,message,nBytesMessage,0,(struct sockaddr *)&serverAddress,addressSize);
+sleep(1);
+sendto(clientSocket,message2,nBytesMessage2,0,(struct sockaddr *)&serverAddress,addressSize);
+printf("And send again....\n");
+}
+
+return 0;
+}
+\end{lstlisting}
+RaspberryDemoUdpReceiveHost.cpp:
+
+\begin{lstlisting}[language=C++]{Name = RaspberryDemoUdpReceiveHost.cpp}
+/*
+* RaspberryDemoUdpReceiveHost.cpp
+*
+*  Created on: Oct 23, 2015
+*      Author: Chris Mönch
+*/
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <time.h>
+
+#define LOCAL_SERVER_PORT 9999
+#define BUF 255
+
+using namespace std;
+
+int main(int argc, char * argv[]) {
+int s, rc, n;
+socklen_t len;
+struct sockaddr_in cliAddr, servAddr;
+char puffer[BUF];
+const int y = 1;
+s = socket (AF_INET, SOCK_DGRAM, 0);
+if (s < 0) {
+printf ("%s: Kann Socket nicht öffnen ...(%s)\n");
+return 1;
+}
+
+/* Lokalen Server Port bind(en) */
+servAddr.sin_family = AF_INET;
+servAddr.sin_addr.s_addr = htonl (INADDR_ANY);
+servAddr.sin_port = htons (LOCAL_SERVER_PORT);
+setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &y, sizeof(int));
+rc = bind ( s, (struct sockaddr *) &servAddr,
+sizeof (servAddr));
+if (rc < 0) {
+printf ("%s: Kann Portnummern %d nicht binden (%s)\n");
+return 1;
+}
+printf ("%s: Wartet auf Daten am Port (UDP) %u\n",
+argv[0], LOCAL_SERVER_PORT);
+/* Serverschleife */
+while (1) {
+/* Puffer initialisieren */
+memset (puffer, 0, BUF);
+/* Nachrichten empfangen */
+len = sizeof (cliAddr);
+n = recvfrom ( s, puffer, BUF, 0,(struct sockaddr *) &cliAddr, &len );
+if (n < 0) {
+printf ("%s: Kann keine Daten empfangen ...\n",
+argv[0] );
+continue;
+}
+
+/* Erhaltene Nachricht ausgeben */
+printf ("%s \n", puffer);
+
+}
+return 0;
+
+}
+\end{lstlisting}
+
+\section{Git}
+
+Git ist ein dezentrales Versionsverwaltungsprogramm. Es wird kein zentraler Server und es wird kein Internetzugang benötigt. Git ist komplett über die Kommandozeile Steuerbar, mittlerweile existieren aber auch viele Graphische Oberflächen für Git.
+
+Das Paket wird mittels des Befehls
+\begin{lstlisting}[language=bash]
+sudo apt-get install git
+\end{lstlisting}
+installiert werden.
+
+Für das HElicopter Project existiert bereits ein Git-Repository. Dieses Repository wird von Herrn Agrawal verwaltet. Für das Clonen und Pushen des verwalteten Quellcodes muss mit ihm Abgesprochen werden (Quelle/Ziel und Zugang).
+
+Um Quellcode eines Repositorys zu klonen wird der folgende Befehl verwendet:
+
+\begin{lstlisting}[language=bash]
+git clone PfadDesRepositories SpeicherOrtDesRepositories
+\end{lstlisting}
+
+Als nächstes sollte man Git bekannt machen wer man ist um zu erkennen wer welche Änderungen gemacht hat. Hierfür geht man in das lokal heruntergeladene Repository Verzeichnis und setzt sich mit den folgenden Befahl seinen Namen und seine EMail Adresse:
+\begin{lstlisting}[language=bash]
+git config --global user.name MeinName
+git config --global user.name MeineEMail@Mail.de
+\end{lstlisting}
+Diese Parameter sind bis zur einer Änderung in diesem lokalen Verzeichnis fest.
+
+Anschließend sollte man sich einen Neuen Branch/Zweig erstellen auf welchem anschließend gearbeitet wird. Dies gelingt über das Kommando:
+\begin{lstlisting}[language=bash]
+git checkout -b MyOwnBranch
+\end{lstlisting}
+Möchte man auf einen anderen Branch wechseln muss folgender Befehl verwendet werden:
+\begin{lstlisting}[language=bash]
+git checkout AnotherBranch
+\end{lstlisting}
+Natürlich kann auch so auf ein anderes commit geänder werden.
+
+Um Dateien oder ganze Verzeichnisse in das Quellverwaltung auszunehmen ist das Kommando
+\begin{lstlisting}[language=bash]
+git add filename.c
+\end{lstlisting}
+zu verwenden.
+
+Um Änderungen des Repositorys lokal zu speichern wird das Kommando
+\begin{lstlisting}[language=bash]
+git commit -m "Message"
+\end{lstlisting}
+verwendet. Der Parameter -m sollte immer einen passenden Schlüssigen Namen besitzen. Coder der commitet wird solle zuvor getestet werden oder zumindest keinen kompilerfehler liefern Auf andere commits kann jederzeit zugriffen werden. Mit dem Befehl
+\begin{lstlisting}[language=bash]
+git log 
+\end{lstlisting}
+werden alle commits und pushes angezeigt die auf die aktuelle lokale Version zutreffen. Mit den Information des Authoren und der Messsage des commits. 
+
+Bearbeitete oder unversionierte Dateien lassen sich mit
+\begin{lstlisting}[language=bash]
+git status -u 
+\end{lstlisting}
+sichtbar machen.
+
+Sollen Zwei Branches zusammengeführt werden müssen zunächst sämtliche Konflikte aufgelöst werden. Die Änderungen können mit
+\begin{lstlisting}[language=bash]
+git diff MyBranch TargetBranch
+\end{lstlisting}
+Angezeigt werden.
+
+Mit dem Befehl
+\begin{lstlisting}[language=bash]
+git merge Targetbranch
+\end{lstlisting}
+wird der Branch in dem der Befahl aufgeführt, nach erfolgreicher Konflikt Lösung, wird mit dem angegeben TargetBranch Zusammengeführt.
+
+\paragraph{Nach Pull Files alle als geändert gekennzeichnet}
+
+Direkt nach dem pull erfolgt eine Überprüfung, ob der pull erfolgreich durchgeführt wurde. Falls der Fehler erst später erkannt wird, kann es zum Verlust von Daten kommen. Es empfiehlt sich eine temporäre lokale Version abzuspeichern. Der Befehl
+\begin{lstlisting}[language=bash]
+git status -s
+\end{lstlisting}
+darf nichts zurückgeben, d.h. es gibt keine Änderungen im Vergleich zur Git Version. Wenn fehlerhafteiweise angezeigt wird, dass Änderungen vorgenommen wurden, wird mit
+\begin{lstlisting}[language=bash]
+git -diff
+\end{lstlisting}
+angezeigt, welche Änderungen vorgenommen wurden. Nun gibt es zwei verschiedene Möglichkeiten: Wenn ...
+\subparagraph[... Steuerzeichen Controll M]{... Steuerzeichen Controll M}
+hinzugefügt worden ist, liegt es daran, dass die Files von einem anderen Betriebssystem aus bearbeitet wurden, z.B. von Windows zugegriffen wurde.
+
+Bei Windows basierenden Systemen werden für ein Line Terminator (neuer Absatz und erste Position) zwei Steuerzeichen benötigt (\emph{Carriage Return} (ctrlM) und \emph{New Line Feed}(ctrlJ)). Bei Unix existiert nur das Steuerzeichen \emph{New Line Feed}. Das \emph{Carriage Return} besitzt keine spezielle Bedeutung in Linux basierenden Systemen. Daher wird das \emph{Carriage Return} nicht als Steuerzeichen erkannt und das Zeichen wird an jedes Zeilenende ins File hinzugefügt. 
+
+Mit dem Befehl \emph{dos2unix}, welcher eine File-Konvertierung von dos nach unix durchführt, kann das Problem gelöst werden.
+
+Zu beachten hierbei ist, dass die Konvertierung nur an benötigten Daten durchgeführt wird. Sonst könnte sie Verbindung mit Git zerstört werden.
+
+Einzelne Files können wie folgt konvertiert werden:
+
+dos2unix MAIN.c
+
+Wenn mehrere Files konvertiert werden müssen, empfiehlt sich der Befehl find und dessen Ausgabe umzuleiten z.B:
+
+find . -name *.c | xargs dos2unix
+
+Der Befehl sucht alle Files im aktuellen Verzeichnis, die eine .c Endung im Namen tragen und konvertiert diese anschließend.
+
+\subparagraph[... Keine Unterschiede]{... wenn keine Unterschiede}
+in den Files angezeigt werden, müssen die folgenden Befehle ausgeführt werden (falls Änderungen vorgenommen wurden ist eine lokale Kopie zu erstellen, sonst sind die Änderungen gelöscht!):
+\begin{lstlisting}[language=bash]
+git rm --cached -r .
+
+git reset ?-hard 
+\end{lstlisting}
+Dies löscht rekursiv alle Dateiinhalte von dem Index. Anschließend wird der Index und der Working tree resetet. Jede Änderung seit dem letzen Commit werden rückgängig gemacht.
+
+\section{Bekannte Probleme}
+\subsection{Udp Socket Programm mit Windows 10 und VMware}
+\label{vmWareError}
+
+Wenn sich auf dem Host-System das Betriebssystem Windows 10 befindet, gibt es beim Empfangen der Udp-Packete Probleme. Der Programmcode ist voll funktionsfähig. Dies kann man nachprüfen indem man beide Programme in der VMware über die localhost Adresse laufen lässt.
+
+Die gesendeten Daten kommen nicht bei der VMware an. Außerdem ist die VMware vom Pi nicht anzupingen, deshalb wurde die Firewall temporär deaktiviert. 
+Daraufhin wurde der Ping Befehl erfolgreich ausgeführt. Die Daten kamen weiterhin nicht an.
+
+Mit dem Tool Wireshark wurde mit aktiver und deaktivierter Firewall die Kommunikation mitgeschnitten. Bei deaktivierter Firewall kam die ICMP-Meldung, dass der Port nicht erreichbar ist.
+Bei aktiver Firewall kamen diese Nachrichten nicht vor.
+
+Daraufhin wurden für die Firewall Ausnahmen generiert, das jegliche Kommunikation von der IP des Raspberry Pi auf den Port 9999 ankommt und nicht blockiert wird.
+
+Da dies ebenfalls keine Auswirkung hat, wird wohl noch in einem von Windows bereitgestellten Dienst/Service die Kommunikation verhindert. Auf Funktion mit einem anderen Windows Betriebssystem können keine Annahmen getroffen werden.
+
+Mit einem Linux/Ubuntu System funktionieren die Programme fehlerfrei.
+
+Als Ausweichmöglichkeit wurde ein PC für folgende Arbeit in der Hochschule bereitgestellt.

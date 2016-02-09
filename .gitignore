@@ -6,3 +6,5 @@ compiled/*
 *.ver
 *.synctex.gz
 /output
+/tmp/
+/document.pdf
