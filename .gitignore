@@ -9,3 +9,10 @@ compiled/*
 /tmp/
 /document.pdf
 *.log
+*.aux
+*.tex~
+*.lof
+*.log
+*.lot
+*.toc
+
