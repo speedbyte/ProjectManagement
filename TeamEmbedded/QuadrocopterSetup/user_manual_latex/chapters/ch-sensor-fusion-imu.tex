@@ -227,6 +227,9 @@ Legend of the formula shown above:\\
 	\item $\vec{y}_{k}$ output vector
 	\item $\underline{H}_k$ output matrix
 	\item $\underline{V}$ measurement noise
+	\item $\underline{P}$ Output Covariance
+	\item $\underline{Q}$ Process Noise Covariance
+	\item $\underline{R}$ Measurement Noise Covariance
 \end{itemize}
 Because of the measurement and the process noise the new state is not good. The Kalman filter takes the process and measurement noise into account to improve the state estimation. To do so the Kalman filter is split into two parts, the prediction step (time update) and correction step (measurement update). In the prediction step the filter estimates the states in the next step and calculates the new covariance. Those values are calculated for the states which in the following step are expected to be reached. In the next step, the correction update, the filter checks if the pre-calculated state is reached. According to the difference the correction for the following prediction is done.\\\\
 \underline{Prediction step:}\\\\
@@ -567,6 +570,5 @@ fprintf('\n');
 disp('Calibration successfully processed.');
 
 \end{lstlisting}
-
 
 
