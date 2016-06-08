@@ -9,3 +9,8 @@ compiled/*
 /tmp/
 /document.pdf
 *.log
+*.aux
+*.fls
+*.fdb_latex
+*.out
+*.bak
