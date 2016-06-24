@@ -11,6 +11,6 @@ compiled/*
 *.log
 *.aux
 *.fls
-*.fdb_latex
+*.fdb_latexmk
 *.out
 *.bak
