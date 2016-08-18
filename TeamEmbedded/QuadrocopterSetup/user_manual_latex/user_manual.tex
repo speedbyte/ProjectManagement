@@ -19,7 +19,6 @@
 % % Nur diese Kapitel (Dateien) einbinden
 %\includeonly{
 %chapters/ch-aa-titel,
-%chapters/ch-gettingStarted,
 %chapters/ch-aa-vorspiel,
 %chapters/ch-einleitung,
 %chapters/ch-hauptteil,
@@ -54,8 +53,6 @@
 
 %% Project Goals
 \include{chapters/ch-project-goals}
-%%GettingStarted
-\include{chapters/ch-gettingStarted}
 %% Landing concept
 \include{chapters/ch-landing_concept}
 %% Raspberry Pi based hardware platform (hardware)
@@ -93,6 +90,71 @@
 % % %%%%%% Literaturverzeichnis (darf im deutschen nicht in den Anhang!)
 % Einfaches Literaturverzeichnis
 \input{chapters/ch-zz-bibEinfach}
+% Literaturverzeichnis mit Bibtex
+%\bibliography{bib/bib}
+
+% %  Inhalt ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % % Preamble BEGINN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Preamble (Dokumentenklasse)
+\input{preamble_motor/pre-class}
+
+%%% Alle Namen usw. im Titel und im hyperref-Paket
+\input{preamble_motor/pre-work}
+
+%%% Preamble (Pakete)
+\input{preamble_motor/pre-packages}
+
+%%% Neue Befehle
+\input{preamble_motor/pre-newcommands}
+\input{preamble_motor/pre-tablecommands} % Fuer Tabellen
+
+%%% Silbentrennung
+\input{preamble_motor/pre-hyphenation}
+
+% % Nur diese Kapitel (Dateien) einbinden
+%\includeonly{
+%chapters/ch-aa-titel,
+%chapters/ch-aa-vorspiel,
+%chapters/ch-einleitung,
+%chapters/ch-hauptteil,
+%chapters/ch-schluss,
+%chapters/ch-zz-anhang
+%}
+% % Preamble ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % Inhalt BEGINN %%%%%%%%%%%%%%%%%%%2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% Tabellen-Einstellungen
+\input{preamble_motor/pre-tablesettings}
+% % %%%%%% Vorspiel
+\begin{spacing}{} % Vorspiel immer mit Standard-Zeilenabstand setzen
+	\frontmatter
+	% % Titelblatt
+	\include{chapters_motor/ch-aa-titel}
+	\include{chapters_motor/ch-aa-vorspiel}
+	\include{chapters_motor/ch-aa-zusfasg}
+	% % Verzeichnisse
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	%\lstlistoflistings % Verzeichnis für Code-Listing
+\end{spacing}{}
+% % %%%%%% Textteil (Eigentliche Arbeit)
+\mainmatter
+%
+\include{chapters_motor/ch-einleitung}
+\include{chapters_motor/ch-grundlagen}
+\include{chapters_motor/ch-hauptteil}
+\include{chapters_motor/ch-schluss}
+
+% % %%%%%% Anhang
+
+\include{chapters_motor/ch-zz-anhang}
+
+% % %%%%%% Literaturverzeichnis (darf im deutschen nicht in den Anhang!)
+% Einfaches Literaturverzeichnis
+\input{chapters_motor/ch-zz-bibEinfach}
 % Literaturverzeichnis mit Bibtex
 %\bibliography{bib/bib}
 
