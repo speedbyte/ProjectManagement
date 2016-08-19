@@ -337,13 +337,13 @@ Dieses Modul wird direkt auf das PI aufgesteckt und leitet alle Pins bis auf die
 	 \centering
 	\begin{tabular}{|p{3cm}|p{11cm}| p{0.7cm} |}
 		\hline 
-		Pin &  Verwendung & Fest\footnotetext{Beschaltung kann nicht geändert werden}\\ 
+		Pin &  Verwendung & Fest\footnotetext{Beschaltung kann nicht geändert werden} \\ 
 		\hline 
-		UART TXD \newline UART RXD & Die einzige serielle Schnittstelle muss verwendet werden um mit dem GPS-Modul zu kommunizieren & \cmark \\ 
+		UART TXD ; UART RXD & Die einzige serielle Schnittstelle muss verwendet werden um mit dem GPS-Modul zu kommunizieren \\
 		\hline 
-		GPIO \#4 &  Kann bei Bedarf verwendet werden, falls die Zeitsynchronisation mit dem Raspberry nicht benötigt wird& \xmark \\
+		GPIO \#4 &  Kann bei Bedarf verwendet werden, falls die Zeitsynchronisation mit dem Raspberry nicht benötigt wird \\
 		\hline
-		EEDATA \newline EECLK & Werden für die Verbindung mit dem EEPROM benötigt, derzeit noch nicht vom Raspberry verwendet & \cmark\\
+		EEDATA ;  EECLK & Werden für die Verbindung mit dem EEPROM benötigt, derzeit noch nicht vom Raspberry verwendet  \\
 		\hline
 	\end{tabular}
 	\caption{Ultimate GPS Pins}
