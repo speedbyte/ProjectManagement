@@ -1,4 +1,4 @@
-\chapter{Realisierung}
+﻿\chapter{Realisierung}
 \label{sec:real}
 
 Die Hardware kann bei Bedarf in einem abschlie�barem Container gelagert werden und nach Absprache mit Projektteilnehmer und Projektleiter die Hardware auch mitgenommen werden. 
@@ -7,7 +7,7 @@ Die Hardware kann bei Bedarf in einem abschlie�barem Container gelagert werden
 \label{Inbetriebname}
 Eine MicroSD-Karte mit aufgespieltem Ubuntu-Image muss in den Raspberry Pi Kartenslot gesteckt werden.
 
-Als Versorgungsspannung ben�tigt der Quadrocopter 11.7 Volt mit Akku oder 10V-11V mit Netzger�t. Beim Umlegen des Hauptschalters sollen die LED�s am Quadrocopter und PI blinken sowie die Motoren einen Impuls erhalten.
+Als Versorgungsspannung benötigt der Quadrocopter 11.7 Volt mit Akku oder 10V-11V mit Netzger�t. Beim Umlegen des Hauptschalters sollen die LED�s am Quadrocopter und PI blinken sowie die Motoren einen Impuls erhalten.
 
 Beim Motorentests sollte der Quadrocopter befestigt werden, damit dieser nicht besch�digt wird geht. Im EZS-Labor wurde hierf�r an einem Arbeitsplatz ein Schraubstock montiert.
 
@@ -370,7 +370,7 @@ char flagRunSendPwmToMotor;
 
 \begin{lstlisting}[language=C++,firstnumber=21]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 *
 * \brief calls init functions which needed for the motor driver:
 * SetFlagRunSendPwmToMotor(0);
@@ -399,7 +399,7 @@ void InitMotor(int microSeconds){
 
 \begin{lstlisting}[language=C++,firstnumber=48]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief set Motor Exectution Order
@@ -416,7 +416,7 @@ void SetMotorExecutionOrder(){
 
 \begin{lstlisting}[language=C++,firstnumber=63]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief sets PWM Signal of selected Motor to pwmValue
@@ -451,7 +451,7 @@ void SetPwmMotor(char toSet , int pwmValue, int forceSend){
 
 \begin{lstlisting}[language=C++,firstnumber=96]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief adds to the current PWM Signal of selected Motor the pwmValue
@@ -489,7 +489,7 @@ void AddPwmMotor(char toSet , int pwmValue, int forceSend){
 
 \begin{lstlisting}[language=C++,firstnumber=131]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief Subtract to the current PWM Signal of selected Motor the pwmValue
@@ -526,7 +526,7 @@ void SubbPwmMotor(char toSet , int pwmValue, int forceSend){
 
 \begin{lstlisting}[language=C++,firstnumber=167]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief Gets pwmValue from a specific motor
@@ -548,7 +548,7 @@ int GetPwmMotor(int motorNumber){
 
 \begin{lstlisting}[language=C++,firstnumber=188]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief init Timer for the IsrMotor
@@ -584,7 +584,7 @@ void InitMotorTimer(int microSeconds){
 
 \begin{lstlisting}[language=C++,firstnumber=222]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief set flag flagRunSendPwmToMotor
@@ -607,7 +607,7 @@ void SetFlagRunSendPwmToMotor(char value){
 
 \begin{lstlisting}[language=C++,firstnumber=243]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief ISR for set flag as flagRunSendPwmToMotor
@@ -624,7 +624,7 @@ void IsrSetFlag(){
 
 \begin{lstlisting}[language=C++,firstnumber=258]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief get flag flagRunSendPwmToMotor
@@ -643,7 +643,7 @@ char GetFlagRunSendPwmToMotor(){
 
 \begin{lstlisting}[language=C++,firstnumber=275]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief sends every timer interrupt to the motors the specific pwm values
@@ -664,7 +664,7 @@ void sendPwmToMotor(){
 
 \begin{lstlisting}[language=C++,firstnumber=294]
 /*!***************************************************************
-* \author Chris M�nch( chmoit00 )
+* \author Chris Mönch( chmoit00 )
 * \date 2016/01/08
 *
 * \brief Get the I2C addresses orderd by execution (defined in MOTOR.h)
