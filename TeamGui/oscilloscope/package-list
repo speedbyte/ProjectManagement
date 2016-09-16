@@ -1,1 +1,6 @@
+scope.data
 scope.gui
+scope.mutex
+scope.serial
+scope.test
+scope.vci
