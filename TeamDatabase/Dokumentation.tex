@@ -58,11 +58,11 @@
 \begin{document}
 	\begin{titlepage}
 		\begin{center}
-			\includegraphics[width=0.4\linewidth]{image2.jpg}\\
+			\includegraphics[width=0.4\linewidth]{img/image2.jpg}\\
 			\vspace*{3.5cm}
 			\Huge{\bf Quadrocopter Raspberry Pi 2016\bigskip\bigskip\\}
 			\LARGE{Datenbank mit PythonMySQL\bigskip\bigskip\\}
-			\large{Universit"at Tübingen\vfill}
+			\large{Universit"at T"ubingen\vfill}
 		\end{center}
 		%
 		\vspace*{1cm}
@@ -80,7 +80,7 @@
 		\end{minipage}
 	\end{titlepage}
 	\begin{abstract}	
-		Hier k"onnte ihr Vorwort stehen
+		Als Student der Universit"at T"ubingen, in einem der Informatikstudieng"ange, ist die Teilnahme an einem Programmierprojekt vorgesehen. Aus den vielen angebotenen Projekten habe ich mich f"ur das Projekt \glqq{}PiSense mit Quadrocopter\grqq{} entschieden. In diesem Projekt waren die Anpassung der Low Level Treiber, das Darstellen der Sensordaten in einer GUI, eine App zum steuern der Motoren des Quadrocopters, sowie die gemessen Daten in einer Datenbank abzulegen als Ziele gegeben. Die folgende Dokumentation soll das erstellen und verwalten einer Datenbank, sowie das Empfangen der Daten per UPD beschreiben. 
 	\end{abstract}
 	%Inhalts- und Abbildungsverzeichnis
 	\newpage
@@ -108,24 +108,24 @@
 					Nach der Installation wir Ihnen das Passwort f"ur den Root User angezeigt.
 					\begin{figure}[h!]
 						\centering
-						\includegraphics[width=0.4\linewidth]{rootPW.png}
+						\includegraphics[width=0.4\linewidth]{img/rootPW.png}
 						\caption{Passwort Alert \label{pw_alrt}}
 					\end{figure}\\
 					Notieren Sie sich dieses, da es sp"ater noch gebraucht wird!
 				\item 
-					"Offen sie nun Ihren Termial und geben folgende Befehle ein, um ein neues Passwort zu vergeben:
+					"Offen sie nun Ihren Terminal und geben folgende Befehle ein, um ein neues Passwort zu vergeben:
 					\begin{verbatim}
 						$ cd /usr/local/mysql/bin
 						$ ./mysqladmin -u root -p password '<password>'
 					\end{verbatim}
-					Sie werden nun aufgefordert ihr Root Passwort, welches Sie vorhin notiert haben, einzugeben.
+					Sie werden nun aufgefordert ihr Root-Passwort, welches Sie vorhin notiert haben, einzugeben.
 					\begin{verbatim}
 						$ exit
 					\end{verbatim}
 					Um zur"uckzukehren
 				\newpage
 				\item
-					Nun erstellen wir einen neuen Benutzer und geben diesem die Notwendigen Rechte.
+					Nun erstellen wir einen neuen Benutzer und geben diesem die notwendigen Rechte.
 					\begin{verbatim}
 					$ ./mysql -u root -p
 					mysql > CREATE USER 'PiSense'@'localhost' IDENTIFIED BY 'somePW';
@@ -146,12 +146,14 @@
 				\item 
 					Zu erst muss ein neues Schema erstellt werden:
 					\begin{verbatim}
-						CREATE DATABASE `SenseData` COLLATE 'latin1_swedish_ci';
+						$ cd /usr/local/mysql/bin
+						$ ./mysql -u PiSense -p
+						mysql > CREATE DATABASE `SenseData` COLLATE 'latin1_swedish_ci';
 					\end{verbatim}
 				\item
-					Nun k"onnen wird eine Tabelle anlegen:
+					Nun k"onnen wir eine Tabelle anlegen:
 					\begin{verbatim}
-						CREATE TABLE `SenseData`.`DATA` (
+						mysql > CREATE TABLE `SenseData`.`DATA` (
 						`PITIME` timestamp(2) PRIMARY KEY NOT NULL,
 						`ACC_X` double NOT NULL,
 						`ACC_Y` double NOT NULL,
@@ -172,12 +174,12 @@
 					\end{verbatim}
 					Zu den jeweiligen Eintr"agen sp"ater mehr.
 			\end{enumerate}
-			Somit ist die Datenbank vollst"andig erstellt und kann mit Daten gef"ullt werden.
+			Jetzt ist die Datenbank vollst"andig erstellt und kann mit Daten gef"ullt werden.
 		\newpage
 		\section{Python}
 			\begin{enumerate}
 				\item[] 
-					Um sp"ater Daten empfangen zu k"onne um diese in der Datenbank abzulegen ben"otigen wir Python. Da es sich um eine Skriptsprache handelt, ist eine IDE nicht vonn"oten. 
+					Um sp"ater Daten empfangen zu k"onne und diese in der Datenbank abzulegen ben"otigen wir Python. Da es sich um eine Skriptsprache handelt, ist eine IDE nicht vonn"oten. 
 				\item
 					Laden sie sich hierzu Python 2.7 von der Python Homepage herunter.
 					\begin{center}
@@ -199,7 +201,7 @@
 		\section{Struktur der Datenbank}
 			\begin{figure}[h!]
 				\centering
-				\includegraphics[width=0.4\linewidth]{tblstr.png}
+				\includegraphics[width=0.4\linewidth]{img/tblstr.png}
 				\caption{Struktur der Datenbank \label{db_str}}
 			\end{figure}
 			\begin{itemize}
@@ -211,7 +213,7 @@
 					F"ur das Magnetfeld werden ebenfalls 3 Datens"azte abgelegt. 
 				\item TEMP/PRESS\\
 					Die Temperatur und der Luftdruck 
-				\item M1/2/3/4
+				\item M1/2/3/4\\
 					F"ur die jeweiligen Motoren werden vier Datens"atze abgelegt, da diese sich unabh"anging von einander drehen k"onnen.
 			\end{itemize}
 		\newpage
@@ -219,7 +221,7 @@
 			Hier ist ein beispielhafter Auszug der Datenbank zu sehen, er zeigt einen Ausschnitt aus der Demo.
 			\begin{figure}[h!]
 				\centering
-				\includegraphics[width=0.9\linewidth]{bsptbl.png}
+				\includegraphics[width=0.9\linewidth]{img/bsptbl.png}
 				\caption{Daten der Demo\label{demo_data}}
 			\end{figure} 
 		\section{Python}
@@ -227,7 +229,7 @@
 				Um auf die vorhin erstelle Datenbank zuzugreifen, muss eine Verbindung hergestellt werden. Hierzu wird der neue Benutzer PiSense ben"otigt, nat"urlich k"onnten man auch Root benutzen das ist aber nicht Sinn der Sache.
 				\begin{figure}[h!]
 					\centering
-					\includegraphics[width=0.65\linewidth]{dbc.png}
+					\includegraphics[width=0.65\linewidth]{img/dbc.png}
 					\caption{Connector\label{dbc}}
 				\end{figure}
 			\newpage
@@ -235,20 +237,20 @@
 				Damit das Skipt eine Message vom Quadrocopter empfangen kann, muss ein UDP Socket auf einem bestimmten Port Lauschen. Python stellt uns hierbei einen Receive-Funktion zur verf"ugung. Es muss nur die IP und der Port and einen Socket gebindet werden. 
 				\begin{figure}[h!]
 					\centering
-					\includegraphics[width=0.65\linewidth]{udpsock.png}
+					\includegraphics[width=0.65\linewidth]{img/udpsock.png}
 					\caption{UDP Socket\label{UDPS}}
 				\end{figure}\\
 				In diesem Fall lauschen wir auf dem Port 5000, benutzen IPv4 und nat"urlich UDP.
 			\subsection{Empfangen und aufteilen der Daten}
 				\begin{figure}[h!]
 					\centering
-					\includegraphics[width=0.65\linewidth]{whilerec.png}
+					\includegraphics[width=0.65\linewidth]{img/whilerec.png}
 					\caption{Empfange der Message\label{recv}}
 				\end{figure}
 				Es wird so lange gewartet bis eine Message ankommt, falls diese der String "AFAF" ist, wird das Skript beendet. Da die Daten in einem einzigen String ankommen, m"ussen sie herausgefiltert werden. Um dies zu erreichen wird der String bei jedem Zeilenumbruch getrennt. Nun m"ussen noch die Bezeichner \textit{abgeschnitten} werden. Auch hier liefert uns Python einen L"osung mit. Es werden die Vier ersten Zeichen verworfen.
 				\begin{figure}[h!]
 					\centering
-					\includegraphics[width=0.3\linewidth]{trenn.png}
+					\includegraphics[width=0.3\linewidth]{img/trenn.png}
 					\caption{Trennen der Daten\label{trenn_D}}
 				\end{figure}
 			\newpage
@@ -256,8 +258,93 @@
 				Damit die empfangenen Date jetzt nicht verloren gehen, werden sie in die Datenbank geschrieben. Dies erfolgt "uber einen INSERT. Hierbei werden die Daten in ihre jeweiligen Spalten der Tabelle gespeichert. Am ende muss das Query noch commited werden an die Datenbank.
 				\begin{figure}[h!]
 					\centering
-					\includegraphics[width=0.5\linewidth]{query.png}
+					\includegraphics[width=0.5\linewidth]{img/query.png}
 					\caption{Query\label{qry}}
 				\end{figure}\\	
-				Um sicherzustellen, dass das Skript funktioniert kann mit dem udpSend Skipt ein Senden des Quadrocopters simuliert werden. Jedoch handelt es sich hierbei nur um Zufallswerte. 
+				Um sicherzustellen, dass das Skript funktioniert kann mit dem \textit{udpSend} Skipt ein Senden des Quadrocopters simuliert werden. Jedoch handelt es sich hierbei nur um Zufallswerte. 
+			\subsection{Ausf"uhren des Skriptes}
+				Das Pythonscript l"asst sich wie folgt ausf"uhren. Wechseln sie dazu in das Verzeichnis wo die udpReceive.py  zu finden ist.
+				\begin{verbatim}
+					$ python udpReceive.py 
+				\end{verbatim}
+				Falls Sie nun das Skript beenden wollen senden Sie per UDP den String \glqq{}AFAF\grqq{}.
+				\begin{verbatim}
+					$ echo "AFAF" | nc -4u localhost 5000
+				\end{verbatim}
+		\section{Verwalten der Datenbank}
+			\subsection{Adminer einrichten}
+				\begin{enumerate}	
+					\item[]
+						Adminer wurde zum verwalten der Datenbank verwendet.
+					\item
+						Um mit Adminer zu arbeiten laden sie dieses von der Adminer Homepage herunter.
+						\begin{center}
+							\url{https://www.adminer.org/#download}\footnote{stand 20.09.2016}
+						\end{center}
+					\item 
+						Damit Sie Adminer starten k"onne m"ussen Sie die \textit{adminer-4.2.5.php} Datei in ihr Apache verzeichnis verschieben.
+						\begin{verbatim}
+							$ cd /Library/WebServer/Documents/
+						\end{verbatim}
+					\item 
+						Jetzt m"ussen Sie Apache nur noch f"ur php konfigurieren.\\
+						Erstellen sie ein Backoup Ihrer alten Konfiguration.
+						\begin{verbatim}
+							$ cd /etc/apache2/
+							$ cp httpd.conf httpd.conf.bak
+						\end{verbatim}
+						Nun editieren sie die httpd.conf Datei 
+						\begin{verbatim}
+							$ vi httpd.conf
+						\end{verbatim}
+						und kommentieren folgende Zeile wieder ein (die \# enfernen).\\
+						\textit{LoadModule php5\_module libexec/apache2/libphp5.so}
+					\item 
+						Nun muss der Apache nur noch neugestartet werden.
+						\begin{verbatim}
+							$ sudo apachectl restart	
+						\end{verbatim}
+				\end{enumerate}
+			\subsection{Adminer bedienen}
+				\begin{enumerate}
+					\item
+						Navigieren sie Ihren Browser zu:
+						\begin{center}
+							\url{localhost/adminer-4.2.5.php}
+						\end{center}
+					\item 
+						Melden Sie sich mit dem Benutzer f"ur die Datenbank an:
+						\begin{figure}[h!]
+							\centering
+							\includegraphics[width=0.55\linewidth]{img/login.png}
+							\caption{Anmelden in Adminer\label{login}}
+						\end{figure}
+					\newpage
+					\item
+						"Uber das linke Men"u k"onne Sie die Datenbank Verwalten.
+						\begin{figure}[h!]
+							\centering
+							\includegraphics[width=0.9\linewidth]{img/adminer.png}
+							\caption{Adminer "Ubersicht\label{ubers}}
+						\end{figure}
+					\item
+						Unter SQL-Kommando k"onnen Sie eingene SQL Anfragen an die Datenbank stellen.
+						\begin{figure}[h!]
+							\centering
+							\includegraphics[width=0.55\linewidth]{img/sql.png}
+							\caption{SQL-Kommando\label{sql}}
+						\end{figure}
+					\item 
+						Die Importfunktion erm"oglicht es Ihnen einen Dump der Datenbank zu Imporieren. W"ahlen sie dazu einfach eine \textit{sql} Datei aus und klicken auf ausführen.
+				\end{enumerate}
+	\newpage
+	\chapter{Zuk"unftige Arbeit}
+		\begin{itemize}
+			\item Enwiklung einer GUI\\
+				Eine GUI, damit die gesammten Skripte nicht mehr von Hand gestartet werden m"ussen.
+			\item Verwaltung der Datenbank "uber die Gui\\
+				Verwaltungsm"oglichkeit ohne eine externe Software benutzen zu m"ussen, sondern direkt in der GUI.
+			\item Erweitern der Datenbank\\
+				Die von der Datenbank erfassten Messwerte um weiter erg"anzen, z.B. durch berechnung aus den aktuellen.
+		\end{itemize}
 \end{document}
