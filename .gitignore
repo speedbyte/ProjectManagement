@@ -15,4 +15,7 @@ compiled/*
 *.log
 *.lot
 *.toc
-
+*.fls
+*.fdb_latexmk
+*.out
+*.bak

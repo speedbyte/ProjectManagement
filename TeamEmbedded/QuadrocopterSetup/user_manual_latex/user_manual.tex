@@ -19,7 +19,6 @@
 % % Nur diese Kapitel (Dateien) einbinden
 %\includeonly{
 %chapters/ch-aa-titel,
-%chapters/ch-gettingStarted,
 %chapters/ch-aa-vorspiel,
 %chapters/ch-einleitung,
 %chapters/ch-hauptteil,
@@ -54,8 +53,6 @@
 
 %% Project Goals
 \include{chapters/ch-project-goals}
-%%GettingStarted
-\include{chapters/ch-gettingStarted}
 %% Landing concept
 \include{chapters/ch-landing_concept}
 %% Raspberry Pi based hardware platform (hardware)
@@ -92,7 +89,30 @@
 
 % % %%%%%% Literaturverzeichnis (darf im deutschen nicht in den Anhang!)
 % Einfaches Literaturverzeichnis
+% Literaturverzeichnis mit Bibtex
+%\bibliography{bib/bib}
+
+% %  Inhalt ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	% % Titelblatt
+% % Verzeichnisse
+%\mainmatter
+%
+\include{chapters_motor/ch-aa-vorspiel}
+\include{chapters_motor/ch-aa-zusfasg}
+\include{chapters_motor/ch-einleitung}
+\include{chapters_motor/ch-grundlagen}
+\include{chapters_motor/ch-hauptteil}
+\include{chapters_motor/ch-schluss}
+
+% % %%%%%% Anhang
+
+\include{chapters_motor/ch-zz-anhang}
+
+% % %%%%%% Literaturverzeichnis (darf im deutschen nicht in den Anhang!)
+% Einfaches Literaturverzeichnis
 \input{chapters/ch-zz-bibEinfach}
+\input{chapters_motor/ch-zz-bibEinfach}
 % Literaturverzeichnis mit Bibtex
 %\bibliography{bib/bib}
 
