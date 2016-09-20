@@ -80,7 +80,7 @@
 		\end{minipage}
 	\end{titlepage}
 	\begin{abstract}	
-		Als Student der Universit"at T"ubingen, in einem der Informatikstudieng"ange, ist die Teilnahme an einem Programmierprojekt vorgesehen. Aus den vielen angebotenen Projekten habe ich mich f"ur das Projekt \glqq{}PiSense mit Quadrocopter\grqq{} entschieden. In diesem Projekt waren die Anpassung der Low Level Treiber, das Darstellen der Sensordaten in einer GUI, eine App zum steuern der Motoren des Quadrocopters, sowie die gemessen Daten in einer Datenbank abzulegen als Ziele gegeben. Die folgende Dokumentation soll das erstellen und verwalten einer Datenbank, sowie das Empfangen der Daten per UPD beschreiben. 
+		Als Student der Universit"at T"ubingen, in einem der Informatikstudieng"ange, ist die Teilnahme an einem Programmierprojekt vorgesehen. Aus den vielen angebotenen Projekten habe ich mich f"ur das Projekt \glqq{}PiSense mit Quadrocopter\grqq{} entschieden. In diesem Projekt waren die Anpassung der Low Level Treiber, das Darstellen der Sensordaten in einer GUI, eine App zum steuern der Motoren des Quadrocopters, sowie die gemessen Daten in einer Datenbank abzulegen als Ziele gegeben. Die folgende Dokumentation soll das erstellen und Verwalten einer Datenbank, sowie das Empfangen der Daten per UPD beschreiben. 
 	\end{abstract}
 	%Inhalts- und Abbildungsverzeichnis
 	\newpage
@@ -97,7 +97,7 @@
 		\section{MySQL}
 			\begin{enumerate}
 				\item[] 
-					Um auf ihrem System einen MySQL Server laufen zu lassen, ben"otigen Sie den \glqq{}MySQL Community Server\grqq{}.
+					Um auf Ihrem System einen MySQL Server laufen zu lassen, ben"otigen Sie den \glqq{}MySQL Community Server\grqq{}.
 				\item 
 					Laden Sie sich hierzu den MySQL Community Server von der MySQL Homepage herunter.
 						\begin{center}
@@ -118,7 +118,7 @@
 						$ cd /usr/local/mysql/bin
 						$ ./mysqladmin -u root -p password '<password>'
 					\end{verbatim}
-					Sie werden nun aufgefordert ihr Root-Passwort, welches Sie vorhin notiert haben, einzugeben.
+					Sie werden nun aufgefordert Ihr Root-Passwort, welches Sie vorhin notiert haben, einzugeben.
 					\begin{verbatim}
 						$ exit
 					\end{verbatim}
@@ -151,7 +151,7 @@
 						mysql > CREATE DATABASE `SenseData` COLLATE 'latin1_swedish_ci';
 					\end{verbatim}
 				\item
-					Nun k"onnen wir eine Tabelle anlegen:
+					Nun k"onnen Sie eine Tabelle anlegen:
 					\begin{verbatim}
 						mysql > CREATE TABLE `SenseData`.`DATA` (
 						`PITIME` timestamp(2) PRIMARY KEY NOT NULL,
@@ -179,18 +179,18 @@
 		\section{Python}
 			\begin{enumerate}
 				\item[] 
-					Um sp"ater Daten empfangen zu k"onne und diese in der Datenbank abzulegen ben"otigen wir Python. Da es sich um eine Skriptsprache handelt, ist eine IDE nicht vonn"oten. 
+					Um sp"ater Daten empfangen zu k"onne und diese in der Datenbank abzulegen ben"otigen Sie Python. Da es sich um eine Skriptsprache handelt, ist eine IDE nicht vonn"oten. Sie k"onnen in Ihrem lieblings Editor ein Skript schreiben. In meinem Fall habe ich mich f"ur Atom entschieden.
 				\item
-					Laden sie sich hierzu Python 2.7 von der Python Homepage herunter.
+					Laden Sie sich hierzu Python 2.7 von der Python Homepage herunter.
 					\begin{center}
 						\url{https://www.python.org/downloads/}\footnote{stand 20.09.2016}
 					\end{center}
-					Nach der Installation, k"onnen sie "uberpr"ufen ob es sich um die richtige version handelt mit:
+					Nach der Installation, k"onnen Sie "uberpr"ufen ob es sich um die richtige Version handelt mit:
 					\begin{verbatim}
 						$ python --version
 					\end{verbatim}
 				\item
-					Damit Sie mit MySQL unter Python verwenden k"onnen, ben"otigen Sie noch MySQL-Python.
+					Damit Sie MySQL unter Python verwenden k"onnen, ben"otigen Sie noch MySQL-Python.
 					\begin{center}
 						\url{https://pypi.python.org/pypi/MySQL-python/}\footnote{stand 20.09.2016}
 					\end{center}
@@ -206,13 +206,14 @@
 			\end{figure}
 			\begin{itemize}
 				\item \underline{\textbf{PITIME}}\\
-					PITIME ist die Zeit, welche momentan auf dem Pi herscht. Sie wurde als Primary Key gew"ahlt, da es zu jeder Zeit nur einen Messwert geben kann. Angegeben wird sie als Timestamp mit einen Genauigkeit von 10ms.
+					PITIME ist die Zeit, welche momentan auf dem Pi herscht. Sie wurde als Primary Key gew"ahlt, da es zu jeder Zeit nur einen Messwert geben kann. Angegeben wird sie als Timestamp \\
+					(YYYY-MM-DD HH:MM:SS:MS) mit einen Genauigkeit von 10ms.
 				\item ACC\_X/Y/Z\\
 					Es werden alle drei Beschleunigungsachsen gespeichert, das Vorzeichen stellt hierbei die Richtung dar. 
 				\item MAG\_X/Y/Z\\
 					F"ur das Magnetfeld werden ebenfalls 3 Datens"azte abgelegt. 
 				\item TEMP/PRESS\\
-					Die Temperatur und der Luftdruck 
+					Temperatur und der Luftdruck. 
 				\item M1/2/3/4\\
 					F"ur die jeweiligen Motoren werden vier Datens"atze abgelegt, da diese sich unabh"anging von einander drehen k"onnen.
 			\end{itemize}
@@ -247,7 +248,7 @@
 					\includegraphics[width=0.65\linewidth]{img/whilerec.png}
 					\caption{Empfange der Message\label{recv}}
 				\end{figure}
-				Es wird so lange gewartet bis eine Message ankommt, falls diese der String "AFAF" ist, wird das Skript beendet. Da die Daten in einem einzigen String ankommen, m"ussen sie herausgefiltert werden. Um dies zu erreichen wird der String bei jedem Zeilenumbruch getrennt. Nun m"ussen noch die Bezeichner \textit{abgeschnitten} werden. Auch hier liefert uns Python einen L"osung mit. Es werden die Vier ersten Zeichen verworfen.
+				Es wird so lange gewartet bis eine Message ankommt, falls diese der String "AFAF" ist, wird das Skript beendet. Da die Daten in einem einzigen String ankommen, m"ussen sie herausgefiltert werden. Um dies zu erreichen wird der String bei jedem Zeilenumbruch getrennt. Nun m"ussen noch die Bezeichner \textit{abgeschnitten} werden. Auch hier liefert uns Python einen L"osung mit. Es werden die vier ersten Zeichen verworfen.
 				\begin{figure}[h!]
 					\centering
 					\includegraphics[width=0.3\linewidth]{img/trenn.png}
@@ -255,15 +256,15 @@
 				\end{figure}
 			\newpage
 			\subsection{Ablegen der Daten}
-				Damit die empfangenen Date jetzt nicht verloren gehen, werden sie in die Datenbank geschrieben. Dies erfolgt "uber einen INSERT. Hierbei werden die Daten in ihre jeweiligen Spalten der Tabelle gespeichert. Am ende muss das Query noch commited werden an die Datenbank.
+				Damit die empfangenen Date jetzt nicht verloren gehen, werden sie in die Datenbank geschrieben. Dies erfolgt "uber einen INSERT. Hierbei werden die Daten in ihre jeweiligen Spalten der Tabelle gespeichert. Am ende muss das Query noch commited werden, an die Datenbank.
 				\begin{figure}[h!]
 					\centering
 					\includegraphics[width=0.5\linewidth]{img/query.png}
 					\caption{Query\label{qry}}
 				\end{figure}\\	
-				Um sicherzustellen, dass das Skript funktioniert kann mit dem \textit{udpSend} Skipt ein Senden des Quadrocopters simuliert werden. Jedoch handelt es sich hierbei nur um Zufallswerte. 
+				Um sicherzustellen, dass das Skript funktioniert kann mit dem \textit{udpSend.py} Skipt ein Senden des Quadrocopters simuliert werden. Jedoch handelt es sich hierbei nur um Zufallswerte. 
 			\subsection{Ausf"uhren des Skriptes}
-				Das Pythonscript l"asst sich wie folgt ausf"uhren. Wechseln sie dazu in das Verzeichnis wo die udpReceive.py  zu finden ist.
+				Das Pythonscript l"asst sich wie folgt ausf"uhren. Wechseln Sie dazu in das Verzeichnis wo die udpReceive.py  zu finden ist.
 				\begin{verbatim}
 					$ python udpReceive.py 
 				\end{verbatim}
@@ -277,7 +278,7 @@
 					\item[]
 						Adminer wurde zum verwalten der Datenbank verwendet.
 					\item
-						Um mit Adminer zu arbeiten laden sie dieses von der Adminer Homepage herunter.
+						Um mit Adminer zu arbeiten laden Sie dieses von der Adminer Homepage herunter.
 						\begin{center}
 							\url{https://www.adminer.org/#download}\footnote{stand 20.09.2016}
 						\end{center}
@@ -335,7 +336,12 @@
 							\caption{SQL-Kommando\label{sql}}
 						\end{figure}
 					\item 
-						Die Importfunktion erm"oglicht es Ihnen einen Dump der Datenbank zu Imporieren. W"ahlen sie dazu einfach eine \textit{sql} Datei aus und klicken auf ausführen.
+						Die Importfunktion erm"oglicht es Ihnen einen Dump der Datenbank zu Imporieren. W"ahlen sie dazu einfach eine \textit{sql} Datei aus und klicken auf ausf"uhren.
+						\begin{figure}[h!]
+							\centering
+							\includegraphics[width=0.55\linewidth]{img/import.png}
+							\caption{Importieren einer Tabelle\label{import}}
+						\end{figure}
 				\end{enumerate}
 	\newpage
 	\chapter{Zuk"unftige Arbeit}
@@ -345,6 +351,6 @@
 			\item Verwaltung der Datenbank "uber die Gui\\
 				Verwaltungsm"oglichkeit ohne eine externe Software benutzen zu m"ussen, sondern direkt in der GUI.
 			\item Erweitern der Datenbank\\
-				Die von der Datenbank erfassten Messwerte um weiter erg"anzen, z.B. durch berechnung aus den aktuellen.
+				Die von der Datenbank erfassten Messwerte um weiter erg"anzen, z.B. durch Berechnung aus den aktuellen.
 		\end{itemize}
 \end{document}
