@@ -128,8 +128,8 @@
 					Nun erstellen wir einen neuen Benutzer und geben diesem die notwendigen Rechte.
 					\begin{verbatim}
 					$ ./mysql -u root -p
-					mysql > CREATE USER 'PiSense'@'localhost' IDENTIFIED BY 'somePW';
-					mysql > GRANT ALL PRIVILEGES ON *.* TO 'PiSense'@'localhost';
+					mysql > CREATE USER 'PiSense'@'%' IDENTIFIED BY 'somePW';
+					mysql > GRANT ALL PRIVILEGES ON *.* TO 'PiSense'@'%';
 					\end{verbatim}
 					Dies ist nun der neue Benutzer, mit dem gearbeitet wird.
 				\item
