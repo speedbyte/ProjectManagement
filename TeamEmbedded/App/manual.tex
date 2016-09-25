@@ -120,7 +120,7 @@ gedit .bashrc
 export PATH=$PATH:$HOME/cd Quadrocopter-RaspberryPi/helikopter-tools/arm-bcm2708
 /gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
 \end{minted}
-Falls Sie eine 32 Bit Plattform benutzen nehmen Sie den Ornder ohne x64\\
+Falls Sie eine 32 Bit Plattform benutzen nehmen Sie den Ordner ohne x64\\
 
 \item Nun wird nur noch die Pfad Variable geupdated und Sie sind bereit loszulegen:\\
 
@@ -548,11 +548,11 @@ Die Aufgabe wurde nun folgendermaßen umgesetzt:\\
         }
 \end{minted}
 
-Damit die kompletten Daten in einem einzelnen Sendto gesendet werden können, wurde ein ausreichend großer Buffer mittels memcpy befüllt und dieser Buffer dann versendet.\\
+Damit die kompletten Daten in einem einzelnen Sendto gesendet werden können, wurde ein ausreichend großer Buffer mittels memcpy befüllt und dieser Buffer dann versendet. Wichtig zu erwähnen ist, dass wir memcpy die richtige aufaddierte Größe übergeben, damit an der korrekten Stelle des Buffers eingefügt wird.\\
 Die Daten werden nun auch beim Empfänger korrekt und richtig formatiert angezeigt!\\
 \includegraphics[height=7.3cm]{graphics/sensor.png}\\
 
-Im Bild kann man sehr gut die ankommende Flag, welche in der finalen Version des Codes nicht mehr benötigt wurde, allerdings eine ebenbürtige Alternative darstellt+die Sensordaten und deren "Verpackung" erkennen.Die Datenbank muss jeweils bloß die ersten 4 Buchstaben abschneiden und prüfen, zu welchen Daten diese gehören.\\
+Im Bild kann man sehr gut die ankommenden Sensordaten und deren "Verpackung" erkennen.Die Datenbank muss jeweils bloß die ersten 4 Buchstaben abschneiden und prüfen, zu welchen Daten diese gehören.\\
 \\
 
 Diese Daten werden auch in den anderen Testfällen nun gesendet. Somit können die Daten nun auch während die Motoren laufen gesendet werden und man kann die Änderungen sehr gut auf dem Oszilloskop beobachten.\\
@@ -640,13 +640,13 @@ while(1){
 \item[]Das letze Ziel war es, die Motoren über eine App zu bedienen. Die App sollte folgende Befehle umsetzen:\\
 \item Startknopf: Die Rotoren drehen sich mit langsamer Geschwindigkeit
 \item Stoppknopf: Die Rotoren hören auf sich zu drehen
-\item Demo:	Aufrufen des pleaseFly cases von oben
+\item Demo:	Aufrufen des pleaseFly cases von oben mit fixen Werten
 \item test: Die 4 Motoren bekommen einen kurzen Impuls um deren Funktionsfähigkeit zu testen
 \item[] Zu dem sollten alle 4 Motoren einzeln mit gewünschtem Wert ansteuerbar sein.\\
 
-Dafür wurden von der App via UDP je nach Wahl entsprechende Befehle geschickt, welche der Pi entgegennimmt und je nach Indikator eine andere Funktion ausführt.\\
+Dafür wurden von der App via UDP, je nach Wahl, entsprechende Befehle geschickt, welche der Pi entgegennimmt und je nach Indikator eine andere Funktion ausführt.\\
 
-Es wird ein char der Länge 30 versendet, welcher je nach gewünschter Funktion unterschiedlich aussieht:
+Es wird ein char der Länge 30 versendet(in C/C++) bzw. ein String(ohne fixe Länge, Java), welcher je nach gewünschter Funktion unterschiedlich aussieht:
 
 char toSend[30]=".00:42:01:42:02:42:03:42." So kann jeder Motor einzeln angesteuert werden, mit dem gewünschten Wert. 00-03 sind dabei die Motoren. Nach dem Doppelpunkt folgt der PWM Wert.\\
 
