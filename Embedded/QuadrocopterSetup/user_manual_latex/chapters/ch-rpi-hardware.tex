@@ -4,46 +4,6 @@
 \chapter{Raspberry Pi based hardware platform}
 \label{sec:hardware}
 %- - - - - - - - - - - - - - - - - - - - - - 
-% Section: Basic components and sensors
-%- - - - - - - - - - - - - - - - - - - - - - 
-\section{Hardware and device communication}
-\label{sec:hardware:Hardware}
-
-%- - - - - - - - - - - - - - - - - - - - - - 
-% Subsection: Basic components and sensors
-%- - - - - - - - - - - - - - - - - - - - - - 
-\subsection{Basic components and chosen sensors}
-\label{sec:hardware:Components}
-
-As the main computing board the Raspberry Pi B+ has been chosen. At time of start of this project, there has been no stable Real-Time Kernel Patch (PREEMPT\_RT) for the multi-core CPU Broadcom BCM2709 of Raspberry Pi 2. Fortunately, the 40-pin expansion breakout of Raspberry Pi A+/B+ and Raspberry Pi 2 are identical. In consequence, all the chosen peripheral hardware and sensors are compatible with Raspberry Pi 2. In future projects, it should be a minor task to update the Kernel of the pre-configured OS Image delivered in this project and make a Raspberry Pi 2 running with this platform. A complete list of all components with pictures can be found in chapter \ref{sec:hardware:BillOfMat}.
-
-The main components chosen for this project are:
-\begin{itemize}
-	\item \textbf{Main board:}\\
-	\texttt{Raspberry Pi A+/B+} in this project. In future projects, also the \texttt{Raspberry Pi 2} is compatible with the chosen hardware as soon as a Raspberry Pi 2 compatible PREEMPT\_RT Kernel Patch is available.
-	
-	\item \textbf{Expansion Board:}\\
-	\texttt{Adafruit GPS Hat}, including a \texttt{GlobalTop GPS} receiver with builtin Chip-Antenna. The GPS is connected via UART to the Raspberry Pi board. In consquence, the UART may not be used for other purposes and is blocked when the GPS Hat is assembled to the Raspberry Pi!
-	
-	\item \textbf{Inertial Measurement Unit (IMU):}\\
-	\texttt{Polulu AltiIMU v4 (10-DOF version)}. The Inertial Measurement Unit comprises sensors that enables to measure the pose of the Quadrocopter in space. Rotational speed, acceleration rates for each axis in space and the barometric air pressure can be sensed with the chosen IMU. The IMU is connected via I2C to the Raspberry Pi board.
-	
-	In consequence, the following sensors are included in the chosen IMU:
-	\begin{itemize}
-		\item \textbf{3D Accelerometer:} \texttt{ST LSM303D} (including 3D Magnetometer/e-Compass)
-		\item \textbf{3D MEMS Gyroscope:} \texttt{ST L3GD20H}
-		\item \textbf{3D Magnetometer:} \texttt{ST LSM303D} (including 3D Accelerometer)
-		\item \textbf{Absolute MEMS Barometer:} \texttt{ST LPS331AP}
-	\end{itemize}
-	
-	\item \textbf{A/D Converter:}\\
-	\texttt{Adafruit ADS1015} including ADC Chip \texttt{Texas Instruments ADS1015}. The ADC breakout board is connected via I2C to the Raspberry Pi board.
-	
-	\item \textbf{DC/DC Power converter:}\\
-	\texttt{Polulu D15V70F5S3}. Since the Raspberry Pi board including all peripherals is aimed to be connected to the Li-Ion battery of the HElikopter Quadrocopters of Hochschule Esslingen, a separate DC/DC power converter has been included to the controller platform. The power converter ensures a stable power supply voltage of 5V DC at a continuous current draw up to 3.5A.
-\end{itemize}
-
-%- - - - - - - - - - - - - - - - - - - - - - 
 % Subsection: I2C Adressing
 %- - - - - - - - - - - - - - - - - - - - - - 
 \subsection{I2C adressing}

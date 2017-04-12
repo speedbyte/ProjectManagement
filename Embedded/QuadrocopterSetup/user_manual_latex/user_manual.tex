@@ -26,10 +26,18 @@
 %chapters/ch-zz-anhang
 %}
 % % Preamble ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{layouts}
+
 
 % % Inhalt BEGINN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 % Tabellen-Einstellungen
+\pagediagram
+
+\printinunitsof{mm}{\pagevalues}
+
+\verb|\marginparwidth|: \printinunitsof{mm}\prntlen{\marginparwidth}
+
 \input{preamble/pre-tablesettings}
 % % %%%%%% Vorspiel
 \begin{spacing}{1} % Vorspiel immer mit Standard-Zeilenabstand setzen
@@ -51,16 +59,8 @@
 %
 %\include{chapters/ch-hauptteil}
 
-%% Project Goals
-\include{chapters/ch-project-goals}
-%% Landing concept
-\include{chapters/ch-landing_concept}
 %% Raspberry Pi based hardware platform (hardware)
 \include{chapters/ch-rpi-hardware}
-%% Development Environment (Virtual Machine Image)
-\include{chapters/ch-dev-environment-vm}
-%% Realtime-capable Linux Operating System
-\include{chapters/ch-rt-linux-os}
 %% Software structure
 \include{chapters/ch-software-structure}
 %% UDP-based network connection to MATLAB
@@ -98,19 +98,9 @@
 % % Verzeichnisse
 %\mainmatter
 %
-\include{chapters_motor/ch-aa-vorspiel}
-\include{chapters_motor/ch-aa-zusfasg}
-\include{chapters_motor/ch-einleitung}
 \include{chapters_motor/ch-grundlagen}
 \include{chapters_motor/ch-hauptteil}
-\include{chapters_motor/ch-schluss}
 
-% % %%%%%% Anhang
-
-\include{chapters_motor/ch-zz-anhang}
-
-% % %%%%%% Literaturverzeichnis (darf im deutschen nicht in den Anhang!)
-% Einfaches Literaturverzeichnis
 \input{chapters/ch-zz-bibEinfach}
 \input{chapters_motor/ch-zz-bibEinfach}
 % Literaturverzeichnis mit Bibtex
