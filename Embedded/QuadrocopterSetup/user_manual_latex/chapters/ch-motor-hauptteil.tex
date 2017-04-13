@@ -1,24 +1,13 @@
 ﻿\chapter{Realisierung}
 \label{sec:real}
 
+\section{Verkabelung}
 
-\paragraph{Der Remoteempf�nger GR-16} hat drei Verbindungen zum Raspberry Pi:
-Eine 3,6V bis 8,4V Spannungsversorgung, Ground und eine Datenverbindung.
-\phantomsection
-\label{Receiver}
 \begin{figure}[H]
 	\centering
 	\includegraphics{fig_motor/GR-16.png}
 	\caption[GR-16 Verkabelung]{GR-16 Verkabelung\protect\footnotemark}
 \end{figure}
-\footnotetext{http://www.graupner.de/mediaroot/files/33508\_Kurzanleitung\_de.pdf}
-Die Spannung und Ground kann direkt �ber das Raspberry Pi bezogen werden. F�r die Daten muss einer der GPIO Pins als Input deklariert werden.
-
-Um die Fernbedienung mx-20 mit dem Empf�nger GR-16 zu verbinden m�ssen beide Ger�te eingeschaltet sein (Empf�nger LED blinkt Rot). Beim Anschalten der Fernbedienung wird gefragt ob \emph{HF} EIN oder AUS ist. Stellen Sie auf AUS und best�tigen Sie mit Dr�cken der Set-Taste. Dr�cken sie erneut Set um in die Einstellungen zu gelangen. Scrollen Sie sich mit den Pfeiltasten durch das Men� bis Sie das Men� \emph{Grundeinstellungen Mod.} sehen. �ffnen Sie mit Set das Men� und scrollen Sie durch bis zu Punkt \emph{Modul}. Best�tigen Sie noch NICHT mit der Set-Taste. 
-Halten Sie nun am Empf�nger solange die Set Taste gedr�ckt, bis sich zur der roten LED noch eine gr�ne LED einschaltet. Bet�tigen Sie jetzt den Set-Taster auf der Fernbedienung. Es sollte der Info-Text \emph{Binden ...} angezeigt werden.
-Wenn die Verbindung erfolgreich durchgef�hrt wurde leuchtet die LED dauerhaft gr�n. \cite{doc:gt-16}
-
-\newpage
 
 \newpage
 \section{Umstellung auf eine automatische dynamische Testumgebung}
@@ -148,7 +137,7 @@ Beschreibung der Funktionen befinden sich in den jeweiligen dar�ber liegenden 
 Auf alle globalen Variablen/Flags werden mit Funktionen zugegriffen. Ein direkter Zugriff ist zu vermeiden.
 
 
-\subsection{Testf�lle}
+\section{Testf�lle}
 
 Um die Funktionalit�t des Treiber zu testen und kontrollieren sind die folgenden Testf�lle geschrieben worden. 
 
@@ -176,86 +165,10 @@ Die Befehlszeile hat folgendes Format:
 z.B.
 \#0+100;10 \t - \t Der PWM des Motors 0 erh�ht sich um 100. Die n�chste Zeile wird in 10s eingelesen.
 
-\newpage
-\section{Remotecontroller-Treiber}
-\label{Controller Treiber}
 
-Um den autonomen Start bzw. Landevorgang des Quadrocopter einzuleiten muss eine Funkverbindung �ber eine Fernbedienung und einen Transmitter eingerichtet werden. Die Daten sind anschlie�end auszuwerten und zu verarbeiten.
-
-Als Fernbedienung von der Firma Graupner dient der \emph{MX-20} und als Receiver der \emph{GR-16}. Der Anschluss des Receivers erfolgt �ber drei Leitungen:
-\begin{itemize} 
-	\item  Versorgungsspannung:  5Volt (vom Raspberry) 
-	\item  Ground (Raspberry)
-	\item PPM (Puls-Pause Modulation) (auf einen der GPIO Pins)
-\end{itemize}
-
-
-\paragraph{Verbinden mit Receiver}
-Schalten Sie die Fernbedienung ein und schlie�en den Receiver an den Raspberry Pi an [siehe Abschnitt~ \ref{Receiver} auf Seite \pageref{Receiver}]
-
-\paragraph{PPM-Signal} genannt Puls-Pausen-Modulation (oder auch Puls-Position-Modulation) ist ein f�r analoge Werte verwendetes Kodierungsverfahren und wird vor allem in Funkfernsteuerungen verwendet. Der zu kodierende Wert wird in der L�nge des Pausen/Low Signals zwischen zwei Peaks/High Signalen gesendet. Diese Peaks haben stets die gleiche L�nge als auch gleiche Amplitude.\cite{doc:ppm}
-
-Meist besteht ein PPM-Signal aus mehreren Kan�len zu einem Frame zusammengef�gt und  anschlie�end versendet.
-
-F�r die Decodierung des PPM-Signals ist es empfehlen, ein weiteres Board zu integrieren, das die Decodierung  �bernimmt und die Ergebnisse an das Raspberry Pi weiterleitet, da das Signal sehr genau aufgel�st werden muss und die Decodierung �ber einen Interrupt gesteuert werden soll. Bei zu h�ufigen Auftreten des Interrupts w�rde der Helicopter destabilisiert werden. Zur Auswertung m�ssen nur die Raising Edges oder Falling Edges beachtet und der Offset des High-Pegels abgezogen werden.
-
-Um auf ein weiteres Bauteil zu verzichten wurde stattdessen eine Real-Time-Linux-Version auf dem Raspberry Pi installiert, die die Signale im Nanosekundenbereich dekodieren kann.
-
-\newpage
-\paragraph{PPM Signal Mitschnitte}
-Der Receiver sendet die empfangenen Signale im Format der Pulse-Pausen-Modulation. Mitgeschnittene �bertragungen\protect\footnotemark  mit Beschreibung sind beigef�gt.
-\footnotetext{Von Herrn Trybek bereitgestellt}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{fig_motor/Controller_Treiber/GraupnerGR16_8_Frame.png}
-	\caption[8 Channel Frame]{8 Channel Frame}
-\end{figure}
-
-Es gibt zwei M�glichkeiten: ein Frame mit acht Kan�len, bestehend aus neun Peaks und acht Pausensignalen...
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{fig_motor/Controller_Treiber/GraupnerGR16_12_Frame.png}
-	\caption[12 Channel Frame]{12 Channel Frame}
-\end{figure}
-
-... oder einen 12 Kan�len Frame, bestehend aus 13 Peaks und 12 Pausensignalen.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{fig_motor/Controller_Treiber/GraupnerGR16_8_ChX_Gap.png}
-\caption[Dauer 8 chanel Frame ]{Dauer 8 Chanel Frame}
-\end{figure}
-
-Folgend die Anschaung eines Frames mit acht Kan�len mit der Dauer von 504us.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{fig_motor/Controller_Treiber/GraupnerGR16_8_Ch1_Min.png}
-	\caption[Minimale Pause zwischen Frames]{Minimale Pause zwischen Frames}
-\end{figure}
-
-Zu sehen ist hier der kleinstm�gliche zeitliche Abstand zwischen zwei Frames mit der Dauer von nur 504us.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{fig_motor/Controller_Treiber/GraupnerGR16_8_Ch1_Max.png}
-	\caption[Maximale Pause zwischen Frames]{Maximale Pause zwischen Frames}
-\end{figure}
-
-Hier ein Ausschnitt mit dem gr��tm�glichen Abstand zwischen zwei Frames mit der Dauer 1,396ms.
 
 \section{Hardware Layout}
-F�r die schnelle Durchf�hrung von �nderungen, Erweiterungen oder Anpassungen an der Hardware werden die Leiterplatinen und Schaltpl�ne mittels Tool elektronisch festgehalten. Die dazu m�gliche Software sind: EAGLE oder Fritzing,
-die kostenlos oder als eingeschr�nkte Freeversion angeboten werden, aber diversen Einschr�nkungen unterliegen. Beide Tools haben eine Community, die viele Bauteile in Liberias bereitstellt. 
 
-Im direktem Vergleich macht EAGLE einen professionelleren Eindruck und bietet eine Sammlung von Tutorials und Libraries. Aus diesen Gr�nden fiel die Entscheidung auf die EAGLE SOFTWARE. Es sollte aber mit dem Platz m�glichst sparend umgegangen werden, da bei dieser Freeeware die Gr��e und Anzahl der Layouts begrenzt ist.
-
-\subsection{HElicopter Schematic Layout}
-
-Es wurde f�r die schematischen Zeichnungen ein EAGLE Projekt angelegt, dass die schematischen Zeichnungen aller selbst gebauten bzw. zusammengef�gten Bauteile enth�lt. Das Projekt File ist im Verzeichnis \textit{trunk/hardware/} unter \textit{HElicopterPlus} abgespeichert.
-
-Derzeit befinden sich zwei verschiedene schematischen Zeichnungen im Projektverzeichnis, die maximal aus zwei sogenannten Sheets besteht (Begrenzung durch die Freeware-Version von EAGLE). Der erster Sheet beinhaltet immer, denn Komplettaufbau des jeweiligen Systems. Der zweite Sheet wird verwendet um druckbare Versionen das Schaltplans zu erstellen (DINA4 Frame). Hierbei ist es wichtig, eine �bersichtliche Abspaltung vorzunehmen. 
 
 
 \newpage
@@ -313,4 +226,3 @@ Der Vorteil dieser Aufteilung ist der, dass einzelne Packages und Symbole f�r 
 Nach der �nderung speichern Sie die Libary und klicken sie auf wieder auf Bibliothek. Anschlie�end aktualisieren Sie die Libaries. Die �nderungen sollten nun vorgenommen sein.
 
 \textit{Achtung:} �nderungen werden auf alle bestehenden und eingef�gten Elementen vorgenommen. Dies kann sich z.B. unvorteilhaft auf die Lesbarkeit auswirken. Aus diesem Grund sollte zumindest eine Kopie des ge�nderten Devices oder eine neue Version erstellt werden. 
-

@@ -1,18 +1,6 @@
 \chapter{Grundlagen}
 \label{sec:grundl}
 
-\subsubsection{Motoren}
-Bei den Motoren handelt es sich um über Treiber "BL-Ctrl V1.2" gesteuerte Brushless DC Motoren "Robbe ROXXY BL-Outrunner 2824-34". Die Ansteuerung des Treibers erfolgt über den I2C Bus. An den Treiber werden 2 Byte Daten gesendet:
-\begin{itemize}
-	\item die I2C Adresse des gewünschten Motors
-	\item den PWM-Wert ( kleiner Wert langsam drehen, hoher Wert schnelles drehen)
-\end{itemize} 
-
-Der Treiber behält die Werte 10 msec lang und verliert diese anschließend. Die Werte müssen also zyklisch gesendet werden.
-
-Die Anzahl und Ordnung der Motoren ist je nach Typ des Helikopters unterschiedlich. Es gibt vier- oder acht Motorvarianten welche verschiedene Grundaufbauten haben können ( + oder x).
-
-Der Code soll so allgemein gehalten werden, dass er für jeden dieser Typen verwendet werden kann. In der main.h wird mittels Definition angegeben für welchen Helikopter das Programm definiert werden soll. In der \emph{/hal/MOTOR/MOTOR.h} sind helikopterspezifische Daten abgelegt, darunter die I2C-Adressen jedes Motors, die Anzahl der Motoren, die min-Werte und max-Werte des PWM-Signales.
 
 \subsubsection{Adafriut Ultimate GPS PI HAT\cite{doc:gpsHat}}
 Dieses Modul wird direkt auf das PI aufgesteckt und leitet alle Pins bis auf die UART Pins weiter. Folgende Pins werden für das Bord benötigt und können nicht mehr verwendet werden:
@@ -33,11 +21,11 @@ Dieses Modul wird direkt auf das PI aufgesteckt und leitet alle Pins bis auf die
 	\caption{Ultimate GPS Pins}
 \end{table}
 
-Dieses Modul liefert das GPS-Modul \textit{FGPMMOPA6H}(\href{https://www.adafruit.com/datasheets/GlobalTop-FGPMMOPA6H-Datasheet-V0A.pdf}{Datasheet}). Das Modul bietet Platz für eine Batteriezelle, für eine Real-Time-Clock und Prototypen Platz, um weitere Bauteile mittels Löten hinzuzufügen. 
+Das Modul bietet Platz für eine Batteriezelle, für eine Real-Time-Clock und Prototypen Platz, um weitere Bauteile mittels Löten hinzuzufügen. 
 
 \subsubsection{ADS1015 12-Bit ADC\cite{doc:gpsADC}}
 
-Hierbei handelt es sich um einen hochauflösenden \href{https://www.adafruit.com/datasheets/ads1015.pdf}{12bit Analog-Digital-Konverter}. Der Konverter kann bis zu 3300 Umwandlungen in der Sekunde berechnen und besitzt eine I2C-Schnittstelle. Die Standardadresse des Bausteines ist die 7bit-Adresse 0x47. Diese Adresse kann durch die Verbindung folgender Pins mit dem \emph{ADDR-Pin} bei Bedarf angepasst werden: 
+Die Standardadresse des Bausteines ist die 7bit-Adresse 0x47. Diese Adresse kann durch die Verbindung folgender Pins mit dem \emph{ADDR-Pin} bei Bedarf angepasst werden: 
 	
 \begin{table}[H]
 	\centering

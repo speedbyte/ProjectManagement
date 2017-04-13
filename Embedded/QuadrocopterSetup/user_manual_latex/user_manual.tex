@@ -6,8 +6,8 @@
 %%% Alle Namen usw. im Titel und im hyperref-Paket
 \input{preamble/pre-work}
 
-%%% Preamble (Pakete)
 \input{preamble/pre-packages}
+%%% Preamble (Pakete)
 
 %%% Neue Befehle
 \input{preamble/pre-newcommands}
@@ -28,6 +28,7 @@
 % % Preamble ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{layouts}
 
+%\usepackage[showframe]{geometry}
 
 % % Inhalt BEGINN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -79,13 +80,9 @@
 \include{chapters/ch-functions}
 %% Sensor fusion for Inertial Measurement Uni
 \include{chapters/ch-i2c_configuration}
-%% Conclusion and outlook
-\include{chapters/ch-conclusion-outlook}
 
 % % %%%%%% Anhang
 %\appendix
-
-%\include{chapters/ch-zz-appendix}
 
 % % %%%%%% Literaturverzeichnis (darf im deutschen nicht in den Anhang!)
 % Einfaches Literaturverzeichnis
@@ -98,11 +95,13 @@
 % % Verzeichnisse
 %\mainmatter
 %
-\include{chapters_motor/ch-grundlagen}
-\include{chapters_motor/ch-hauptteil}
+\include{chapters/ch-motor-zz-appendix}
+
+\include{chapters/ch-motor-grundlagen}
+\include{chapters/ch-motor-hauptteil}
 
 \input{chapters/ch-zz-bibEinfach}
-\input{chapters_motor/ch-zz-bibEinfach}
+\input{chapters/ch-motor-zz-bibEinfach}
 % Literaturverzeichnis mit Bibtex
 %\bibliography{bib/bib}
 
