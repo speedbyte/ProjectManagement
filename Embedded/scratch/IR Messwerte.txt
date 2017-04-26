@@ -1,0 +1,15 @@
+IR-Sensor im 5V Betrieb
+- ADC Eingang 2/3 Spannungsbrücke - 
+ADC auf 3 V
+- Werte wieder auf 5V Modus hochgerechnet (/0,66) - 
+
+Untergrund: Tisch
+ 18cm 1,35V
+ 45cm 0,67V
+ 49cm 0,73
+200cm 0,40V
+
+Untergrund: Weisses Papier
+ 16cm 2,58V
+  7cm 4,18V
+ 49cm 1,12V

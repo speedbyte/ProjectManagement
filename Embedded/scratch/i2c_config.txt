@@ -1,0 +1,19 @@
+https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
+
+
+If you are running a recent Raspberry Pi (3.18 kernel or higher) you will also need to update the /boot/config.txt file. Edit it with sudo nano /boot/config.txt and add the text
+dtparam=i2c1=on
+dtparam=i2c_arm=on
+at the bottom. note that the "1" in "i2c1" is a one not an L!
+
+
+
+
+I2C Read Sample
+http://openlabtools.eng.cam.ac.uk/Resources/Datalog/RPi_ADS1115/code/ADS1115_sample.c
+
+
+
+I2C inkl. Error-handling:
+https://www.kernel.org/doc/Documentation/i2c/dev-interface
+

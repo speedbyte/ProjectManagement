@@ -1,0 +1,17 @@
+#!/bin/bash
+
+grep -v GSA ./GPS_logging.txt > temp.txt
+grep -v VTG ./temp.txt > temp2.txt
+grep -v RMC temp2.txt > temp.txt
+grep -v GSV ./temp.txt > filtert_GPS_logging.txt
+rm temp.txt
+rm temp2.txt
+
+cat filtert_GPS_logging.txt | cut -d"," -f2,3,4,5,6 >temp.txt
+sed s/,E// temp.txt > temp2.txt
+sed s/,A,/:/ temp2.txt > temp.txt
+sed s/,N,/:/ temp.txt > temp2.txt
+sed s/,/:/ temp2.txt > temp.txt
+sed s/.000:/:/ temp.txt > filtert_GPS_logging.txt
+rm temp.txt
+rm temp2.txt
