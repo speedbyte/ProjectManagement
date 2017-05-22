@@ -1,0 +1,196 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{glssymbols}\relax \glsresetentrylist %
+\glossaryentryfield{I_O}{\glsnamefont{$I/O$}}{Input/Output}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{4GL}{\glsnamefont{4GL}}{Fourth Generation Language}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{A}\relax \glsresetentrylist %
+\glossaryentryfield{ADC}{\glsnamefont{ADC}}{Analog to Digital Converter}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{ALGO}{\glsnamefont{ALGO}}{Algorithm}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{API}{\glsnamefont{API}}{Application Programming Interface(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{B}\relax \glsresetentrylist %
+\glossaryentryfield{BDM}{\glsnamefont{BDM}}{Background Debug Mode}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{BMOF}{\glsnamefont{BMOF}}{Block Matching Optical Flow}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{BS}{\glsnamefont{BS}}{Block Size}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{C}\relax \glsresetentrylist %
+\glossaryentryfield{CACD}{\glsnamefont{CACD}}{Camera Calibration Domain}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{CCU}{\glsnamefont{CCU}}{Central Control Unit}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{CLCS}{\glsnamefont{CLCS}}{Closed Loop Control System(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{CMOS}{\glsnamefont{CMOS}}{Complementary Metal Oxide Semiconductor}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{COOF}{\glsnamefont{COOF}}{Corner Detection Optical Flow}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{CT}{\glsnamefont{CT}}{Cycle Time(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{CV}{\glsnamefont{CV}}{Computer Vision}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{D}\relax \glsresetentrylist %
+\glossaryentryfield{DMS}{\glsnamefont{DMS}}{Deadline Monotonic Scheduling}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{DOF}{\glsnamefont{DOF}}{Degrees of Freedom}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{DOSEK}{\glsnamefont{DOSEK}}{Didactic OSEK}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{DSM}{\glsnamefont{DSM}}{Domain Specific Modelling}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{DSP}{\glsnamefont{DSP}}{Digital Signal Processor}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{E}\relax \glsresetentrylist %
+\glossaryentryfield{ECT}{\glsnamefont{ECT}}{Enhanced Capture Timer}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{EOM}{\glsnamefont{EOM}}{Equations of Motion}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{EVTF}{\glsnamefont{EVTF}}{Error-Value-Transfer-Function}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{F}\relax \glsresetentrylist %
+\glossaryentryfield{FNC}{\glsnamefont{FNC}}{Flow Number Calculation}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{FOE}{\glsnamefont{FOE}}{Focus Of Expansion}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{FPGA}{\glsnamefont{FPGA}}{Field-Programmable Gate Array}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{FPS}{\glsnamefont{FPS}}{Frames per Second}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{G}\relax \glsresetentrylist %
+\glossaryentryfield{GAV}{\glsnamefont{GAV}}{Generalized Acceleration Vector}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{xi\delimN xii}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{GPS}{\glsnamefont{GPS}}{Global Position System}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{GPV}{\glsnamefont{GPV}}{Generalized Position Vector}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{x}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{GUAV}{\glsnamefont{GUAV}}{Gliding Unmanned Aerial Vehicle(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{GUI}{\glsnamefont{GUI}}{Graphical User Interface}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{GVV}{\glsnamefont{GVV}}{Generalized Velocity Vector}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{x}\delimN 
+		\setentrycounter{page}\glsnumberformat{xii}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{H}\relax \glsresetentrylist %
+\glossaryentryfield{HAL}{\glsnamefont{HAL}}{Hardware Abstraction Layer}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{HighGUI}{\glsnamefont{HighGUI}}{High Graphical User Interface}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{HIL}{\glsnamefont{HIL}}{Hardware In the Loop}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{HSE}{\glsnamefont{HSE}}{University of Applied Sciences Esslingen}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{i\delimN ii}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{HUAV}{\glsnamefont{HUAV}}{Hovering Unmanned Aerial Vehicle(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{HWBIP}{\glsnamefont{HWBIP}}{Hardware-Based Image Processing}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{I}\relax \glsresetentrylist %
+\glossaryentryfield{IIC}{\glsnamefont{IIC}}{Inter-Integrated Circuit}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{IMU}{\glsnamefont{IMU}}{Inertial Measurement Unit}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{IS}{\glsnamefont{IS}}{Image Size}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{ISR}{\glsnamefont{ISR}}{Interrupt Service Routine}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{L}\relax \glsresetentrylist %
+\glossaryentryfield{LSb}{\glsnamefont{LSb}}{Least Significant bit}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{M}\relax \glsresetentrylist %
+\glossaryentryfield{MATLAB}{\glsnamefont{MATLAB}}{MATrix LABoratory}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{MAV}{\glsnamefont{MAV}}{Micro Aerial Vehicle(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{MBD}{\glsnamefont{MBD}}{Model Based Design}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{MC}{\glsnamefont{MC}}{Microcontroller}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{MCU}{\glsnamefont{MCU}}{Microcontroller Unit}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{MEMS}{\glsnamefont{MEMS}}{Micro-Electro-Mechanical System}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{MIMO}{\glsnamefont{MIMO}}{Multiple-Input and Multiple-Output}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{MLL}{\glsnamefont{MLL}}{Machine Learning Library}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{O}\relax \glsresetentrylist %
+\glossaryentryfield{OC}{\glsnamefont{OC}}{Optical Correction}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{ODE}{\glsnamefont{ODE}}{Ordinary Differential Equation(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{OF}{\glsnamefont{OF}}{Optical Flow}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{OFCA}{\glsnamefont{OFCA}}{Off-board Camera}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{OFIP}{\glsnamefont{OFIP}}{Off-board Image Processing}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{ONCA}{\glsnamefont{ONCA}}{On-board Camera}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{ONIP}{\glsnamefont{ONIP}}{On-board Image Processing}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{OpenCV}{\glsnamefont{OpenCV}}{Open Computer Vision}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{OSEK}{\glsnamefont{OSEK}}{Offene Systeme und Schnittstellen für die Elektronik im Kraftfahrzeug}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{P}\relax \glsresetentrylist %
+\glossaryentryfield{PCB}{\glsnamefont{PCB}}{Printed Circuit Board}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{PID}{\glsnamefont{PID}}{Proportional-Integral-Derivative}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{i}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{R}\relax \glsresetentrylist %
+\glossaryentryfield{RANSAC}{\glsnamefont{RANSAC}}{Random Sample Consensus}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{RF}{\glsnamefont{RF}}{Radio Frequency}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{RPM}{\glsnamefont{RPM}}{Revolutions per Minute}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{S}\relax \glsresetentrylist %
+\glossaryentryfield{SBC}{\glsnamefont{SBC}}{Single Board Computer(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{SCI}{\glsnamefont{SCI}}{Serial Communication Interface}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{SISO}{\glsnamefont{SISO}}{Single-Input and Single-Output}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{SLAM}{\glsnamefont{SLAM}}{Simultaneous Localization And Mapping}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{SOAD}{\glsnamefont{SOAD}}{Shift of the Optical Axis Domain}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{SPI}{\glsnamefont{SPI}}{Serial Peripheral Interface}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{SVTF}{\glsnamefont{SVTF}}{Set-Value-Transfer-Function}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{SWBIP}{\glsnamefont{SWBIP}}{Software-Based Image Processing}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{T}\relax \glsresetentrylist %
+\glossaryentryfield{TF}{\glsnamefont{TF}}{Transfer Function}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{Tform}{\glsnamefont{Tform}}{Transformation Matrix}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{TT}{\glsnamefont{TT}}{Time Triggered}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{U}\relax \glsresetentrylist %
+\glossaryentryfield{UAV}{\glsnamefont{UAV}}{Unmanned Aerial Vehicle(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{i}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{UND}{\glsnamefont{UND}}{Underground}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{V}\relax \glsresetentrylist %
+\glossaryentryfield{VIP}{\glsnamefont{VIP}}{Video and Image Processing}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{W}\relax \glsresetentrylist %
+\glossaryentryfield{WRT}{\glsnamefont{WRT}}{with respect to}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{ix\delimR xii}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}\glsgroupskip
+\glsgroupheading{X}\relax \glsresetentrylist %
+\glossaryentryfield{XML}{\glsnamefont{XML}}{Extensible Markup Language}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\end{theglossary}\glossarypostamble

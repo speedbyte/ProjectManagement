@@ -1,0 +1,338 @@
+\documentclass[
+DIV10,              % Seite in X Kästchen einteilen (Seihe Koma-Script Guide)
+%DIVcalc,           % Besten DIV Wert berechnen (Seihe Koma-Script Guide)
+fontsize=12pt,      % Schriftgröße 12 Punkte
+oneside,            % Einseitig
+parskip,            % Paragraphen nicht einrücken
+headsepline,        % Kopfzeile nach unten durch Linie abgrenzen (scrheadings)
+%footbotline,       % Fusszeile nach unten durch Linie abgrenzen (scrheadings)
+plainheadsepline,   % Kopfzeile nach unten durch Linie abgrenzen (scrplain)
+plainfootbotline,   % Fusszeile nach unten durch Linie abgrenzen (scrplain)
+%headtopline,       % Kopfzeile nach oben durch Linie abgrenzen (scrheadings)
+footsepline,        % Fusszeile nach oben durch Linie abgrenzen (scrheadings)
+plainheadtopline,   % Kopfzeile nach oben durch Linie abgrenzen (scrplain)
+plainfootsepline,   % Fusszeile nach oben durch Linie abgrenzen (scrplain)
+headexclude,        % Kopfzeile nicht als Teil des Inhalts setzen
+footexclude,        % Fusszeile nicht als Teil des Inhalts setzen
+bibtotocnumbered,   % Literaturverzeichnis nummeriert ins Inhaltsverzeichnis aufnehmen
+%bibtotoc,          % Literaturverzeichnis ins Inhaltsverzeichnis aufnehmen
+liststotocnumbered, % Sonstige Verzeichnise nummeriert ins Inhaltsverzeichnis aufnehmen
+%liststotoc,        % Sonstige Verzeichnise ins Inhaltsverzeichnis aufnehmen
+idxtotocnumbered    % Index nummeriert ins Inhaltsverzeichnis aufnehmen
+%idxtotoc           % Index ins Inhaltsverzeichnis aufnehmen
+]{scrbook}          % Koma-Script Klasse zum setzen eines Buchs
+
+% Package um Zeilenabstand zu steuern
+\usepackage{setspace}
+\usepackage{upgreek}
+ 
+%Einstellungen der Seitenränder
+% for twoside
+%\usepackage[inner=2cm,outer=4cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+% for oneside
+%\usepackage[left=4cm,right=2cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+%\usepackage{geometry}
+%\geometry{bindingoffset=40mm,top=20mm,textheight=245mm,textwidth=160mm,heightrounded,right=20mm,head=14.5pt}
+
+% Für nicht globale Seitenränder
+\usepackage{anysize}
+\usepackage{geometry}
+\geometry{textwidth=150mm}
+
+% Die "Standard-Header" für deutsche Dokumente
+\usepackage[latin1]{inputenc}    % ISO-8859-1 bzw. Latin1 als Encoding
+\usepackage[T1]{fontenc}         % T1 Schriften verwenden (sieht besser aus)
+%\usepackage[ngerman]{babel}      % Neue deutsche Rechtschreibung und Übersetzungen
+
+% "Schönere" Schriften einbinden
+\usepackage{mathpazo}            % Serifen-Font mit passendem Math-Font
+\usepackage[scaled=.95]{helvet}  % Serifenloser Font passend zu mathpazo
+\usepackage{courier}             % "Schönerer" Festbreiten-Font
+
+% Koma-Script Paket zum setzen vom Kopf- und Fusszeilen einbinden
+\usepackage{scrpage2}
+% Seitenstil für normale Seiten auf scrheadings setzen
+% Für Kapitelanfang und ähnliches wird scrplain verwendet
+\pagestyle{scrheadings}
+% Kopf- und Fusszeile löschen
+\clearscrheadfoot
+% Automarkierungen verwenden \automark[rechts]{links}
+% Statt \leftmark und \rightmark kann dann bei
+% Koma-Script einfach \headmark verwendet werden
+\automark[section]{chapter}
+% Kopfzeile für scrplain und scrheadings setzen
+% \*head[scrplain]{scrheadings}
+%\ihead[Innen]{Innen}
+%\chead[Mitte]{Mitte}
+\ohead[\scshape\large\textbf{\headmark}]
+{\scshape\large\textbf{\headmark}}
+% Fusszeile für scrplain und scrheadings setzen
+% \*foot[scrplain]{scrheadings}
+\ifoot{Dionysios Satikidis}
+%\cfoot[Mitte]{Mitte}
+\ofoot[\pagemark]{\pagemark}
+% Trennlinien für Kopf- und Fusszeile formatieren
+% Siehe Optionen der Dokumentklasse
+%\setheadtopline{2pt}
+\setheadsepline{.4pt}
+\setfootsepline{.4pt}
+%\setfootbotline{2pt}
+
+% Paket zum Einbinden von Quellcode als Listings
+% Hinweis: UTF-8 Encoding führt zu Problemen mit Umlauten
+\usepackage{listings}
+
+\usepackage{color}
+
+% Für sidewaysfigure
+\usepackage{rotating}
+
+% Querformat
+\usepackage{lscape}
+
+% Mehrere Literaturverzeichnisse
+\usepackage{multibib}
+%Dio: 1.11.2010 habe die References entferent
+%\newcites{bib,ref}{Bibliography,References}
+\newcites{bib}{Bibliography}
+
+% Caption package für Konfiguration von Textgröße
+\usepackage[small,bf]{caption}
+
+%WORKAROUND FÜR FEHLERHAFTES LISTINGS PAKET
+\makeatletter
+\@ifundefined{float@listhead}{}{%
+    \renewcommand*{\lstlistoflistings}{%
+        \begingroup
+            \if@twocolumn
+                \@restonecoltrue\onecolumn
+            \else
+                \@restonecolfalse
+            \fi
+            \float@listhead{\lstlistlistingname}%
+            \setlength{\parskip}{\z@}%
+            \setlength{\parindent}{\z@}%
+            \setlength{\parfillskip}{\z@ \@plus 1fil}%
+            \@starttoc{lol}%
+            \if@restonecol\twocolumn\fi
+        \endgroup
+    }%
+}
+\makeatother
+
+% Formatierung der Listings
+\lstset{
+captionpos=b,                % Beschriftung unterhalb (bottom)
+numbers=left,                % Zeilennummern links
+frame=trbl,                  % Rahmen zeichnen (top, right, bottom, left)
+basicstyle=\small\ttfamily,  % Festbreitenschrift verwenden (small)
+language=Java,               % Sprache auf Java einstellen
+emph={function, require_once, \$this, print, parent, @author @package, @copyright, @name, @see, @access, @return, @var},
+emphstyle=\color{black}\textbf,
+numbers=left,
+numberstyle=\tiny,
+showstringspaces=false
+}
+
+% WORKAROUND FÜR FOOTNOTES IN TABLES ----------------
+\newcounter{myfootertablecounter}
+%\setcounter{myfootertablecounter}{18}
+
+\newcommand\myfootnotemark{%
+%\refstepcounter{footnote}%
+\addtocounter{footnote}{1}%
+\footnotemark[\thefootnote]%
+}%
+
+\newcommand\myfootnotetext[1]{%
+\addtocounter{myfootertablecounter}{1}
+\footnotetext[\value{myfootertablecounter}]{#1}
+}
+
+% Abstand zwischen Kopfzeile und Kapitelüberschrift verringern
+\renewcommand*{\chapterheadstartvskip}{\vspace{-1.8\baselineskip}} 
+
+% ----------------------------------------------------
+
+% Paket für PDF Metainformation
+\usepackage[	pdftitle={Interim Report Master Thesis - Dionysios Satikidis, Brunel University West London},
+		pdfauthor={Dionysios Satikidis},
+		pdfsubject={Dissertation Interim Report Master Thesis},
+		pdfkeywords={},
+		plainpages=false,
+		pdfpagelabels]{hyperref}
+
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+
+% Paket zur Erstellung von Stichwort- und Abkürzungverzeichnissen einbinden
+\usepackage[acronym=true, toc=true]{glossary}
+
+% Format neu setzen
+\setacronymnamefmt{\gloshort}
+\setacronymdescfmt{\glolong}
+
+% Symbolverzeichnis definieren (Erweiterung des Standardumfangs)
+%\newglossarytype[slg]{symbolslist}{syg}{syi}
+% Stichwortverzeichnis erstellen
+%\makeglossary
+% Abkürzugsverzeichnis erstellen
+\makeacronym
+% Selbst definiertes Symbolverzeichnis erstellen
+%\makesymbolslist
+% Stil der einzelnen Verzeichnisse festlegen (Siehe glossary Dokumentation)
+%\setglossarystyle[symbolslist]{style=long, number=none}
+\setglossarystyle[acronym]{style=long, number=none}
+%\setglossarystyle[glossary]{style=altlist, number=none}
+
+% (Vor-) Definition von Einträgen für Stichwort-, Abkürzungs- und Symbolverzeichnis
+% Diese Befehle können auch mitten im Dokument benutzt werden
+%\glossary{name={xyz}, description={...}}
+
+\newacronym{UAV}{Unmanned Aerial Vehicle(s)}{}
+\newacronym{HUAV}{Hovering Unmanned Aerial Vehicle(s)}{}
+\newacronym{GUAV}{Gliding Unmanned Aerial Vehicle(s)}{}
+\newacronym{MAV}{Micro Aerial Vehicle(s)}{}
+\newacronym{DOF}{Degrees of Freedom}{}
+\newacronym{IMU}{Inertial Measurement Unit}{}
+\newacronym{MEMS}{Micro-Electro-Mechanical System}{}
+\newacronym{HSE}{University of Applied Sciences Essslingen}{}
+\newacronym{CCU}{Central Control Unit}{}
+\newacronym{RF}{Radio Frequency}{}
+\newacronym{SBC}{Single Board Computer(s)}{}
+\newacronym{API}{Application Programming Interface(s)}{}
+\newacronym{FPGA}{Field-Programmable Gate Array}{}
+\newacronym{SLAM}{Simultaneous Localization And Mapping}{}
+\newacronym{PID}{Proportional-Integral-Derivative}{}
+\newacronym{MIMO}{Multiple-Input and Multiple-Output}{}
+\newacronym{MBD}{Model Based Design}{}
+\newacronym{HIL}{Hardware In the Loop}{}
+\newacronym{MCU}{Microcontroller Unit}{}
+\newacronym{DSP}{Digital Signal Processor}{}
+
+%\symbolslist{name={$x$}, description={Eine ganzzahlige Variable, die das Ergebnis einer Berechnung darstellt}, sort=symbolpi}
+%\symbolslist{name={$y$}, description={Eine ganzzahlige Variable, die als Parameter für eine Berechnung dient}, sort=symbolpi}
+
+% Paket für Wortindex einbinden
+\usepackage{makeidx}
+% Wortindex erzeugen
+\makeindex
+
+% Paket zum generieren von Blindtext
+%\usepackage{blindtext}
+
+% Paket zum Einbinden von Bildern
+\usepackage{graphicx}
+
+% Beginn des eigentlichen Dokuments
+\begin{document}
+
+% Titelseite (verwendet pagestyle=empty)
+\begin{titlepage}
+% Seitenränder für die Titleseite
+%\marginsize{left}{right}{top}{bottom} 
+\marginsize{3cm}{3cm}{2cm}{2cm}
+\begin{center}
+
+\begin{tabular}{c}
+\includegraphics[width=6cm]{graphic/Brunel_logo.png}\\
+\end{tabular}
+
+\vspace{0.5cm} \large School of Engineering \& Design -- Electronic \& Computer Engineering\\
+\vspace{1cm} \Large MSc Distributed Computing Systems Engineering\\
+\vspace{0.5cm} \Large Brunel University West London\\
+
+\vspace{1.5cm} \Huge  Simulation and Performance Analysis\\ of a Distributed Position Correction\\
+					  Scheme for Unmanned Aerial Vehicles \\
+\vspace{0.5cm} \Large Interim Report\\
+\vfill{}
+
+\normalsize
+\begin{tabular}{ll}
+Author:      & Dionysios Satikidis\\[0.5cm]
+Supervisor:  & Dr Marios Hadjinicolaou\\[0.5cm]
+Date:        & 10/2010
+\end{tabular}
+\end{center}
+\end{titlepage}
+
+% Seitenränder für das Dokument
+%\marginsize{left}{right}{top}{bottom} 
+\marginsize{4cm}{2cm}{2cm}{2cm}
+
+% "Frontmatter" beginnen (Formatierung umschalten)
+% Platz für Inhaltsverzeichnis und anderes
+\frontmatter
+
+% Inhaltsverzeichnis ausgeben
+\tableofcontents
+
+% Stichwort- und Abkürzungsverzeichnis ausgeben
+%\def\glossaryname{Stichwortverzeichnis}
+%\printglossary
+\def\acronymname{List of Abbreviations}
+\printacronym
+%\def\symbolslistname{Symbolverzeichnis}
+%\printsymbolslist
+
+% Abbildungsverzeichnis ausgeben
+\listoffigures
+% Tabellenverzeichnis ausgeben
+%\listoftables
+% Das Listings-Verzeichnis scheint mit manchen Versionen vom Koma-Script
+% bzw. des Listings Pakets nicht ohne weiteres zu funktionieren
+%\lstlistoflistings
+
+% ############################################################################################
+
+
+% Hauptteil beginnen (Formatierung umschalten)
+\mainmatter
+\doublespacing
+% -----------------------------------------------------------------------------------------
+\input{chapters/c01Introduction.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c02Background.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c03InitialSurvey.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c04AimsAndObjectives.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c05ExperimentalAndInvestigativeMethods.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c06ProjectPlan.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c07DeliverablesAndOutcomes.tex}
+% -----------------------------------------------------------------------------------------
+% ############################################################################################
+
+
+% Alle Einträge der BibTeX Datenbank "zitieren"
+%\nocitebib*
+%\nociteref*
+
+% Auswahl der BibTeX Datenbank für das Literaturverzeichnis
+%Dio: habe die References entfernt
+%\bibliographyref{literature/literatur}
+%\bibliographystyleref{plain}
+
+\bibliographybib{literature/literatur}
+\bibliographystylebib{alpha}
+
+%\bibliography{literature/references}
+%\bibliography{literature/literatur}
+
+% Einstellen des Bibliography-Stils für das Literaturverzeichnis
+%\bibliographystyle{plain}
+
+% ------------------------------------------------------------------
+% Ausgabe des Wortindex
+% idxtotoc Option scheint nicht zu funktionieren
+%\clearpage
+%\addcontentsline{toc}{chapter}{Index}
+%\printindex
+
+% Laut Markus Kohm wird \backmatter normal nicht benötigt
+%\backmatter
+\end{document}
+

@@ -1,0 +1,88 @@
+% Hauptdatei
+% **********
+
+\documentclass[a4paper,oneside,12pt]{article}
+
+% a4paper steht für die Papiergröße
+% oneside steht für einseitigen Druck (twoside steht für zweiseitigen Druck)
+% 12pt steht für die Standardschriftgröße
+
+
+% --------------------------------------------------------------------
+
+\input{01_Praembel/Standardpakete}
+\input{01_Praembel/Symbole}
+\input{01_Praembel/Kopf_und_Fusszeile}
+\input{01_Praembel/Farbdefinitionen}
+\input{01_Praembel/Spezialpakete} % hier kann man auch \myComment deaktivieren
+\input{01_Praembel/Absaetze}
+\input{01_Praembel/Ueberschriften_und_Inhaltsverzeichnis}
+\input{01_Praembel/Standardbezeichnungen}
+\input{01_Praembel/Zeilenabstand}
+\input{01_Praembel/Listen}
+\input{01_Praembel/Debugging}
+
+% "muss" als letztes Paket eingebunden werden
+% siehe LaTeX Begleiter Seite 82, 2. Auflage
+
+\input{01_Praembel/PDF_Pakete}
+\input{01_Praembel/Trennmuster}
+\input{01_Praembel/eigeneBefehle}
+\input{01_Praembel/Styleguide}
+
+% --------------------------------------------------------------------
+
+\begin{document}
+
+\pagestyle{empty}
+\input{02_Inhalt/Titelseite}
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/00_Foreword/FOREWORD}	
+\clearpage %neue Seite erzwingen
+
+\pagestyle{plain}
+\input{02_Inhalt/Verzeichnisse}
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/01_Introduction/INTRODUCTION}
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/02_PhysicalModel/PHYSICAL_MODEL}
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/03_MatlabModel/MATLAB_MODEL}
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/04_Zustandsregler/THEORY} % chapter about the theory of the state space and controller
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/05_ImplementationMATLAB/DESIGN_AND_IMPL} % chapter about the design and the implementation in Matlab
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/05_1_ImplementationInC/IMPLC} % chapter about the testing (simulation & real copter)
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/06_Test/TEST} % chapter about the testing (simulation & real copter)
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/07_FutureProspects/FUTUREPROSPECTS} % chapter about the future :)
+\clearpage %neue Seite erzwingen
+
+\pagestyle{fancy}
+\input{02_Inhalt/Appendix} % chapter about the future :)
+\clearpage %neue Seite erzwingen
+
+\input{05_Literaturverzeichnis/Literaturverzeichnis_einfach}
+\clearpage %neue Seite erzwingen
+
+\end{document}

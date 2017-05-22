@@ -1,0 +1,129 @@
+\section{Appendix}\label{chapter_Appendix}
+
+\subsection{State space controller C function}\label{chapter_CFUNC}
+C source code for the state space controller:
+
+\lstset{language=C}
+\begin{lstlisting}
+/*  Control function for the state space controller */
+void Controll(CopterState* copterState, CopterConfig* copterConfig) 
+{
+    // KV-Factors:
+    static float rpsi_rpsi = 1.62;
+    static float rpsi_theta = -0.07;
+    static float rpsi_phi = 0;
+
+    static float theta_rpsi = 0;
+    static float theta_theta = 2.65;
+    static float theta_phi = 0;
+
+    static float phi_rpsi = 0;
+    static float phi_theta = 0;
+    static float phi_phi = 1.86;
+
+    // KR-Factors:
+    static float rpsi_Rrpsi = 1.62;
+    static float rpsi_Rtheta = 0;
+    static float rpsi_Rphi = 0;
+    static float rpsi_Rrphi = 0;
+    static float rpsi_Rrtheta = 0.04;
+
+    static float theta_Rrpsi = 1.01;
+    static float theta_Rtheta = 2.65;
+    static float theta_Rphi = 0;
+    static float theta_Rrphi = 0;
+    static float theta_Rrtheta = 3.53;
+
+    static float phi_Rrpsi = 0;
+    static float phi_Rtheta = 0;
+    static float phi_Rphi = 1.86;
+    static float phi_Rrphi = 2.79;
+    static float phi_Rrtheta = 0;
+
+    // Auxiliary variables
+    float rpsi_SET, theta_SET, phi_SET; 
+    float remote_Pitch_SS, remote_Roll_SS, remote_Yaw_SS;
+    float theta_sens, rtheta_sens, phi_sens, rphi_sens, rpsi_sens;
+    float M1, M2, M3, M4;
+    float m_r_Pitch, m_r_Roll, m_r_Yaw;    
+     
+    // Motorvalues for the next sampletime
+    static uint8 M1_limited = 0;
+    static uint8 M2_limited = 0;
+    static uint8 M3_limited = 0;
+    static uint8 M4_limited = 0;
+
+    // Set outputs to values calculated last sample time
+    copterState->setpointFront = M1_limited;
+    copterState->setpointLeft  = M2_limited;
+    copterState->setpointRear  = M3_limited;
+    copterState->setpointRight = M4_limited;
+
+    // Calculate the remote input factors
+    remote_Pitch_SS = ((float) copterState->remotePitch)/7;
+    remote_Roll_SS = ((float) copterState->remoteRoll)/7;
+    remote_Yaw_SS = ((float) copterState->remoteYaw)/3;
+
+    // Calculate the sensor factors
+    theta_sens = ((float) copterState->Pitch_filt)/2;
+    phi_sens = ((float) copterState->Roll_filt)/2;
+    rtheta_sens = ((float) copterState->angVelP)/220;
+    rphi_sens = ((float) copterState->angVelR)/220;
+    rpsi_sens = ((float) copterState->angVelY)/320;
+
+    // Calculate the total input to each control branch
+    rpsi_SET = remote_Yaw_SS * rpsi_rpsi + remote_Pitch_SS * theta_rpsi + remote_Roll_SS * phi_rpsi;
+    theta_SET = remote_Yaw_SS * rpsi_theta + remote_Pitch_SS * theta_theta + remote_Roll_SS * phi_theta;
+    phi_SET = remote_Yaw_SS * rpsi_phi + remote_Pitch_SS * theta_phi + remote_Roll_SS * phi_phi;
+
+    // Calculate the new set values for the three branches
+    m_r_Yaw = rpsi_SET - (rpsi_sens * rpsi_Rrpsi + theta_sens * rpsi_Rtheta + phi_sens * rpsi_Rphi - rphi_sens * rpsi_Rrphi + rtheta_sens * rpsi_Rrtheta);
+    m_r_Roll = phi_SET - ( rpsi_sens * phi_Rrpsi + theta_sens * phi_Rtheta + phi_sens * phi_Rphi - rphi_sens * phi_Rrphi + rtheta_sens * phi_Rrtheta);
+    m_r_Pitch = theta_SET - ( rpsi_sens * theta_Rrpsi + theta_sens * theta_Rtheta + phi_sens * theta_Rphi - rphi_sens * theta_Rrphi + rtheta_sens * theta_Rrtheta);
+
+    // Calculate new setpoints of all motors
+    M1 = (float)(copterState->remoteForceRaw) - m_r_Pitch + m_r_Yaw;
+    M2 = (float)(copterState->remoteForceRaw) + m_r_Roll - m_r_Yaw;
+    M3 = (float)(copterState->remoteForceRaw) + m_r_Pitch + m_r_Yaw;
+    M4 = (float)(copterState->remoteForceRaw) - m_r_Roll - m_r_Yaw;
+
+    // Saturate setpoint of Motor1 to 10 if less and 255 if above
+    if(M1 < 10){
+    M1_limited = 10;
+    }else if(M1 > 255){
+    M1_limited = 255; 
+    }else{
+       M1_limited=(uint8)(M1);
+    }
+
+    // Saturate setpoint of Motor2 to 10 if less and 255 if above
+    if(M2 < 10){
+      M2_limited = 10;
+    }else if(M2 > 255){
+      M2_limited = 255; 
+    }else{
+         M2_limited=(uint8)(M2);
+    }
+
+    // Saturate setpoint of Motor3 to 10 if less and 255 if above
+    if(M3 < 10){
+      M3_limited = 10;
+    }else if(M3 > 255){
+      M3_limited = 255; 
+    }else{
+         M3_limited=(uint8)(M3);
+    }
+    
+    // Saturate setpoint of Motor4 to 10 if less and 255 if above
+    if(M4 < 10){
+      M4_limited = 10;
+    }else if(M4 > 255){
+      M4_limited = 255; 
+    }else{                 
+         M4_limited=(uint8)(M4);
+    } 
+}
+\end{lstlisting}
+
+\input{02_Inhalt/QuickStartGuide}
+

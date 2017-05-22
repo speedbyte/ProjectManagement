@@ -1,0 +1,79 @@
+\begin{theglossary}\glogroupA
+
+\gloitem {\glosslabel{acn:API}{\noexpand \acronymfont {API}}}Application Programming Interface(s)\relax
+\glodelim 
+		\glsnumformat{12}\delimT \gloskip \glogroupC
+
+\gloitem {\glosslabel{acn:CCU}{\noexpand \acronymfont {CCU}}}Central Control Unit\relax
+\glodelim 
+		\glsnumformat{3}\delimN \glsnumformat{7}\delimT \gloskip \glogroupD
+
+\gloitem {\glosslabel{acn:DOF}{\noexpand \acronymfont {DOF}}}Degrees of Freedom\relax
+\glodelim 
+		\glsnumformat{1}\delimN \glsnumformat{3\delimR 6}\delimN 
+		\glsnumformat{15\delimN 16}\delimN \glsnumformat{23}\delimT \gloskip \glogroupF
+
+\gloitem {\glosslabel{acn:FPGA}{\noexpand \acronymfont {FPGA}}}Field-Programmable Gate Array\relax
+\glodelim 
+		\glsnumformat{11}\delimT \gloskip \glogroupG
+
+\gloitem {\glosslabel{acn:GUAV}{\noexpand \acronymfont {GUAV}}}Gliding Unmanned Aerial Vehicle(s)\relax
+\glodelim 
+		\glsnumformat{9}\delimT \gloskip \glogroupH
+
+\gloitem {\glosslabel{acn:HIL}{\noexpand \acronymfont {HIL}}}Hardware In the Loop\relax
+\glodelim 
+		\glsnumformat{23}\delimT 
+
+\gloitem {\glosslabel{acn:HSE}{\noexpand \acronymfont {HSE}}}University of Applied Sciences Essslingen\relax
+\glodelim 
+		\glsnumformat{2}\delimN \glsnumformat{7}\delimT 
+
+\gloitem {\glosslabel{acn:HUAV}{\noexpand \acronymfont {HUAV}}}Hovering Unmanned Aerial Vehicle(s)\relax
+\glodelim 
+		\glsnumformat{9}\delimN \glsnumformat{15}\delimT \gloskip \glogroupI
+
+\gloitem {\glosslabel{acn:IMU}{\noexpand \acronymfont {IMU}}}Inertial Measurement Unit\relax
+\glodelim 
+		\glsnumformat{1}\delimN \glsnumformat{4\delimR 6}\delimN 
+		\glsnumformat{23}\delimT \gloskip \glogroupM
+
+\gloitem {\glosslabel{acn:MAV}{\noexpand \acronymfont {MAV}}}Micro Aerial Vehicle(s)\relax
+\glodelim 
+		\glsnumformat{4}\delimN \glsnumformat{6}\delimN 
+		\glsnumformat{10}\delimT 
+
+\gloitem {\glosslabel{acn:MBD}{\noexpand \acronymfont {MBD}}}Model Based Design\relax
+\glodelim 
+		\glsnumformat{21\delimR 23}\delimN \glsnumformat{25}\delimT 
+
+\gloitem {\glosslabel{acn:MEMS}{\noexpand \acronymfont {MEMS}}}Micro-Electro-Mechanical System\relax
+\glodelim 
+		\glsnumformat{1}\delimN \glsnumformat{6\delimN 7}\delimT 
+
+\gloitem {\glosslabel{acn:MIMO}{\noexpand \acronymfont {MIMO}}}Multiple-Input and Multiple-Output\relax
+\glodelim 
+		\glsnumformat{15}\delimT \gloskip \glogroupP
+
+\gloitem {\glosslabel{acn:PID}{\noexpand \acronymfont {PID}}}Proportional-Integral-Derivative\relax
+\glodelim 
+		\glsnumformat{15}\delimT \gloskip \glogroupR
+
+\gloitem {\glosslabel{acn:RF}{\noexpand \acronymfont {RF}}}Radio Frequency\relax
+\glodelim 
+		\glsnumformat{9}\delimT \gloskip \glogroupS
+
+\gloitem {\glosslabel{acn:SBC}{\noexpand \acronymfont {SBC}}}Single Board Computer(s)\relax
+\glodelim 
+		\glsnumformat{12}\delimT 
+
+\gloitem {\glosslabel{acn:SLAM}{\noexpand \acronymfont {SLAM}}}Simultaneous Localization And Mapping\relax
+\glodelim 
+		\glsnumformat{13}\delimT \gloskip \glogroupU
+
+\gloitem {\glosslabel{acn:UAV}{\noexpand \acronymfont {UAV}}}Unmanned Aerial Vehicle(s)\relax
+\glodelim 
+		\glsnumformat{1}\delimN \glsnumformat{3\delimN 4}\delimN 
+		\glsnumformat{9\delimR 13}\delimN \glsnumformat{15}\delimN 
+		\glsnumformat{17\delimR 20}\delimN \glsnumformat{23}\delimT 
+\end{theglossary}

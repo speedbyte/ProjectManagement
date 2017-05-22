@@ -1,0 +1,293 @@
+  %% Kommentierte Präambel zu typokurz 1.7[1]; 11. Mai 2009
+  %%
+  %% Die Präambel ist nicht vollkommen identisch zur originalen
+  %% Präambel, da bestimmte, unwichtige Befehlsdefinitionen fehlen und
+  %% die Reihenfolge der Übersichtlichkeit halber geändert wurde.
+  %%
+  %% Anfänger sollten sich von der Länge der Präambel auf keinen Fall
+  %% abschrecken lassen! Es handelt sich weder um Geheim- noch um
+  %% Spezialwissen.  Fast alles ist Anleitungen zu verwendeten Paketen
+  %% entnommen; nur eine Konstruktion stammt aus der Newsgroup
+  %% de.comp.text.tex und ist dementsprechend beim Kommentar mit der
+  %% dazugehörigen Message-ID versehen. Über die Message-ID ist die
+  %% Nachricht bei Google Groups (Erweiterte Suche) zu finden.
+  %%
+  %% Zum besseren Verständnis ist noch ein Beispiel für die Umgebung
+  %% »tabelle« und den Befehl \hdrow angegeben.
+  %%
+  %% [1] (http://www.zvisionwelt.de/typokurz.pdf)
+  %%
+\AtBeginDocument{\newcommand{\version}{Version 1.7}}
+% Kopieren aus PDF-Anzeigeprogrammen und das Durchsuchen von PDF-Dateien
+% verbessern (in Verbindung mit cmap.sty (s. u.):
+\input glyphtounicode
+\pdfgentounicode=1
+%
+\documentclass[
+               ,abstracton % Zentrierte Überschrift bei der
+                           % Zusammenfassung
+               ,smallheadings % kleine Überschriften
+               ]
+               {scrartcl}  % KOMA-Script-Artikel-Klasse
+\usepackage{cmap} % (s. o.)
+\usepackage[T1]{fontenc}   % T1-Kodierung des Zeichensatzes
+\usepackage[latin1]{inputenc} % Eingabekodierung (Linux)
+\usepackage{
+  ,soul         % Unterstreichen(, Sperren,  Durchstreichen ...)
+  ,array        % Erweiterungen für Tabellen
+  ,booktabs     %       "        "      "
+  ,supertabular % Mehrseitige Tabellen
+  ,longtable    %      "          "    
+  ,xcolor       % Farben verwenden
+  ,colortbl     % Farben in Tabellenzellen
+  ,textcomp     % Zusätzliche (Sonder)Zeichen
+  ,natbib       % Formatierung der Zitate
+  ,calc         % Rechnen mit LaTeX-Längen und -Zählern
+  ,url          % URLs setzen
+  ,tocloft      % Verzeichnisse (TOC, LOF, LOT) formatieren
+  ,graphicx     % Grafiken einbinden
+  ,paralist     % Zusätzliche Listen-Umgebungen
+  ,multicol     % Mehrspaltensatz
+  ,ragged2e     % Bessere Trennung bei Flattersatz
+  ,fixltx2e     % Korrigiert Fehler und erweitert LaTeX2e
+  ,makeidx      % Index-Erzeugung
+  ,tikz         % \fbox-Ersatz mit tikz zeichnen und Ersatz für Beispiele mit PSTricks
+}
+
+\makeindex % .idx-Datei erzeugen zur Weiterverarbeitung mit MakeIndex
+           % oder xindy
+
+\usepackage[english,ngerman]{babel} % Sprachunterstützung
+\usepackage[ngerman]{varioref}      % »Intelligente« Querverweise
+
+\usepackage[right]{eurosym} % Euro-Geldbeträge setzen (mit Euro-Symbol
+                            % hinter Zahlenwert)
+
+% Seitenzahlen direkt hinter TOC-Eintrag:
+% Ebene \section
+\renewcommand{\cftsecleader}{}
+\renewcommand{\cftsecafterpnum}{\cftparfillskip}
+% Ebene \subsection
+\renewcommand{\cftsubsecleader}{}
+\renewcommand{\cftsubsecafterpnum}{\cftparfillskip}
+% Abstände vor Einträgen im TOC verkleinern
+\setlength{\cftbeforesecskip}{.4\baselineskip}
+\setlength{\cftbeforesubsecskip}{.1\baselineskip}
+
+% Neue Option »C« für longtable, um Tabellen > \textwidth auf der Seite
+% zu zentrieren (Heiko Oberdiek in <d892mm$9nq$1@news.BelWue.DE>) unter
+% Berücksichtigung des im Rand zur Verfügung stehenden Freiraums (Markus
+% Kohm in <1780717.PVTQaRvHTA@mjk.komascript.de>). 
+\makeatletter
+\let\ORG@LT@array\LT@array
+\def\LT@array[#1]{%
+  \if C#1%
+    \setlength{\@tempdima}{\oddsidemargin}
+    \addtolength{\@tempdima}{1in}
+    \LTleft=0pt plus 1fill minus \@tempdima
+    \LTright=\LTleft
+    \expandafter\ORG@LT@array\expandafter[\expandafter x\expandafter]%
+  \else
+    \@ReturnAfterFi{%
+      \ORG@LT@array[{#1}]%
+    }%
+  \fi
+}
+\long\def\@ReturnAfterFi#1\fi{\fi#1}
+\makeatother
+
+\usepackage{MinionPro}         % Serifenschrift: Adobe MinionPro
+\usepackage{MyriadPro}         % Serifenlose Schrift: Adobe MyriadPro
+\usepackage[scaled=.92]{thesans} % Schreibmaschinenschrift: TheSansMono
+\linespread{1.05} % Durchschuss für MinionPro leicht erhöhen
+
+\typearea{8} % Satzspiegelberechnung gemäß DIVcalc nach Laden des
+             % Schrift-Pakets durchführen
+
+% Optischer Randausgleich und font expansion, letzteres in 3er-Schritten
+% bei maximalem Schrumpfen und Ausdehnen um 1,5%
+\usepackage{microtype} 
+\microtypesetup{stretch=15,shrink=15,step=3}
+
+\usepackage[toc]{multitoc} % TOC in mehreren Spalten setzen
+
+% um Tabellenspalten mit Flattersatz zu setzen, muss \\ vor
+% (z.B.) \raggedright geschützt werden:
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+%
+% Spalten mit Flattersatz:
+% Linksbündig:
+\newcolumntype{L}[1]{>{\PreserveBackslash\RaggedRight}m{#1}}
+\newcolumntype{M}[1]{>{\PreserveBackslash\RaggedRight}p{#1}}
+% Rechtsbündig (nicht verwendet im Dokument):
+\newcolumntype{R}[1]{>{\PreserveBackslash\RaggedLeft}m{#1}}
+\newcolumntype{S}[1]{>{\PreserveBackslash\RaggedLeft}p{#1}}
+% Zentriert (nicht verwendet im Dokument):
+\newcolumntype{Z}[1]{>{\PreserveBackslash\Centering}m{#1}}
+\newcolumntype{A}[1]{>{\PreserveBackslash\Centering}p{#1}}
+
+% Tabellen mit grauem Header und grauer hline am Ende und entsprechend
+% eingestellten Schriften (in diesem Fall nur fett); Verwendung über
+% \hdrow (s.u.)
+%
+% Linksbündig:
+\newcolumntype{H}{>{\fontseries{b}\selectfont%
+    \columncolor[gray]{.8}[6pt][0pt]}l}
+% Zentriert (nicht verwendet im Dokument):
+\newcolumntype{I}{>{\fontseries{b}\selectfont%
+    \columncolor[gray]{.8}[6pt][0pt]}c}
+% Rechtsbündig (nicht verwendet im Dokument):
+\newcolumntype{J}{>{\fontseries{b}\selectfont%
+    \columncolor[gray]{.8}[6pt][0pt]}r}
+%
+\newcommand{\hdrow}[2]{%
+  \multicolumn{1}{#1@{}}{%
+    \raisebox{.1mm}{% Ausrichtung der Beschriftung
+      #2%
+    }\rule{0pt}{4mm}}% unsichtbare Linie, die die Kopfzeile höher macht
+} 
+
+% Alternative ohne \multicolumn und \columncolor, direkt über \rowcolor:
+%\newcommand{\Hdrow}[1]{\rowcolor[gray]{.8}#1 \\\addlinespace}
+
+\newenvironment{tabelle}[2][c]{%
+  \renewcommand{\arraystretch}{1.2} % Größere Abstände zwischen Zeilen
+  \sffamily\small                   % Serifenlose und kleine Schrift
+  \begin{longtable}[#1]{#2}
+  }
+  {\end{longtable}\renewcommand{\arraystretch}{1}% Abstände wieder
+                                                 % zurücksetzen 
+  \normalfont % Schrift wieder zurücksetzen
+  }
+
+% Auch »Abbildung« und nicht nur die Nummer wird zum Link (abgeleitet
+% aus Posting von Heiko Oberdiek (d09n5p$9md$1@news.BelWue.DE);
+% Verwendung: In \abbvref{label} ist ein Beispiel dargestellt
+\providecommand*{\abbvrefname}{Abbildung}
+\newcommand*{\abbvref}[1]{%
+  \hyperref[#1]{\abbvrefname}\vref{#1}%
+}
+
+%% Elektronische Schrägstellung:
+\newcommand*{\slanted}[1]{%
+  \tikz[baseline=(slanted.base)]
+    \node[xslant=.167, inner sep=0pt] (slanted)
+      {#1};%
+}
+
+%% Box, die den Rahmen in einem Zug zieht, was zu schöneren Ergebnissen
+%% führt als \fbox:
+\newcommand*{\tikzbox}[1]{%
+  \tikz[baseline=(tikzbox.base)]
+   \node[draw, inner sep=\fboxsep+.5\fboxrule, line width=\fboxrule]
+    (tikzbox)
+    {#1};%
+}
+
+%% Sperrung mit pdfTeX >= 1.40.3
+\usepackage{relsize}
+% Sperrung und Verkleinerung von Versalien
+\newcommand{\versal}[1]{\textscale{0.9}{\textls*[80]{#1}}}
+% Sperrung von Gemeinen
+\newcommand{\gemein}[1]{\textls*[70]{#1}}
+
+% Seitenstil festlegen:
+\usepackage[
+            automark % Automatische Aktualisierung der Kolumnentitel
+           ]
+{scrpage2}
+% Linker Kopf leer:
+\ihead{} 
+% Zentrierter Kopf:
+\chead{typokurz -- Einige wichtige typografische Regeln, \version}
+% Schrift in Kolumnentiteln klein und kursiv:
+\setkomafont{pagehead}{\normalfont\small\itshape}
+% Zeitenzahl in MinionPro:
+\setkomafont{pagenumber}{\normalfont}
+% Überschriften zentriert, blau und in Serifenschrift:
+\addtokomafont{sectioning}{\centering\color{myblue}\rmfamily}
+% \caption fett:
+\addtokomafont{captionlabel}{\bfseries}
+% Label der description-Umgebung in Serifenschrift:
+\addtokomafont{descriptionlabel}{\rmfamily}
+
+% Zweispaltige Fußnoten
+\usepackage{dblfnote}
+% Keine hochgestellten Ziffern in der Fußnote (KOMA-Script-spezifisch):
+\deffootnote[1.5em]{0pt}{1em}{\makebox[1.5em][l]{\bfseries\thefootnotemark}} 
+% Abstand zwischen Fußnoten vergrößern:
+\setlength{\footnotesep}{.85\baselineskip}
+
+\renewcommand{\footnoterule}{}             % Keine Trennlinie zur Fußnote 
+\addtolength{\skip\footins}{\baselineskip} % Abstand Text <-> Fußnote
+% Fußnoten immer ganz unten auf einer \raggedbottom-Seite
+\usepackage{fnpos}
+
+\raggedbottom     % Variable Seitenhöhen zulassen
+
+\usepackage[%
+  breaklinks               % Links »überstehen« Zeilenumbruch
+  ,colorlinks              % Links erhalten Farben statt Kästen
+  ,citecolor=myblue        % Farbe für Zitate
+  ,linkcolor=myblue        % beeinflusst Inhaltsverzeichnis und Seitenzahlen
+  ,urlcolor=myblue         % Farbe für URLs
+  ,bookmarks               % Erzeugung von Bookmarks für PDF-Viewer
+  ,bookmarksnumbered       % Nummerierung der Bookmarks
+  ,hyperfootnotes=false    % Keine Links auf Fußnoten
+  ,pdfpagelabels
+  ,pdfstartview=FitH,      % Dokument wird »Fit Width« geöffnet
+  ,pdfpagemode=UseOutlines % Bookmarks im Viewer anzeigen
+  ,bookmarksopenlevel=2    % Gliederungstiefe der Bookmarks
+  ] 
+  {hyperref}               % PDF automatisch mit Links versehen und weitere
+                           % Hypertext-Funktionalität ermöglichen
+\hypersetup{
+  pdftitle={typokurz -- Einige wichtige typografische Regeln}%
+  ,pdfauthor={Christoph Bier}%
+  ,pdfcreator={LaTeX, hyperref, KOMA-Script, xindy}%
+}
+% Farbdefinitionen:
+\definecolor{myblue}{rgb}{0,.1,.6}
+\definecolor{myblue2}{rgb}{0,.4,.6}
+\definecolor{grau}{gray}{.4}
+
+\usepackage[figure]{hypcap} % Links auf Gleitumgebungen springen nicht
+                            % zur Beschriftung, sondern zum Anfang der
+                            % Gleitumgebung 
+% 3-spaltiger Index
+\makeatletter
+\renewenvironment{theindex}{%
+  \begin{multicols}{3}[\section*{\indexname}][19\baselineskip]%
+    \setlength{\parindent}{0pt}\pagestyle{plain}\let\item\@idxitem}
+  {\end{multicols}}
+\makeatother
+
+\usepackage{ellipsis}       % Korrekte Abstände um \dots (als letztes
+                            % Paket laden)
+%---------------------------------------------------------------------
+% Text
+%---------------------------------------------------------------------
+\begin{document}
+Dieses Beispiel zeigt die Verwendung der Umgebung \emph{tabelle} und des
+Befehls \verb+\hdrow+ anhand der zweiten Tabelle in Abschnitt 2.
+
+\begin{tabelle}[C]{L{.45\linewidth}L{.45\linewidth}}
+   \hdrow{H}{Richtig} & \hdrow{H}{Falsch} \\\addlinespace\endfirsthead
+
+   \multicolumn{2}{@{}l}{\dots\ \footnotesize\itshape Fortsetzung} \\
+   \hdrow{H}{Richtig} & \hdrow{H}{Falsch} \\\addlinespace\endhead
+
+  \addlinespace\hline
+  \multicolumn{2}{r@{}}{\footnotesize\itshape Fortsetzung
+    \dots}\\\endfoot
+
+  \addlinespace\hline\endlastfoot
+
+  Dieser Satz, der zur Demonstration ein paar Satzzeichen \dots\
+  enthält, hat keinen weiteren Sinn -- ehrlich! (Dieser Satz auch
+  nicht.) & Dieser Satz , der zur Demonstration ein paar
+  Satzzeichen\dots\ enthält , hat keinen weiteren Sinn--ehrlich ! (
+  Dieser Satz auch nicht. )
+\end{tabelle}
+
+\end{document}

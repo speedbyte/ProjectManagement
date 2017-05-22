@@ -1,0 +1,12 @@
+\subsection{State space representation}\label{chapter_StateSpaceIMPL}
+
+As mentioned in the chapter \ref{chapter_Approach}, first step in developing the state space controller is, to analyze the process of the quadrocopter. This process is introduced and explained in chapter \ref{chapter_DYNAMICS_BLOCK}. Chapter \ref{chapter_StateSpace} explains the basic knowledge about state space representation, needed in this chapter. Figure \ref{fig:MATLAB Dynamics Sections} shows the process of the quadrocopter. 
+
+First of all it is necessary to find out, which part of the process is really needed to control the quadrocopter. So the earthframe part (blue) of the quadrocopter can be eliminated. 
+Figures \ref{fig:MATLAB Dynamics1} and \ref{fig:MATLAB Dynamics2} are showing, how the remain looks like. That is only the bodyframe part of the process. And this part, is that one, the state space controller has to deal with.
+
+\input{02_Inhalt/05_ImplementationMATLAB/Controllability}
+
+\input{02_Inhalt/05_ImplementationMATLAB/ModelReduction}
+
+\input{02_Inhalt/05_ImplementationMATLAB/Observability}

@@ -1,0 +1,131 @@
+\tikzstyle{block}=[rectangle,
+ draw=black,
+ rounded corners,
+ %fill=blue!20,
+ text centered,
+ text=black, text width = 4cm]
+
+\tikzstyle{refLabel}=[rectangle]
+ 
+ 
+\begin{tikzpicture}
+
+%       (5,10)
+%(0,8)  (5,8)  (10,8)
+%       (5,6)
+%       (5,4)
+%(0,2)          (10,2)
+%(0,0)
+
+
+\node [block, text width = 3cm] (_5_10) at (5,11) {\begin{equation}
+\begin{split}
+\small\dot\xi=J_\Theta*\nu
+\end{split}
+\end{equation}
+};
+
+\node [block, text width = 4cm] (_0_8) at (0,8) {\begin{equation}
+\begin{split}
+\label{formula:eom_xi}
+\small \xi=
+\begin{pmatrix} \Gamma^E \\ \Theta^E \end{pmatrix}=
+\small\begin{pmatrix} x_e \\ y_e \\ z_e \\ \phi \\ \theta \\ \phi \end{pmatrix}
+\end{split}
+\end{equation}
+};
+
+\node [block, text width = 4cm] (_5_8) at (5,9) {
+\begin{equation}
+\label{formula:eom_J_Theta}
+\small  J_\Theta=\begin{pmatrix} R_\Theta & 0_{3x3} \\ 0_{3x3} & T_\Theta\\
+\end{pmatrix}
+\end{equation}};
+
+\node [block, text width = 4cm] (_10_8) at (10,8) {
+\begin{equation}
+\begin{split}
+\label{formula:eom_nu}
+\small \nu = 
+\begin{pmatrix} V^B \\ \omega^B\end{pmatrix} =
+\begin{pmatrix} u \\ v \\ w \\ p \\ q \\ r \end{pmatrix} 
+\end{split}
+\end{equation}};
+
+\node [block, text width = 4cm] (_5_6) at (5,6) {
+\begin{equation}
+\begin{split}
+\label{formula:eom_zeta}
+\small \zeta = 
+\begin{pmatrix} \dot\Gamma^E \\ \omega^B\end{pmatrix} =
+\begin{pmatrix} \dot x_e\\ \dot y_e \\ \dot z\\ p \\ q \\ r \end{pmatrix}
+\end{split}
+\end{equation}};
+
+\node [block, text width = 10cm] (_5_4) at (5,3) {
+\begin{equation}
+\begin{split}
+\label{formula:eom_F_B_tau_B}
+\small
+\begin{pmatrix} F^B \\ \tau^B \end{pmatrix} =
+\begin{pmatrix} m*I_{3x3} & 0_{3x3} \\ 0_{3x3} & I \end{pmatrix}
+\begin{pmatrix} \dot V^B \\ \dot \omega^B \end{pmatrix} + 
+\begin{pmatrix} \omega^B \times (m*V^B) \\ \omega^B \times (I*\omega^B) \end{pmatrix}\\ =
+ M_B*\dot\nu + C_B(\nu)*\nu=G_B(\xi)+O_B(\nu)*\Omega+E_B*\Omega^2
+ \end{split}
+ \end{equation}};
+
+\node [block, text width = 6cm] (_0_2) at (2,0) {
+\begin{equation}
+\begin{split}
+\label{formula:eom_dot_zeta_unsolved}
+\small 
+M_H*\dot\zeta+C_{H}(\zeta)*\zeta\\=G_H+O_{H}(\zeta)*\Omega+E_{H}(\xi)*\Omega^2
+\end{split}
+\end{equation}
+};
+\node [block, text width = 9cm] (_10_2) at (9,-2) {\begin{equation}
+\label{formula:eom_dot_nu}
+\small \dot\nu=M_B^{-1}*(-C_{B}(\nu)*\nu+G_B(\xi)+O_B(\nu)*\Omega+E_B*\Omega^2)
+\end{equation}};
+
+\node [block, text width = 9cm] (_0_0) at (5,-4) {\begin{equation}
+\label{formula:eom_dot_zeta_solved}
+\small 
+\dot\zeta=M_H^{-1}*(-C_H(\zeta)*\zeta+G_H+O_H(\zeta)*\Omega+E_H(\xi)*\Omega^2) \end{equation}};
+
+% \path[->] (_5_10) edge[thick] (_0_8);
+% \path[->] (_5_10) edge[thick] (_5_8);
+% \path[->] (_5_10) edge[thick] (_10_8);
+% 
+% \path[->] (_0_8) edge[thick, bend right=30] (_5_6);
+% \path[->] (_0_8) edge[thick, bend right=30] (_5_4);
+% 
+% \path[->] (_10_8) edge[thick, bend left=30] (_5_6);
+% \path[->] (_10_8) edge[thick, bend left=30] (_5_4);
+% 
+% \path[->] (_5_6) edge[thick, bend right=85] (_0_2);
+% 
+% \path[->] (_5_4) edge[thick] (_0_2);
+% \path[->] (_5_4) edge[thick] (_10_2);
+% 
+% \path[->] (_0_2) edge[thick] (_0_0);
+% 
+\draw[thick,->] (_5_10) .. controls (1,11) and (0,10) .. (_0_8);
+\draw[thick,->](_5_10) .. controls (9,11) and (10,10) .. (_10_8);
+\draw[->] (_5_10) edge[thick] (_5_8);
+
+\draw[thick,->] (_0_8) .. controls (3,7) and (2,6) ..  (_5_6);
+\draw[thick,->] (_0_8) .. controls (0,6) and (-1,4) ..  (_5_4);
+
+\draw[thick,->] (_10_8) .. controls (7,7) and (8,6) ..  (_5_6);
+\draw[thick,->] (_10_8).. controls (10,6) and (11,4) .. (_5_4);
+
+\draw[thick, ->] (_5_6) .. controls (-3,5) and (-1,2) ..(_0_2);
+
+ \draw[thick,->] (_5_4)  .. controls (3,1) and (-1,2) .. (_0_2);
+ \draw[thick,->] (_5_4)  .. controls (7,1) and (11,2) .. (_10_2);
+ 
+\draw[thick,->] (_0_2) edge(_0_0);
+
+\end{tikzpicture}

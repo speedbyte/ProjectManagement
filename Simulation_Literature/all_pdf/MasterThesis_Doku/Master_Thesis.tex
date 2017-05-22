@@ -1,0 +1,694 @@
+\documentclass[
+DIV10,              % Seite in X Kästchen einteilen (Seihe Koma-Script Guide)
+%DIVcalc,           % Besten DIV Wert berechnen (Seihe Koma-Script Guide)
+fontsize=12pt,      % Schriftgröße 12 Punkte
+oneside,            % Einseitig
+parskip,            % Paragraphen nicht einrücken
+headsepline,        % Kopfzeile nach unten durch Linie abgrenzen (scrheadings)
+%footbotline,       % Fusszeile nach unten durch Linie abgrenzen (scrheadings)
+plainheadsepline,   % Kopfzeile nach unten durch Linie abgrenzen (scrplain)
+plainfootbotline,   % Fusszeile nach unten durch Linie abgrenzen (scrplain)
+%headtopline,       % Kopfzeile nach oben durch Linie abgrenzen (scrheadings)
+footsepline,        % Fusszeile nach oben durch Linie abgrenzen (scrheadings)
+plainheadtopline,   % Kopfzeile nach oben durch Linie abgrenzen (scrplain)
+plainfootsepline,   % Fusszeile nach oben durch Linie abgrenzen (scrplain)
+headexclude,        % Kopfzeile nicht als Teil des Inhalts setzen
+footexclude,        % Fusszeile nicht als Teil des Inhalts setzen
+bibtotocnumbered,   % Literaturverzeichnis nummeriert ins Inhaltsverzeichnis aufnehmen
+%bibtotoc,          % Literaturverzeichnis ins Inhaltsverzeichnis aufnehmen
+liststotocnumbered, % Sonstige Verzeichnise nummeriert ins Inhaltsverzeichnis aufnehmen
+%liststotoc,        % Sonstige Verzeichnise ins Inhaltsverzeichnis aufnehmen
+idxtotocnumbered,    % Index nummeriert ins Inhaltsverzeichnis aufnehmen
+%idxtotoc           % Index ins Inhaltsverzeichnis aufnehmen
+numbers=noenddot,
+chapterprefix]{scrbook}         % Koma-Script Klasse zum setzen eines Buchs
+
+
+%Chapter redefinition to format chapters Header as: Chapter
+\let\mytheChapter\thechapter
+
+\renewcommand\thechapter{\arabic{chapter}}
+\newcommand*{\Chapter}{}
+\let\Chapter\chapter
+\newcommand*{\resetraggedsection}{\let\raggedsection\raggedright}
+\renewcommand*{\chapter}{%
+\renewcommand*{\raggedsection}{\centering\aftergroup\resetraggedsection}%
+\Chapter}
+\renewcommand\thesection{{\mytheChapter}.\arabic{section}}
+
+\newcommand*{\AddChap}{}
+\let\AddChap\addchap
+\renewcommand*{\addchap}{%
+\renewcommand*{\raggedsection}{\centering\aftergroup\resetraggedsection}%
+\AddChap}
+
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsfonts} 
+\usepackage{mathrsfs}
+
+\usepackage{tikz}
+
+\usetikzlibrary{mindmap}
+\usetikzlibrary{decorations.pathmorphing} % noisy shapes
+\usetikzlibrary{fit}					% fitting shapes to coordinates
+\usetikzlibrary{backgrounds}	% drawing the background after the foreground
+
+% Package um Zeilenabstand zu steuern
+\usepackage{setspace}
+
+
+%Tipp von Krys Lehmann, er meint das die Bilder nicht an der gewünschten Stelle auftauchen
+% weil dieses Packet nicht eingebunden wird
+%----------------------
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{multicol}
+%----------------------
+
+%Einstellungen der Seitenränder
+% for twoside
+%\usepackage[inner=2cm,outer=4cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+% for oneside
+%\usepackage[left=4cm,right=2cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+%\usepackage{geometry}
+%\geometry{bindingoffset=40mm,top=20mm,textheight=245mm,textwidth=160mm,heightrounded,right=20mm,head=14.5pt}
+
+% Für nicht globale Seitenränder
+\usepackage{anysize}
+\usepackage{geometry}
+\geometry{textwidth=150mm}
+
+% Die "Standard-Header" für deutsche Dokumente
+\usepackage[latin1]{inputenc}    % ISO-8859-1 bzw. Latin1 als Encoding
+\usepackage[T1]{fontenc}         % T1 Schriften verwenden (sieht besser aus)
+%\usepackage[ngerman]{babel}      % Neue deutsche Rechtschreibung und Übersetzungen
+
+% "Schönere" Schriften einbinden
+\usepackage{mathpazo}            % Serifen-Font mit passendem Math-Font
+\usepackage[scaled=.95]{helvet}  % Serifenloser Font passend zu mathpazo
+\usepackage{courier}             % "Schönerer" Festbreiten-Font
+
+% Koma-Script Paket zum setzen vom Kopf- und Fusszeilen einbinden
+\usepackage{scrpage2}
+% Seitenstil für normale Seiten auf scrheadings setzen
+% Für Kapitelanfang und ähnliches wird scrplain verwendet
+\pagestyle{scrheadings}
+% Kopf- und Fusszeile löschen
+\clearscrheadfoot
+% Automarkierungen verwenden \automark[rechts]{links}
+% Statt \leftmark und \rightmark kann dann bei
+% Koma-Script einfach \headmark verwendet werden
+\automark[section]{chapter}
+% Kopfzeile für scrplain und scrheadings setzen
+% \*head[scrplain]{scrheadings}
+%\ihead[Innen]{Innen}
+%\chead[Mitte]{Mitte}
+\ohead[\scshape\large\textbf{\headmark}]
+{\scshape\large\textbf{\headmark}}
+% Fusszeile für scrplain und scrheadings setzen
+% \*foot[scrplain]{scrheadings}
+\ifoot{Dionysios Satikidis}
+%\cfoot[Mitte]{Mitte}
+\ofoot[\pagemark]{\pagemark}
+% Trennlinien für Kopf- und Fusszeile formatieren
+% Siehe Optionen der Dokumentklasse
+%\setheadtopline{2pt}
+\setheadsepline{.4pt}
+\setfootsepline{.4pt}
+%\setfootbotline{2pt}
+
+% Paket zum Einbinden von Quellcode als Listings
+% Hinweis: UTF-8 Encoding führt zu Problemen mit Umlauten
+\usepackage{listings}
+
+\usepackage{color}
+
+% Für sidewaysfigure
+\usepackage{rotating}
+
+% Querformat
+\usepackage{lscape}
+
+% Mehrere Literaturverzeichnisse
+\usepackage{multibib}
+\newcites{bib,ref}{Bibliography,References}
+
+% Package for pdf includes
+\usepackage{pdfpages}
+
+% Caption package für Konfiguration von Textgröße
+\usepackage[small,bf]{caption}
+
+%WORKAROUND FÜR FEHLERHAFTES LISTINGS PAKET
+\makeatletter
+\@ifundefined{float@listhead}{}{%
+    \renewcommand*{\lstlistoflistings}{%
+        \begingroup
+            \if@twocolumn
+                \@restonecoltrue\onecolumn
+            \else
+                \@restonecolfalse
+            \fi
+            \float@listhead{\lstlistlistingname}%
+            \setlength{\parskip}{\z@}%
+            \setlength{\parindent}{\z@}%
+            \setlength{\parfillskip}{\z@ \@plus 1fil}%
+            \@starttoc{lol}%
+            \if@restonecol\twocolumn\fi
+        \endgroup
+    }%
+}
+\makeatother
+
+% Formatierung der Listings
+\lstset{
+captionpos=b,                % Beschriftung unterhalb (bottom)
+numbers=left,                % Zeilennummern links
+frame=trbl,                  % Rahmen zeichnen (top, right, bottom, left)
+basicstyle=\small\ttfamily,  % Festbreitenschrift verwenden (small)
+language=Java,               % Sprache auf Java einstellen
+emph={function, require_once, \$this, print, parent, @author @package, @copyright, @name, @see, @access, @return, @var},
+emphstyle=\color{black}\textbf,
+numbers=left,
+numberstyle=\tiny,
+showstringspaces=false
+}
+
+% WORKAROUND FÜR FOOTNOTES IN TABLES ----------------
+\newcounter{myfootertablecounter}
+%\setcounter{myfootertablecounter}{18}
+
+\newcommand\myfootnotemark{%
+%\refstepcounter{footnote}%
+\addtocounter{footnote}{1}%
+\footnotemark[\thefootnote]%
+}%
+
+\newcommand\myfootnotetext[1]{%
+\addtocounter{myfootertablecounter}{1}
+\footnotetext[\value{myfootertablecounter}]{#1}
+}
+
+% Abstand zwischen Kopfzeile und Kapitelüberschrift verringern
+\renewcommand*{\chapterheadstartvskip}{\vspace{-1.8\baselineskip}} 
+
+% ----------------------------------------------------
+
+% Paket für PDF Metainformation
+\usepackage[	pdftitle={Interim Report Master Thesis - Dionysios Satikidis, Brunel University West London},
+		pdfauthor={Dionysios Satikidis},
+		pdfsubject={Dissertation Interim Report Master Thesis},
+		pdfkeywords={},
+		plainpages=false,
+		pdfpagelabels]{hyperref}
+
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+
+% Paket zur Erstellung von Stichwort- und Abkürzungverzeichnissen einbinden
+%\usepackage[acronym=true, toc=true]{glossary}
+
+% Package glossaries: http://www.ctan.org/pkg/glossaries
+\usepackage[acronym,toc]{glossaries}		% Support for glossaries and acronyms [MUST be loaded after the hyperref package]
+% Package subfig für mehrere bilder in einem
+\usepackage{subfigure}  %Mod von Dio 22.06.2011
+\usepackage{graphicx} %Mod von Dio 25.06.2011
+
+\usepackage{appendix}
+
+
+% Format neu setzen
+%\setacronymnamefmt{\gloshort}
+%\setacronymdescfmt{\glolong}
+
+% Symbolverzeichnis definieren (Erweiterung des Standardumfangs)
+%\newglossarytype[slg]{symbolslist}{syg}{syi}
+% Stichwortverzeichnis erstellen
+%\makeglossary
+% Abkürzugsverzeichnis erstellen
+%\makeacronym
+% Selbst definiertes Symbolverzeichnis erstellen
+%\makesymbolslist
+% Stil der einzelnen Verzeichnisse festlegen (Siehe glossary Dokumentation)
+%\setglossarystyle[symbolslist]{style=long, number=none}
+%\setglossarystyle[acronym]{style=long, number=none}
+%\setglossarystyle[glossary]{style=altlist, number=none}
+
+% (Vor-) Definition von Einträgen für Stichwort-, Abkürzungs- und Symbolverzeichnis
+% Diese Befehle können auch mitten im Dokument benutzt werden
+%\glossary{name={xyz}, description={...}}
+
+\input{glossaries.tex}				% Before \begin{document}
+
+
+
+\newacronym{UAV}{UAV}{Unmanned Aerial Vehicle(s)}{}
+\newacronym{HUAV}{HUAV}{Hovering Unmanned Aerial Vehicle(s)}{}
+\newacronym{GUAV}{GUAV}{Gliding Unmanned Aerial Vehicle(s)}{}
+\newacronym{MAV}{MAV}{Micro Aerial Vehicle(s)}{}
+\newacronym{DOF}{DOF}{Degrees of Freedom}{}
+\newacronym{IMU}{IMU}{Inertial Measurement Unit}{}
+\newacronym{MEMS}{MEMS}{Micro-Electro-Mechanical System}{}
+\newacronym{HSE}{HSE}{University of Applied Sciences Esslingen}{}
+\newacronym{CCU}{CCU}{Central Control Unit}{}
+\newacronym{RF}{RF}{Radio Frequency}{}
+\newacronym{SBC}{SBC}{Single Board Computer(s)}{}
+\newacronym{API}{API}{Application Programming Interface(s)}{}
+\newacronym{FPGA}{FPGA}{Field-Programmable Gate Array}{}
+\newacronym{SLAM}{SLAM}{Simultaneous Localization And Mapping}{}
+\newacronym{PID}{PID}{Proportional-Integral-Derivative}{}
+\newacronym{MIMO}{MIMO}{Multiple-Input and Multiple-Output}{}
+\newacronym{SISO}{SISO}{Single-Input and Single-Output}{}
+\newacronym{MBD}{MBD}{Model Based Design}{}
+\newacronym{HIL}{HIL}{Hardware In the Loop}{}
+\newacronym{MCU}{MCU}{Microcontroller Unit}{}
+\newacronym{DSP}{DSP}{Digital Signal Processor}{}
+\newacronym{EOM}{EOM}{Equations of Motion}{}
+\newacronym{GVV}{GVV}{Generalized Velocity Vector}{}
+\newacronym{GPV}{GPV}{Generalized Position Vector}{}
+\newacronym{GAV}{GAV}{Generalized Acceleration Vector}{}
+\newacronym{WRT}{WRT}{with respect to}{}
+\newacronym{OFCA}{OFCA}{Off-board Camera}{}
+\newacronym{ONCA}{ONCA}{On-board Camera}{}
+\newacronym{ONIP}{ONIP}{On-board Image Processing}{}
+\newacronym{OFIP}{OFIP}{Off-board Image Processing}{}
+\newacronym{HWBIP}{HWBIP}{Hardware-Based Image Processing}{}
+\newacronym{SWBIP}{SWBIP}{Software-Based Image Processing}{}
+\newacronym{SVTF}{SVTF}{Set-Value-Transfer-Function}{}
+\newacronym{EVTF}{EVTF}{Error-Value-Transfer-Function}{}
+\newacronym{TF}{TF}{Transfer Function}{}
+\newacronym{CLCS}{CLCS}{Closed Loop Control System(s)}{}
+\newacronym{CACD}{CACD}{Camera Calibration Domain}{}
+\newacronym{SOAD}{SOAD}{Shift of the Optical Axis Domain}{}
+\newacronym{RPM}{RPM}{Revolutions per Minute}{}
+\newacronym{PCB}{PCB}{Printed Circuit Board}{}
+\newacronym{GPS}{GPS}{Global Position System}{}
+\newacronym{DSM}{DSM}{Domain Specific Modelling}{}
+\newacronym{MATLAB}{MATLAB}{MATrix LABoratory}{}
+\newacronym{ODE}{ODE}{Ordinary Differential Equation(s)}{}
+\newacronym{4GL}{4GL}{Fourth Generation Language}{}
+\newacronym{OpenCV}{OpenCV}{Open Computer Vision}{}
+\newacronym{CV}{CV}{Computer Vision}{}
+\newacronym{MLL}{MLL}{Machine Learning Library}{}
+\newacronym{HighGUI}{HighGUI}{High Graphical User Interface}{}
+\newacronym{GUI}{GUI}{Graphical User Interface}{}
+\newacronym{XML}{XML}{Extensible Markup Language}{}
+\newacronym{I_O}{$I/O$}{Input/Output}{}
+\newacronym{ECT}{ECT}{Enhanced Capture Timer}{}
+\newacronym{SCI}{SCI}{Serial Communication Interface}{}
+\newacronym{BDM}{BDM}{Background Debug Mode}{}
+\newacronym{IIC}{IIC}{Inter-Integrated Circuit}{}
+\newacronym{SPI}{SPI}{Serial Peripheral Interface}{}
+\newacronym{ADC}{ADC}{Analog to Digital Converter}{}
+\newacronym{LSb}{LSb}{Least Significant bit}{}
+\newacronym{MC}{MC}{Microcontroller}{}
+\newacronym{CT}{CT}{Cycle Time(s)}{}
+\newacronym{HAL}{HAL}{Hardware Abstraction Layer}{}
+\newacronym{TT}{TT}{Time Triggered}{}
+\newacronym{ISR}{ISR}{Interrupt Service Routine}{}
+\newacronym{DMS}{DMS}{Deadline Monotonic Scheduling}{}
+\newacronym{OC}{OC}{Optical Correction}{}
+\newacronym{OF}{OF}{Optical Flow}{}
+\newacronym{FOE}{FOE}{Focus Of Expansion}{}
+\newacronym{RANSAC}{RANSAC}{Random Sample Consensus}{}
+\newacronym{FNC}{FNC}{Flow Number Calculation}{}
+\newacronym{Tform}{Tform}{Transformation Matrix}{}
+\newacronym{FPS}{FPS}{Frames per Second}{}
+\newacronym{COOF}{COOF}{Corner Detection Optical Flow}{}
+\newacronym{BMOF}{BMOF}{Block Matching Optical Flow}{}
+\newacronym{UND}{UND}{Underground}{}
+\newacronym{ALGO}{ALGO}{Algorithm}{}
+\newacronym{BS}{BS}{Block Size}{}
+\newacronym{IS}{IS}{Image Size}{}
+\newacronym{VIP}{VIP}{Video and Image Processing}{}
+\newacronym{OSEK}{OSEK}{Offene Systeme und Schnittstellen für die Elektronik im Kraftfahrzeug}{}
+\newacronym{DOSEK}{DOSEK}{Didactic OSEK}{}
+\newacronym{CMOS}{CMOS}{Complementary Metal Oxide Semiconductor}{}
+
+
+%Mathematical Symbols
+
+%E-Frame GAV GVV GPV definitions
+%Axis
+\newmathsymbol{sym_X_E}{$X_E$}{X-axis \glsname{WRT}~ E-frame}{1}
+\newmathsymbol{sym_Y_E}{$Y_E$}{Y-axis \glsname{WRT}~ E-frame}{2}
+\newmathsymbol{sym_Z_E}{$Z_E$}{Z-axis \glsname{WRT}~ E-frame}{3}
+
+%Angles
+\newmathsymbol{sym_phi}{$\phi$}{Angular quadrocopter position around \gls{sym_X_E} \glsname{WRT}~ E-frame (Roll)}{4}
+\newmathsymbol{sym_theta}{$\theta$}{Angular quadrocopter position around \gls{sym_Z_E} \glsname{WRT}~ E-frame (Yaw)}{5}
+\newmathsymbol{sym_psi}{$\psi$}{Angular quadrocopter position around \gls{sym_Y_E} \glsname{WRT}~ E-frame (Pitch)}{6}
+
+%Translations
+\newmathsymbol{sym_x_e}{$x_e$}{Linear quadrocopter position along \gls{sym_X_E} \glsname{WRT}~ E-frame}{7}
+\newmathsymbol{sym_y_e}{$y_e$}{Linear quadrocopter position along \gls{sym_Y_E} \glsname{WRT}~ E-frame}{8}
+\newmathsymbol{sym_z_e}{$z_e$}{Linear quadrocopter position along \gls{sym_Z_E} \glsname{WRT}~ E-frame}{9}
+
+%Translation Velocities
+\newmathsymbol{sym_dot_x_e}{$\dot x_e$}{Linear quadrocopter velocity along \gls{sym_X_E} \glsname{WRT}~ E-frame}{10}
+\newmathsymbol{sym_dot_y_e}{$\dot y_e$}{Linear quadrocopter velocity along \gls{sym_Y_E} \glsname{WRT}~ E-frame}{11}
+\newmathsymbol{sym_dot_z_e}{$\dot z_e$}{Linear quadrocopter velocity along \gls{sym_Z_E} \glsname{WRT}~ E-frame}{12}
+
+%Translation Accelerations
+\newmathsymbol{sym_ddot_x_e}{$\ddot x_e$}{Linear acceleration of quadrocopter along \gls{sym_X_E} \glsname{WRT}~ E-frame}{13}
+\newmathsymbol{sym_ddot_y_e}{$\ddot y_e$}{Linear acceleration of quadrocopter along \gls{sym_Y_E} \glsname{WRT}~ E-frame}{14}
+\newmathsymbol{sym_ddot_z_e}{$\ddot z_e$}{Linear acceleration of quadrocopter along \gls{sym_Z_E} \glsname{WRT}~ E-frame}{15}
+
+%B-Frame GAV GVV GPV definitions
+%Axis
+\newmathsymbol{sym_X_B}{$X_B$}{X-axis \glsname{WRT}~ B-frame}{16}
+\newmathsymbol{sym_Y_B}{$Y_B$}{Y-axis \glsname{WRT}~ B-frame}{17}
+\newmathsymbol{sym_Z_B}{$Z_B$}{Z-axis \glsname{WRT}~ B-frame}{18}
+
+%Angles
+\newmathsymbol{sym_p}{$p$}{Angular quadrocopter velocity around \gls{sym_X_B} \glsname{WRT}~ B-frame (Roll)}{19}
+\newmathsymbol{sym_q}{$q$}{Angular quadrocopter velocity around \gls{sym_Y_B} \glsname{WRT}~ B-frame (Pitch)}{20}
+\newmathsymbol{sym_r}{$r$}{Angular quadrocopter velocity around \gls{sym_Z_B} \glsname{WRT}~ B-frame (Yaw)}{21}
+\newmathsymbol{sym_r_g}{$r_g$}{Angular velocity \gls{sym_r} measured by gyroscope}{21}
+\newmathsymbol{sym_r_of}{$r_{of}$}{Angular velocity \gls{sym_r} measured by optical flow sensor}{21}
+
+%Translations
+\newmathsymbol{sym_x_b}{$x_b$}{Linear quadrocopter position along \gls{sym_X_B} \glsname{WRT}~ B-frame}{22}
+\newmathsymbol{sym_y_b}{$y_b$}{Linear quadrocopter position along \gls{sym_Y_B} \glsname{WRT}~ B-frame}{23}
+\newmathsymbol{sym_z_b}{$z_b$}{Linear quadrocopter position along \gls{sym_Z_B} \glsname{WRT}~ B-frame}{24}
+
+%Translation Velocities
+\newmathsymbol{sym_u}{$u$}{Linear quadrocopter velocity along \gls{sym_X_B} \glsname{WRT}~ B-frame}{25}
+\newmathsymbol{sym_v}{$v$}{Linear quadrocopter velocity along \gls{sym_Y_B} \glsname{WRT}~ B-frame}{26}
+\newmathsymbol{sym_w}{$w$}{Linear quadrocopter velocity along \gls{sym_Z_B} \glsname{WRT}~ B-frame}{27}
+
+%Translation Accelerations
+\newmathsymbol{sym_dot_u}{$\dot u$}{Linear quadrocopter acceleration along \gls{sym_X_B} \glsname{WRT}~ B-frame}{28}
+\newmathsymbol{sym_dot_v}{$\dot v$}{Linear quadrocopter acceleration along \gls{sym_Y_B} \glsname{WRT}~ B-frame}{29}
+\newmathsymbol{sym_dot_w}{$\dot w$}{Linear quadrocopter acceleration along \gls{sym_Z_B} \glsname{WRT}~ B-frame}{30}
+
+
+
+\newmathsymbol{sym_omega}{$\omega$}{Speed of rotation}{101}
+\newmathsymbol{sym_delta_omega}{$\Delta\omega$}{Deviation of rotation speed}{102}
+\newmathsymbol{sym_xi}{$\xi$}{\glsname{GPV}~ \glsname{WRT}~ E-frame}{103}
+\newmathsymbol{sym_dot_xi}{$\dot\xi$}{\glsname{GVV}~ \glsname{WRT}~ the E-frame}{104}
+\newmathsymbol{sym_nu}{$\nu$}{\glsname{GVV}~ \glsname{WRT}~ the B-frame}{105}
+\newmathsymbol{sym_J_Theta}{$J_{\Theta}$}{Transformation matrix from B-frame to E-frame}{106}
+\newmathsymbol{sym_R_Theta}{$R_{\Theta}$}{Rotation transformation matrix from B-frame to E-frame}{107}
+\newmathsymbol{sym_T_Theta}{$T_{\Theta}$}{Translation transformation matrix from B-frame to E-frame}{108}
+\newmathsymbol{sym_Gamma_E}{$\Gamma^E$}{Linear position vector \glsname{WRT}~ the E-frame}{109}
+\newmathsymbol{sym_Theta_E}{$\Theta^E$}{Angular position vector \glsname{WRT}~ the E-frame}{110}
+\newmathsymbol{sym_V_B}{$V^B$}{Linear velocity vector \glsname{WRT}~ the B-frame}{111}
+\newmathsymbol{sym_omega_B}{$\omega^B$}{Angular velocity vector \glsname{WRT}~ the B-frame}{112}
+\newmathsymbol{sym_dot_Gamma_E}{$\dot\Gamma^E$}{Linear velocity vector \glsname{WRT}~ the E-frame}{113}
+\newmathsymbol{sym_ddot_Gamma_E}{$\ddot\Gamma^E$}{Linear acceleration vector \glsname{WRT}~ the E-frame}{113}
+
+\newmathsymbol{sym_M_B}{$M_{B}$}{System inertia matrix \glsname{WRT}~ the B-frame}{114}
+\newmathsymbol{sym_M_H}{$M_{H}$}{System inertia matrix \glsname{WRT}~ the H-frame}{115}
+
+\newmathsymbol{sym_C_B_nu}{$C_{B}(\nu)$}{Coriolis-centripetal matrix \glsname{WRT}~ the B-frame}{116}
+\newmathsymbol{sym_C_H_zeta}{$C_{H}(\zeta)$}{Coriolis-centripetal matrix \glsname{WRT}~ the H-frame}{117}
+
+\newmathsymbol{sym_m}{$m$}{Mass of body}{118}
+\newmathsymbol{sym_I_nxn}{$I_{nxn}$}{Identity matrix of dimension n times n}{119}
+\newmathsymbol{sym_I}{$I$}{Body inertia matrix}{120}
+
+\newmathsymbol{sym_G_B_xi}{$G_B(\xi)$}{Gravitational vector \glsname{WRT}~ the B-frame}{121}
+\newmathsymbol{sym_G_H}{$G_H$}{Gravitational vector \glsname{WRT}~ the H-frame}{122}
+
+\newmathsymbol{sym_O_B_nu}{$O_B(\nu)$}{Gyroscopic propeller matrix \glsname{WRT}~ B-frame}{123}
+\newmathsymbol{sym_O_H_zeta}{$O_H(\zeta)$}{Gyroscopic propeller matrix \glsname{WRT}~ H-frame}{124}
+
+\newmathsymbol{sym_Omega}{$\Omega$}{Sum of propellers' speed}{125}
+
+\newmathsymbol{sym_E_B}{$E_B$}{Movement matrix \glsname{WRT}~ B-frame}{126}
+\newmathsymbol{sym_E_H_xi}{$E_{H}(\xi)$}{Movement matrix \glsname{WRT}~ H-frame}{127}
+
+
+\newmathsymbol{sym_b}{$b$}{Factor of thrust}{128}
+\newmathsymbol{sym_d}{$d$}{Factor of drag}{129}
+\newmathsymbol{sym_l}{$l$}{Distance between centre of quadrocopter and centre of propeller}{130}
+\newmathsymbol{sym_dot_nu}{$\dot\nu$}{\glsname{GAV}~ \glsname{WRT}~ B-frame}{131}
+
+\newmathsymbol{sym_zeta}{$\zeta$}{\glsname{GVV}~ \glsname{WRT}~ H-frame}{132}
+\newmathsymbol{sym_dot_zeta}{$\dot\zeta$}{\glsname{GAV}~ \glsname{WRT}~ H-frame}{133}
+
+\newmathsymbol{sym_F_B}{$F^B$}{Forces vector of quadrocopter \glsname{WRT}~ B-frame}{134}
+\newmathsymbol{sym_tau_B}{$\tau^B$}{Torques vector of quadrocopter \glsname{WRT}~ B-frame}{135}
+\newmathsymbol{sym_dot_V_B}{$\dot V^B$}{Linear acceleration vector \glsname{WRT}~ the B-frame}{136}
+\newmathsymbol{sym_dot_omega_B}{$\dot \omega^B$}{Angular acceleration vector \glsname{WRT}~ the B-frame}{137}
+
+\newmathsymbol{sym_U_1}{$U_1$}{Vertical thrust \glsname{WRT} the B-frame}{138}
+\newmathsymbol{sym_U_2}{$U_2$}{Roll torque \glsname{WRT} the B-frame}{139}
+\newmathsymbol{sym_U_3}{$U_3$}{Pitch torque \glsname{WRT} the B-frame}{140}
+\newmathsymbol{sym_U_4}{$U_4$}{Yaw torque \glsname{WRT} the B-frame}{141}
+
+\newmathsymbol{sym_F_n}{$F_{n\{X_B,Y_B,Z_B\}}$}{Thrust component of rotor n along \ensuremath{X_B}, \ensuremath{Y_B} or \ensuremath{Z_B}}{142}
+
+\newmathsymbol{sym_BCSV}{$S^{2}_{N-1}$}{Bias-corrected Sample Variance(s)}{143}
+
+
+%\symbolslist{name={$x$}, description={Eine ganzzahlige Variable, die das Ergebnis einer Berechnung darstellt}, sort=symbolpi}
+%\symbolslist{name={$y$}, description={Eine ganzzahlige Variable, die als Parameter für eine Berechnung dient}, sort=symbolpi}
+
+% Paket für Wortindex einbinden
+\usepackage{makeidx}
+% Wortindex erzeugen
+\makeindex
+
+% Paket zum generieren von Blindtext
+%\usepackage{blindtext}
+
+% Paket zum Einbinden von Bildern
+\usepackage{graphicx}
+%\usepackage{rac}         % Use Rackham thesis style file
+
+
+% Beginn des eigentlichen Dokuments
+\begin{document}
+
+\glsaddall					% Add all entries that have beed defined
+
+% Titelseite (verwendet pagestyle=empty)
+\begin{titlepage}
+% Seitenränder für die Titleseite
+%\marginsize{left}{right}{top}{bottom} 
+\marginsize{3cm}{3cm}{2cm}{2cm}
+\begin{center}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{9cm}
+  	\begin{tabular}{c}
+		 \large School of Engineering \& Design \\[0.2cm]
+		 \large Electronic \& Computer Engineering
+		\end{tabular}
+  \end{minipage}
+  \begin{minipage}{4cm}
+    \includegraphics[width=4cm]{graphic/Brunel_logo.png}  
+  \end{minipage}
+\end{figure}
+
+\vspace{1cm} \Large MSc Distributed Computing Systems Engineering\\
+\vspace{2cm} \huge Brunel University West London\\
+
+\vspace{1.5cm} \Huge Simulation and Performance Analysis\\ 
+of a Distributed Position Correction\\
+Scheme for Unmanned Aerial Vehicles\\
+
+\vfill{}
+
+\normalsize
+\begin{tabular}{c}
+\Large Dionysios Satikidis\\[1cm]
+\Large Supervisor: Dr. Marios Hadjinicolaou\\[1cm]
+\large July / 2011
+\end{tabular}
+
+\vspace{1cm} \large A Dissertation submitted in partial fulfillment of the\\
+requirements for the degree of Master of Science\\
+
+\end{center}
+\end{titlepage}
+
+\begin{titlepage}
+% Seitenränder für die Titleseite
+%\marginsize{left}{right}{top}{bottom} 
+\marginsize{3cm}{3cm}{2cm}{2cm}
+\begin{center}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{9cm}
+  	\begin{tabular}{c}
+		 \large School of Engineering \& Design \\[0.2cm]
+		 \large Electronic \& Computer Engineering
+		\end{tabular}
+  \end{minipage}
+  \begin{minipage}{4cm}
+    \includegraphics[width=4cm]{graphic/Brunel_logo.png}  
+  \end{minipage}
+\end{figure}
+
+\vspace{1cm} \Large MSc Distributed Computing Systems Engineering\\
+\vspace{2cm} \huge Brunel University West London\\
+
+\vspace{1.5cm} \Huge Simulation and Performance Analysis\\ 
+of a Distributed Position Correction\\
+Scheme for Unmanned Aerial Vehicles\\
+
+\vfill{}
+
+\normalsize
+\begin{tabular}{c}
+\Large Dionysios Satikidis\\[1cm]
+\Large Signature: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\\[1cm]
+\end{tabular}
+
+\vspace{1cm} 
+\begin{figure}[htbp]
+	\centering
+  \begin{minipage}{13cm}
+%  	\begin{tabular}{c}
+		 \large \textbf{Declaration:} \textit{I have read and I understand the MSc
+dissertation guidelines on plagiarism and cheating, and I
+certify that this submission fully complies with these
+guidelines.}
+%		\end{tabular}
+  \end{minipage}
+\end{figure}
+
+\end{center}
+\end{titlepage}
+
+% Seitenränder für das Dokument
+%\marginsize{left}{right}{top}{bottom} 
+\marginsize{4cm}{2cm}{2cm}{2cm}
+
+% "Frontmatter" beginnen (Formatierung umschalten)
+% Platz für Inhaltsverzeichnis und anderes
+\frontmatter
+
+\input{chapters/c001Abstract.tex}
+\input{chapters/c002Acknowledgements.tex}
+
+% Inhaltsverzeichnis ausgeben
+\tableofcontents
+
+% Stichwort- und Abkürzungsverzeichnis ausgeben
+%\def\glossaryname{Stichwortverzeichnis}
+%\printglossary
+%\def\acronymname{List of Abbreviations}
+%\printacronym
+%\def\symbolslistname{Symbolverzeichnis}
+%\printsymbolslist
+% ...
+\printglossary[type=\acronymtype,style=UndottedTabList,title=List of Abbreviations,toctitle=List of Abbreviations]
+\printglossary[type=symbols,nonumberlist,style=UndottedTabList,title=List of Symbols,toctitle=List of Symbols]
+% ...
+\printglossary[type=main,style=long4col,numberedsection=autolabel]
+
+% Abbildungsverzeichnis ausgeben
+\listoffigures
+% Tabellenverzeichnis ausgeben
+%\listoftables
+% Das Listings-Verzeichnis scheint mit manchen Versionen vom Koma-Script
+% bzw. des Listings Pakets nicht ohne weiteres zu funktionieren
+%\lstlistoflistings
+
+% ############################################################################################
+
+
+% Hauptteil beginnen (Formatierung umschalten)
+\mainmatter
+\doublespacing
+
+% -----------------------------------------------------------------------------------------
+\input{chapters/c01Introduction.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c012ProjectOrganisation.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c02LiteratureReview.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c03DesignAndImplementation.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c04ExperimentalResultsAndAnalysis.tex}
+% -----------------------------------------------------------------------------------------
+\input{chapters/c05ConclusionsAndFurtherWork.tex}
+% -----------------------------------------------------------------------------------------
+
+\renewcommand\thechapter{\mytheChapter}
+\renewcommand\thesection{\Alph{chapter}.\arabic{section}}
+%\KOMAoptions{chapterprefix=true}
+\appendix
+
+%\input{chapters/c06Appendix.tex}
+% -----------------------------------------------------------------------------------------
+%\citeref[tt]{Fac08,Sik08,Tra10,Ter10,Ahr08,EasLamTur09,Boe88,Lue71,BloWeiScaSie10,Can86,WilKleRei07,AudBurRicWel01,...
+%HorSch80,DouPeu73,LucKan81,Luc84,AltOstMah02,BeyChrFlo09,StoBaiHayMil09,LanSuePro08,LanSuePro09,AltOstTay03,...
+%MicMelLinKum10,MelMicKum10,GurStuAchDotHirRus07,EckDreGer09,EttNecIfjWas04,BulHeiEst02,...
+%GrzGriBur09,WenMasZel10,BluHolLinMolSurViaTre08,BourMurSie04,Bou07,CasLozAle05,Tip08,Bre08,BarFleBea94,...
+%KelKulLinZim07,Kul10,TsaLen89,ZhaOst99,GriJohBai03,SchSunVetWebFriSat10,CzeSat10,...
+%Wei09,FraIpa09,SteKel09,SteKelJuhTol08,Fea08,DorBis01,Pre01,GarKae08,Mor07,Rud06,OpenCV2_0,...
+%Wei11,EsmSna08,Mat10,MathWorks11,Simulink11,Matlab11,HSE10,Hay11,Koh11,MatlabSDO11,...
+%LIS05,ADX07,HCS12X07,BLCL10,MIC06,XBee09}
+%
+%\citebib[tt]{Fac08,Sik08,Tra10,Ter10,Ahr08,EasLamTur09,Boe88,Lue71,BloWeiScaSie10,Can86,WilKleRei07,AudBurRicWel01,...
+%HorSch80,DouPeu73,LucKan81,Luc84,AltOstMah02,BeyChrFlo09,StoBaiHayMil09,LanSuePro08,LanSuePro09,AltOstTay03,...
+%MicMelLinKum10,MelMicKum10,GurStuAchDotHirRus07,EckDreGer09,EttNecIfjWas04,BulHeiEst02,...
+%GrzGriBur09,WenMasZel10,BluHolLinMolSurViaTre08,BourMurSie04,Bou07,CasLozAle05,Tip08,Bre08,BarFleBea94,...
+%KelKulLinZim07,Kul10,TsaLen89,ZhaOst99,GriJohBai03,SchSunVetWebFriSat10,CzeSat10,...
+%Wei09,FraIpa09,SteKel09,SteKelJuhTol08,Fea08,DorBis01,Pre01,GarKae08,Mor07,Rud06,OpenCV2_0,...
+%Wei11,EsmSna08,Mat10,MathWorks11,Simulink11,Matlab11,HSE10,Hay11,Koh11,MatlabSDO11,...
+%LIS05,ADX07,HCS12X07,BLCL10,MIC06,XBee09}
+
+% ############################################################################################
+
+%\newcommand*{\Chapter}{}
+%\let\Chapter\chapter
+%\newcommand*{\resetraggedsection}{\let\raggedsection\raggedright}
+%\renewcommand*{\chapter}{%
+%\renewcommand*{\raggedsection}{\centering\aftergroup\resetraggedsection}%
+%\Chapter}
+%\renewcommand\thesection{{\mytheChapter}.\arabic{section}}
+
+\renewcommand\thechapter{}
+\KOMAoptions{
+   chapterprefix=false
+}
+
+% Alle Einträge der BibTeX Datenbank "zitieren"
+%\nocitebib*
+%\nociteref*
+
+% Auswahl der BibTeX Datenbank für das Literaturverzeichnis
+\bibliographyref{literature/literatur}
+\bibliographystyleref{plain}
+
+\bibliographybib{literature/literatur}
+\bibliographystylebib{alpha}
+
+%\bibliography{literature/references}
+%\bibliography{literature/literatur}
+
+% Einstellen des Bibliography-Stils für das Literaturverzeichnis
+%\bibliographystyle{plain}
+
+% ------------------------------------------------------------------
+% Ausgabe des Wortindex
+% idxtotoc Option scheint nicht zu funktionieren
+%\clearpage
+%\addcontentsline{toc}{chapter}{Index}
+%\printindex
+ 
+% -----------------------------------------------------------------------------------------
+% Include the former interim report
+%\includepdf[pages=-]{../../interimReport/InterimReport/Interim_Report_Dionysios_Satikidis.pdf}
+% -----------------------------------------------------------------------------------------
+% ############################################################################################
+
+% Laut Markus Kohm wird \backmatter normal nicht benötigt
+%\backmatter
+\end{document}

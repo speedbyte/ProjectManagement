@@ -1,0 +1,68 @@
+\subsection{State space}\label{chapter_StateSpace}
+
+In this section, the basic knowledge for understanding the so-called state space representation, is described. The state space representation is a mathematical system of a physical model. It consists of inputs and outputs and the state variables that are related to the differential equations of that model. One huge advantage of this idea is, that the Laplace transformation is not needed. Therefore the state space representation is also called 'time-domain approach'. Another opportunity is the usage of initial conditions and that a system can have nonlinear constraints. 
+
+So the next step is to understand the state variables. As already mentioned, every state space system consists of inputs, outputs and state variables. These state variables describe the entire state of the system at any time. The simplest way to decide where to set the state variables, is to put them behind every single integrator block. So the state variable itself is behind this block and the corresponding derivative in front. \myfigref{fig:simpleProcess} shows a simple example for a third order system. This system is called a SISO system, that means 'Single Input Single Output'. In this case \textit{u} is the single input and \textit{y} the single output of the system. Besides, there are MIMO systems having 'Multiple Input Multiple Output'. Chapter \ref{chapter_MIMO} handles them.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=1.00\textwidth]{03_Grafiken/simpleProcess.pdf}
+	\caption{Simple example of a SISO process}
+	\label{fig:simpleProcess}
+\end{figure}
+
+The differential equations for this system look like that:
+\begin{align*}
+	x1' & = -x1 + u\\ 
+	x2' & = x1 - x2\\
+	x3' & = x2 - x3\\
+	y   & = x3
+\end{align*}
+
+These differential equations can be transformed into four matrices:
+\begin{align}
+\bordermatrix[{[]}]{
+    & x1 & x2 & x3 & u \cr
+x1' & \colorbox{yellow}{-1} & \colorbox{yellow}{0}  & \colorbox{yellow}{0}  & \colorbox{red}{1} \cr
+x2' & \colorbox{yellow}{1}  & \colorbox{yellow}{-1} & \colorbox{yellow}{0}  & \colorbox{red}{0} \cr
+x3' & \colorbox{yellow}{0}  & \colorbox{yellow}{1}  & \colorbox{yellow}{-1} & \colorbox{red}{0} \cr
+y   & \colorbox{green}{0}   & \colorbox{green}{0}   & \colorbox{green}{1}   & \colorbox{cyan}{0}
+}
+\end{align}
+
+The most important is the \colorbox{yellow}{A matrix}, called the 'state matrix'. This matrix declares the dependency between all state variables in the whole system. With this matrix it is possible to get information about the response characteristics and the stability of the system. The \colorbox{red}{B matrix} is called the 'input matrix', the \colorbox{green}{C matrix} is called the 'output matrix' and at least the \colorbox{cyan}{D matrix} is called the 'feedforward matrix'. 
+
+In most cases - as well as in this project - there is no direct connection between an input and an output. Therefore the 'D matrix' is a zero matrix. The input matrix B describes the dependency of the state variables to the input vectors. This fact is needed later on, to decide whether the system is controllable or not. The output matrix C describes the same as the input matrix, but for the outputs. The C matrix is used to declare which states are observable.
+
+Now two more terms are mentioned - controllability and observability. 
+
+The controllability first. To achieve a required dynamic behavior of the process, it is necessary, that all of its state variables can be moved by the input independently from each other. 
+
+\begin{align}\label{Q_s}
+	Q_s = \left[b\ \  A*b\ \ A^2*b\ \ \cdots\ \ A^{n-1}*b\right]
+\end{align}
+
+According to Kalman, the controllability matrix $Q_s$ \myeqref{Q_s} has to be full rank of the whole system. This is the most important check in the beginning of any project about state space controlling. For the simple example process the controllability is given, because the rank of the $Q_s$ matrix is three and that system is third order. Figure \ref{fig:Steuerbarkeit} shows the controllability graphical.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=1.00\textwidth]{03_Grafiken/Steuerbarkeit.pdf}
+	\caption{Principle of controllability}
+	\label{fig:Steuerbarkeit}
+\end{figure}
+
+The second term mentioned, is observability. It is very similar to the controllability, but it declares whether each state variable has influence on the output of the system.
+
+\begin{align}\label{Q_b}
+	Q_b = \left[c^T\ \  c^T*A\ \ c^T*A^2\ \ \cdots\ \ c^T*A^{n-1}\right]^T
+\end{align}
+
+The condition according to Kalman is very akin to the condition for controllability - the observability matrix $Q_b$ \myeqref{Q_b} must be full rank of the system. The rank of the $Q_b$ matrix in this example is three - so each state is observable. Figure \ref{fig:Beobachtbarkeit} shows the observability graphical.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=1.00\textwidth]{03_Grafiken/Beobachtbarkeit.pdf}
+	\caption{Principle of observability}
+	\label{fig:Beobachtbarkeit}
+\end{figure}
+

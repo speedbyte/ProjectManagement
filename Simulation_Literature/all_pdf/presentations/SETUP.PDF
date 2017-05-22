@@ -1,0 +1,40 @@
+[PDF]
+Version=1.0
+
+[Package Definition]
+Product=Ax12w
+Version=0.1.0
+Comment=Ax12w
+SetupVariations=Automated, Manual, Uninstall
+
+[Automated Setup]
+CommandLine=SETUP.EXE -s -sms -m
+CommandName=Automated
+UserInputRequired=FALSE
+SupportedPlatforms=Windows95, Windows NT (x86)
+
+[Manual Setup]
+CommandLine=SETUP.EXE
+CommandName=Manual
+UserInputRequired=TRUE
+SupportedPlatforms=Windows95, Windows NT (x86)
+
+[Uninstall Setup]
+CommandLine=UNSTUB.EXE "Ax12w"
+CommandName=Uninstall
+UserInputRequired=FALSE
+SupportedPlatforms=Windows95
+
+[Setup Package for Sharing]
+ShareName=Ax12wsh
+ShareAccess=UserRead, UserWrite, GuestRead, GuestWrite
+
+[Program Item Properties 1]
+CommandLine=ax12w.exe
+Description=Ax12w
+ConfigurationScript=setup.exe -s -sms
+RunMinimized=FALSE
+RunLocalCopylfPresent=FALSE
+DriveMode=UNC
+SupportedPlatforms=Windows95
+DisplayIconInProgGroup=TRUE

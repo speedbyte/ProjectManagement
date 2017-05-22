@@ -1,0 +1,10 @@
+\subsubsection{Observability}\label{chapter_observabilityIMPL}
+
+Just a few words about the observability of the process. Five states are controllable - the rate of phi, theta, psi and the angle of phi and theta. Chapter \ref{chapter_SENSORS} shows the sensors, used in the quadrocopter. For each of the five state variables there is a sensor. That is the reason, why no observer is needed in this project, but - maybe interesting for a further project - the observability of the system is given. So it might be possible to reduce the number of sensors and develop an observer instead. The following code snippet shows that.
+
+\begin{lstlisting}
+	System = linmod('dynamics_reduced_without_motordelay');
+	StateSpace = ss(System.a, System.b, System.c, System.d);
+	rank(obsv(StateSpace)) 
+	% ans = 5                 
+\end{lstlisting}

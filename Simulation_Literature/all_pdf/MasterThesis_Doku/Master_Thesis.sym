@@ -1,0 +1,163 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{glsnumbers}\relax \glsresetentrylist %
+\glossaryentryfield{sym_X_E}{\glsnamefont{$X_E$}}{X-axis \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{ix}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_Y_E}{\glsnamefont{$Y_E$}}{Y-axis \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{ix}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_Z_E}{\glsnamefont{$Z_E$}}{Z-axis \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{ix}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_phi}{\glsnamefont{$\phi $}}{Angular quadrocopter position around \gls {sym_X_E} \glsname {WRT}~ E-frame (Roll)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_theta}{\glsnamefont{$\theta $}}{Angular quadrocopter position around \gls {sym_Z_E} \glsname {WRT}~ E-frame (Yaw)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_psi}{\glsnamefont{$\psi $}}{Angular quadrocopter position around \gls {sym_Y_E} \glsname {WRT}~ E-frame (Pitch)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_x_e}{\glsnamefont{$x_e$}}{Linear quadrocopter position along \gls {sym_X_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_y_e}{\glsnamefont{$y_e$}}{Linear quadrocopter position along \gls {sym_Y_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_z_e}{\glsnamefont{$z_e$}}{Linear quadrocopter position along \gls {sym_Z_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_x_e}{\glsnamefont{$\dot x_e$}}{Linear quadrocopter velocity along \gls {sym_X_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_y_e}{\glsnamefont{$\dot y_e$}}{Linear quadrocopter velocity along \gls {sym_Y_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_z_e}{\glsnamefont{$\dot z_e$}}{Linear quadrocopter velocity along \gls {sym_Z_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_ddot_x_e}{\glsnamefont{$\ddot x_e$}}{Linear acceleration of quadrocopter along \gls {sym_X_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_ddot_y_e}{\glsnamefont{$\ddot y_e$}}{Linear acceleration of quadrocopter along \gls {sym_Y_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_ddot_z_e}{\glsnamefont{$\ddot z_e$}}{Linear acceleration of quadrocopter along \gls {sym_Z_E} \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_X_B}{\glsnamefont{$X_B$}}{X-axis \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{ix\delimN x}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_Y_B}{\glsnamefont{$Y_B$}}{Y-axis \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{ix\delimN x}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_Z_B}{\glsnamefont{$Z_B$}}{Z-axis \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{x}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_p}{\glsnamefont{$p$}}{Angular quadrocopter velocity around \gls {sym_X_B} \glsname {WRT}~ B-frame (Roll)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_q}{\glsnamefont{$q$}}{Angular quadrocopter velocity around \gls {sym_Y_B} \glsname {WRT}~ B-frame (Pitch)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_r_g}{\glsnamefont{$r_g$}}{Angular velocity \gls {sym_r} measured by gyroscope}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_r_of}{\glsnamefont{$r_{of}$}}{Angular velocity \gls {sym_r} measured by optical flow sensor}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_r}{\glsnamefont{$r$}}{Angular quadrocopter velocity around \gls {sym_Z_B} \glsname {WRT}~ B-frame (Yaw)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{x}\delimN 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_x_b}{\glsnamefont{$x_b$}}{Linear quadrocopter position along \gls {sym_X_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_y_b}{\glsnamefont{$y_b$}}{Linear quadrocopter position along \gls {sym_Y_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_z_b}{\glsnamefont{$z_b$}}{Linear quadrocopter position along \gls {sym_Z_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_u}{\glsnamefont{$u$}}{Linear quadrocopter velocity along \gls {sym_X_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_v}{\glsnamefont{$v$}}{Linear quadrocopter velocity along \gls {sym_Y_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_w}{\glsnamefont{$w$}}{Linear quadrocopter velocity along \gls {sym_Z_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_u}{\glsnamefont{$\dot u$}}{Linear quadrocopter acceleration along \gls {sym_X_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_v}{\glsnamefont{$\dot v$}}{Linear quadrocopter acceleration along \gls {sym_Y_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_w}{\glsnamefont{$\dot w$}}{Linear quadrocopter acceleration along \gls {sym_Z_B} \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_omega}{\glsnamefont{$\omega $}}{Speed of rotation}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_delta_omega}{\glsnamefont{$\Delta \omega $}}{Deviation of rotation speed}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_xi}{\glsnamefont{$\xi $}}{\glsname {GPV}~ \glsname {WRT}~ E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_xi}{\glsnamefont{$\dot \xi $}}{\glsname {GVV}~ \glsname {WRT}~ the E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_nu}{\glsnamefont{$\nu $}}{\glsname {GVV}~ \glsname {WRT}~ the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_J_Theta}{\glsnamefont{$J_{\Theta }$}}{Transformation matrix from B-frame to E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_R_Theta}{\glsnamefont{$R_{\Theta }$}}{Rotation transformation matrix from B-frame to E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_T_Theta}{\glsnamefont{$T_{\Theta }$}}{Translation transformation matrix from B-frame to E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_Gamma_E}{\glsnamefont{$\Gamma ^E$}}{Linear position vector \glsname {WRT}~ the E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_Theta_E}{\glsnamefont{$\Theta ^E$}}{Angular position vector \glsname {WRT}~ the E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_V_B}{\glsnamefont{$V^B$}}{Linear velocity vector \glsname {WRT}~ the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_omega_B}{\glsnamefont{$\omega ^B$}}{Angular velocity vector \glsname {WRT}~ the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_ddot_Gamma_E}{\glsnamefont{$\ddot \Gamma ^E$}}{Linear acceleration vector \glsname {WRT}~ the E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_Gamma_E}{\glsnamefont{$\dot \Gamma ^E$}}{Linear velocity vector \glsname {WRT}~ the E-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_M_B}{\glsnamefont{$M_{B}$}}{System inertia matrix \glsname {WRT}~ the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_M_H}{\glsnamefont{$M_{H}$}}{System inertia matrix \glsname {WRT}~ the H-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_C_B_nu}{\glsnamefont{$C_{B}(\nu )$}}{Coriolis-centripetal matrix \glsname {WRT}~ the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_C_H_zeta}{\glsnamefont{$C_{H}(\zeta )$}}{Coriolis-centripetal matrix \glsname {WRT}~ the H-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_m}{\glsnamefont{$m$}}{Mass of body}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_I_nxn}{\glsnamefont{$I_{nxn}$}}{Identity matrix of dimension n times n}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_I}{\glsnamefont{$I$}}{Body inertia matrix}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_G_B_xi}{\glsnamefont{$G_B(\xi )$}}{Gravitational vector \glsname {WRT}~ the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_G_H}{\glsnamefont{$G_H$}}{Gravitational vector \glsname {WRT}~ the H-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_O_B_nu}{\glsnamefont{$O_B(\nu )$}}{Gyroscopic propeller matrix \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_O_H_zeta}{\glsnamefont{$O_H(\zeta )$}}{Gyroscopic propeller matrix \glsname {WRT}~ H-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_Omega}{\glsnamefont{$\Omega $}}{Sum of propellers' speed}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_E_B}{\glsnamefont{$E_B$}}{Movement matrix \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_E_H_xi}{\glsnamefont{$E_{H}(\xi )$}}{Movement matrix \glsname {WRT}~ H-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_b}{\glsnamefont{$b$}}{Factor of thrust}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_d}{\glsnamefont{$d$}}{Factor of drag}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_l}{\glsnamefont{$l$}}{Distance between centre of quadrocopter and centre of propeller}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_nu}{\glsnamefont{$\dot \nu $}}{\glsname {GAV}~ \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_zeta}{\glsnamefont{$\zeta $}}{\glsname {GVV}~ \glsname {WRT}~ H-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_zeta}{\glsnamefont{$\dot \zeta $}}{\glsname {GAV}~ \glsname {WRT}~ H-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_F_B}{\glsnamefont{$F^B$}}{Forces vector of quadrocopter \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_tau_B}{\glsnamefont{$\tau ^B$}}{Torques vector of quadrocopter \glsname {WRT}~ B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_V_B}{\glsnamefont{$\dot V^B$}}{Linear acceleration vector \glsname {WRT}~ the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_dot_omega_B}{\glsnamefont{$\dot \omega ^B$}}{Angular acceleration vector \glsname {WRT}~ the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_U_1}{\glsnamefont{$U_1$}}{Vertical thrust \glsname {WRT} the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_U_2}{\glsnamefont{$U_2$}}{Roll torque \glsname {WRT} the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_U_3}{\glsnamefont{$U_3$}}{Pitch torque \glsname {WRT} the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_U_4}{\glsnamefont{$U_4$}}{Yaw torque \glsname {WRT} the B-frame}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_F_n}{\glsnamefont{$F_{n\{X_B,Y_B,Z_B\}}$}}{Thrust component of rotor n along \ensuremath {X_B}, \ensuremath {Y_B} or \ensuremath {Z_B}}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\glossaryentryfield{sym_BCSV}{\glsnamefont{$S^{2}_{N-1}$}}{Bias-corrected Sample Variance(s)}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{1}}}%
+\end{theglossary}\glossarypostamble

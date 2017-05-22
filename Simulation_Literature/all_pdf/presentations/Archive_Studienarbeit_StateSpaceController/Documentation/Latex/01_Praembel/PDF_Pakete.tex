@@ -1,0 +1,45 @@
+% hyperref
+% ********
+
+% sollte zum Schluss geladen werden, da es viele Dinge neudefiniert
+% -----------------------------------------------------------------
+
+\usepackage[
+    pdftex,
+    bookmarks,
+    bookmarksopen,
+    bookmarksopenlevel=2,
+    bookmarksnumbered=true,
+    %colorlinks=TRUE,
+    colorlinks=FALSE,
+    hyperindex=FALSE,
+    plainpages=FALSE,
+    pdfstartview=FitH,
+    citecolor=blue,
+    urlcolor=blue,
+    pdfpagelabels=true,
+    linkcolor=blue]
+{hyperref}
+
+% nach hyperref-Paket laden!
+% This package tries a solution of the problem with hyperref, that links
+% to floats points below the caption and not at the beginning of the
+% float.
+% Quelle: http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
+\usepackage[all]{hypcap} 
+
+% Funktionen von pdfTeX (Compiler)
+% Kompression einstellen
+% Quelle: http://www2.informatik.hu-berlin.de/~piefel/LaTeX-PS/Archive-2003/V08-hyperref.pdf
+% Wert muß zwischen 0 und 9 liegen
+% 0 ! keine Kompression
+% 1 ! schnellste Kompression
+% 9 ! beste Kompression
+\pdfcompresslevel=2
+
+% Hiermit wird die Standardauflösung für Bilder modifiziert.
+% Syntax : \pdfimageresolution=in DPI
+\pdfimageresolution=600
+
+% Einbinden von pdf-Seiten
+\usepackage{pdfpages}

@@ -1,0 +1,7 @@
+\subsection{Sensors}\label{chapter_SENSORS}
+Without sensors it is not possible to control any process. The quadrocopter carries two sensors:
+\begin{enumerate}
+	\item A gyro-sensor, that provides angular rates in direction of \textit{phi}(roll), \textit{theta}(pitch) and \textit{psi}(yaw) of the bodyframe. 
+	\item A linear-acceleration-sensor, that provides accelerations in direction of \textit{x}, \textit{y} and \textit{z} of the bodyframe.
+\end{enumerate}
+The measured variables of the first sensor are used directly by the controller. The variables of the second sensor - the linear-acceleration-sensor - are used to calculate the real angles \textit{phi} and \textit{theta}. The angle of \textit{psi} is not relevant for the controller, so the \textit{z}-value of the sensor is not relevant as well.

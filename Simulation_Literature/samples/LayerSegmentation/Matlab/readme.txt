@@ -1,0 +1,1 @@
+Run demoMotion.m and see how the program runs. You may also change the variable "XMLfile" to see the layer segmentation of different sequences.

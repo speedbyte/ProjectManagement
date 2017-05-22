@@ -1,0 +1,128 @@
+% Standardpakete
+% **************
+
+% sprachspezifische Anpassungen
+% -----------------------------
+
+\usepackage[english,ngerman]{babel}
+
+% Seitenlayout
+% ------------
+
+\usepackage[a4paper, driver=pdftex]{geometry}
+\geometry
+{% siehe geometry.pdf auf Seite 4 (Figure 1)
+	left=3cm,
+	right=3cm,
+	bottom=3cm,
+	top=3cm,
+	%showframe=true, %Rahmen anzeigen lassen (auf erster Seite)
+	headheight=2cm,
+	headsep=0.5cm,
+	footskip=1cm,
+	% zusätzlicher Rand für Bindung
+	bindingoffset=0cm
+}
+
+% Kodierung und Schriften
+% -----------------------
+
+% Zeichenkodierung
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Das Paket `helvet' legt `Helvetica' als serifenlose Schrift fest
+% Das Paket `courier' legt `Courier' als Schreibmaschinenschrift fest.
+\usepackage[scaled=1]{helvet}
+\usepackage{courier}
+
+% alternativ - ähnlich der LaTeX-StabdardschrifrStandardschrift Computer Modern (unterstützt Zeichen mit Akzenten etc. besser)
+%\usepackage{lmodern}
+
+
+% You may notice that LaTeX’s standard font (Computer Modern) is only available OT1-encoded (TeX’s standard). This makes TeX spit out ugly bitmapped fonts with T1 encoding by default.
+% To overcome this, you could load the alternative Latin Modern Fonts (LM) which have been created as an extension of the CM for (not only) all sort of accented characters.
+% Hence, try out to have TeX nicely typeset accented characters.
+% http://www.win.ua.ac.be/~nschloe/content/top-10-latex-modules
+
+% kleine typografische Anpassungen - nicht wichtig, sieht aber besser aus
+% -----------------------------------------------------------------------
+
+\usepackage{microtype}
+
+% Physikalische Einheiten einfach verwenden
+% Einheiten werden im Text- und Mathematikmodus aufrecht gesetzt.
+% Im Textmodus wird die Formatierung des restlichen Text übernommen (fett etc.)
+\usepackage{units}
+
+%Beispiele:
+%\unit[1]{m}
+%\unitfrac[1]{m}{s}
+%\nicefrac{m}{s}
+
+% Mathe
+% -----
+
+% verbessertes Mathezeugs
+
+% This package defines commands to access bold math symbols. The basic command
+% is \bm which may be used to make the math expression in its argument be typeset
+% using bold fonts. The syntax of \bm is: %\bm{math expression}
+\usepackage{amsmath, amssymb, bm}
+
+% Erweitert amsmath und behebt einige Bugs
+\usepackage[fixamsmath,disallowspaces]{mathtools}
+
+% Warnt bei Benutzung von Befehlen die mit amsmath inkompatibel sind.
+\usepackage[all,warning]{onlyamsmath}
+
+% aufrechte griechische Buchstaben: \upmu etc.
+\usepackage{upgreek}
+
+% Zitate - This package provides advanced facilities for inline and display quotations
+\usepackage[]{csquotes}
+
+% Farben verwenden
+\usepackage{xcolor}
+
+% bessere Unterstützung von Gleitumgebungen
+\usepackage{float}
+\floatplacement{figure}{H} %wenn nix anderes dran steht, dass wird das Objekt HIER platziert
+
+% Beschriftung von Tabellen, Abbildungen etc. beeinflussen, am besten Doku dazu lesen:
+% http://www.math.ntnu.no/~berland/latex/docs/caption.pdf
+% nach float, rotating und subfigure!
+% normal                provides `normal' captions, this is the default
+% hang or isu           provides captions with hanging indention
+% center                provides captions where each line is centered
+% centerlast            provides captions where the last line of the
+%                       paragraph is centered
+% nooneline             if a caption ts on one line on the page,
+%                       it will be centered. If you don't like this
+%                       behaviour, just select this option.
+% scriptsize...Large    sets the font size of the captions
+% up, it, sl, sc,
+% md, bf, rm, sf,
+% or tt                 sets the font attribute of the caption labels.
+% ruled                 supports ruled floats of the float package, see
+%                       section 1.1 for details
+\usepackage[hang,small,bf]{caption}
+    \renewcommand{\captionfont}{\sffamily}
+    \renewcommand{\captionlabelfont}{\sffamily\bfseries}
+
+
+
+% Einbindung von Grafiken (pdf, png, jpg)
+% siehe LaTeX-Begleiter, Auflage 2 ab Seite 636.
+\usepackage[pdftex]{graphicx}
+
+% Es stellt das Symbol der europäischen Währung, des Euro, in LaTeX zur Verfügung.
+% Die Spezifikation stammt aus dem c't-Magazin 11/98, Seite 211, und aus der Encyclopaedia Britannica, Book of the Year 2002.
+% http://www.theiling.de/eurosym.html
+% http://www.ctan.org/tex-archive/fonts/eurosym/
+\usepackage{eurosym}
+\DeclareInputText{128}{\euro} % ANSI code for euro: € \usepackage{eurosym}
+
+% Standardpfad für Grafiken definieren, siehe LaTeX-Begleiter auf Seite 642 ff.
+\graphicspath{{./03_Grafiken/}}
+

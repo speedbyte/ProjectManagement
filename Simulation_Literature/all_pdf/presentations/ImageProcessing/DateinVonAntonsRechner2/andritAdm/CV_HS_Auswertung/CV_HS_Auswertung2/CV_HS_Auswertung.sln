@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CV_HS_Auswertung", "CV_HS_Auswertung.vcxproj", "{C8FAE998-A8C6-443A-AC89-0D53F8FF8A9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8FAE998-A8C6-443A-AC89-0D53F8FF8A9D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C8FAE998-A8C6-443A-AC89-0D53F8FF8A9D}.Debug|Win32.Build.0 = Debug|Win32
+		{C8FAE998-A8C6-443A-AC89-0D53F8FF8A9D}.Release|Win32.ActiveCfg = Release|Win32
+		{C8FAE998-A8C6-443A-AC89-0D53F8FF8A9D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

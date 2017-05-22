@@ -1,0 +1,1 @@
+@start javaw.exe -classpath lib/literature.jar de.dualcode.LiteratureArchive

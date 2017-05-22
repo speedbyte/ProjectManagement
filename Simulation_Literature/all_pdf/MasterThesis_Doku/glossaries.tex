@@ -1,0 +1,53 @@
+\newglossarystyle{UndottedTabList}{%
+  \glossarystyle{list}%
+  \renewcommand*{\glossaryentryfield}[5]{%
+    \item[]\makebox[3cm][l]{\glstarget{##1}{##2}%
+    \unskip\leaders\hbox to 2.4mm{\hss}\hfill~\strut}##3}%
+  \renewcommand*{\glossarysubentryfield}[6]{%
+    \item[]\makebox[3cm][l]{\glstarget{##2}{##3}%
+    \unskip\leaders\hbox to 2.4mm{\hss}\hfill~\strut}##4}%
+}
+
+\newglossarystyle{DottedTabList}{%
+  \glossarystyle{list}%
+  \renewcommand*{\glossaryentryfield}[5]{%
+    \item[]\makebox[3cm][l]{\glstarget{##1}{##2}%
+		\unskip\leaders\hbox to 2.4mm{\hss.}\hfill~\strut}##3}%
+  \renewcommand*{\glossarysubentryfield}[6]{%
+    \item[]\makebox[3cm][l]{\glstarget{##2}{##3}%
+    \unskip\leaders\hbox to 2.4mm{\hss.}\hfill~\strut}##4}%
+}
+
+\glossarystyle{long4col}
+
+% Define a new glossary type
+\newglossary[slg]{symbols}{sym}{sbl}{List of Symbols}
+
+%% Define new command \newmathsymbol analogous to the \newacronym command
+\newcommand{\newmathsymbol}[4]{%
+	\newglossaryentry{#1}{type=symbols, name={#2}, description={#3}, sort={#4}}%
+}%
+
+%% Define new command \newmainindex and \newmainindexpl analogous to the \newacronym command
+\newcommand{\newmainindex}[3]{%
+	\newglossaryentry{#1}{name={#2}, description={#3}, sort={#1}}%
+}%
+\newcommand{\newmainindexpl}[4]{%
+	\newglossaryentry{#1}{name={#2}, description={#3}, sort={#1}, plural={#4}}%
+}%
+
+%% The following definitions will go in the main glossary
+%\newmainindexpl{culdesac}{cul-de-sac}{Passage or street closed at one end}{culs-de-sac}
+
+%% The following definitions will go in the list of acronyms
+%\newacronym{xna}{XNA}{XNA's Not Acronymed}
+%\newacronym{lmaa}{LMAA}{Leck mich am Arsch}
+%
+%
+%% The following definitions will go in the list of symbols
+%\newmathsymbol{ohm}{$\Omega$}{Unit of electrical resistance}
+%\newmathsymbol{angstrom}{{\aa}ngstr\"om}{Non-SI unit of length}
+%\newmathsymbol{sigma}{$\sigma_{w/a}$}{Surface tension of water}
+
+% Enable the creation of the various external files required by the indexing application
+\makeglossaries

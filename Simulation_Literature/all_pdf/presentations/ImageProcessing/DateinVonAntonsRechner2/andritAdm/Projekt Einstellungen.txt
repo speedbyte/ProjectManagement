@@ -1,0 +1,28 @@
+Zusätzliche Abhengigkeiten****************
+*
+cv210.lib;cv210d.lib;cvaux210.lib;cvaux210d.lib;cxcore210.lib;cxcore210d.lib;cxts210.lib;highgui210.lib;highgui210d.lib;ml210.lib;ml210d.lib;opencv_ffmpeg210.lib;opencv_ffmpeg210d.lib;%(AdditionalDependencies)
+*
+cv210.lib
+cv210d.lib
+cvaux210.lib
+cvaux210d.lib
+cxcore210.lib
+cxcore210d.lib
+cxts210.lib
+highgui210.lib
+highgui210d.lib
+ml210.lib
+ml210d.lib
+opencv_ffmpeg210.lib
+opencv_ffmpeg210d.lib
+*
+*
+Zusätzliches Bibliothekverzeichnis*********
+*
+C:\OpenCV2.1\lib;%(AdditionalLibraryDirectories)
+*
+*
+Zusätzliches Includeverzeichnis************ C/C++
+*
+C:\OpenCV2.1\include\opencv;%(AdditionalIncludeDirectories)
+**

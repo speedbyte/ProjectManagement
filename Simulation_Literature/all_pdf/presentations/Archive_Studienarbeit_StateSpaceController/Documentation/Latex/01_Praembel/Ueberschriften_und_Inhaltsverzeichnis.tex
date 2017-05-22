@@ -1,0 +1,33 @@
+% Ueberschriften_und_Inhaltsverzeichnis
+% *************************************
+
+
+% Nummerierung der ‹berschriften bis zur Ebene 5
+\setcounter{secnumdepth}{5}
+% oder eben bis zur vierten Ebene...
+%\setcounter{secnumdepth}{4}
+
+% Mit diesem Befehl wird die die Tiefe des Inhaltsverzeichnisses ausgew‰hlt.
+\setcounter{tocdepth}{4}
+
+
+% ‹berschriften der Ebene 4 und 5 (paragraph und subparagraph) abgesetzt formatieren:
+% Der nachfolgende Text beginnt also in einer neuen Zeile - ist standardm‰ﬂig nicht der Fall
+% Quelle(n):
+% 1. http://www.zdv.uni-tuebingen.de/static/skripte/tech/tech_skript_f.pdf
+% 2. LaTeX-Begleiter, z. B. auf Seite 32 (2. Auflage)
+% ----------------------------------
+\makeatletter
+\renewcommand\paragraph{\@startsection
+{paragraph}{4}{0em}                                % {Name}{Ebene}{Einzug}
+{\baselineskip}{.2\baselineskip}                   % {vor-Abstand}{nach-Abstand}
+{\normalsize\bfseries}}                            % {Layout}
+\makeatother
+% ----------------------------------
+\makeatletter
+\renewcommand\subparagraph{\@startsection
+{subparagraph}{5}{0em}                              % {Name}{Ebene}{Einzug}
+{\baselineskip}{.1\baselineskip}                    % {vor-Abstand}{nach-Abstand}
+{\normalsize\bfseries}}                             % {Layout}
+\makeatother
+% ---------------------------------- 

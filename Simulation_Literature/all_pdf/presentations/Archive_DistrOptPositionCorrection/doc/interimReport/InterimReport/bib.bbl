@@ -1,0 +1,234 @@
+\begin{thebibliography}{{Sam}07}
+
+\bibitem[{Ant}09]{BeyChrFlo09}
+{Antoine Beyeler, Jean-Christophe Zufferey, Dario Floreano}.
+\newblock {optiPilot: control of take-off and landing using optic flow}.
+\newblock Technical report, {Laboratory of Intelligent Systems, École
+  Polytechnique Fédérale de Lausanne (EPFL)}, 2009.
+
+\bibitem[{Bar}88]{Boe88}
+{Barry Boehm}.
+\newblock {A Spiral Model of Software Development and Enhancement}.
+\newblock {\em {IEEE Computer}}, {21}({5}):{pp.61--72}, {1988}.
+
+\bibitem[{Bea}08]{Tip08}
+{Beau J. Tippetts}.
+\newblock {Real-Time Implementation of Vision Algorithms For Control,
+  Stabilization, and Target Tracking, for a Hovering Micro-UAV}.
+\newblock Master's thesis, {Department of Electrical and Computer Engineering,
+  Brigham Young University}, {August} 2008.
+
+\bibitem[{Ber}80]{HorSch80}
+{Berthold K. P. Horn and Brian G. Schunck}.
+\newblock {Determining Optical Flow}.
+\newblock Technical report, {Massachusetts Institute of Technology, Artificial
+  Intelligence Laboratory}, 1980.
+
+\bibitem[{Bri}07]{WilKleRei07}
+{Brian Williams, Georg Klein and Ian Reid}.
+\newblock {Real-Time SLAM Relocalisation}.
+\newblock Technical report, {Department of Engineering Science, University of
+  Oxford}, 2007.
+
+\bibitem[{Bru}81]{LucKan81}
+{Bruce D. Lucas, Takeo Kanade}.
+\newblock An iterative image registration technique with an application to
+  stereo vision.
+\newblock {\em {Proceedings of Imaging Understanding Workshop}}, pages
+  p.p.121--130, 1981.
+
+\bibitem[{Bru}84]{Luc84}
+{Bruce D. Lucas}.
+\newblock {\em {Generalized Image Matching by the Method of Differences}}.
+\newblock PhD thesis, {Robotics Institute, Carnegie Mellon University}, {July}
+  {1984}.
+
+\bibitem[{Dan}07]{GurStuAchDotHirRus07}
+{Daniel Gurdan, Jan Stumpf, Michael Achtelik, Klaus-Michael Doth, Gerd
+  Hirzinger, Daniela Rus}.
+\newblock {Energy-efficient Autonomous Four-rotor Flying Robot Controlled at 1
+  kHz}.
+\newblock {\em {IEEE International Conference of Robotics and Automation, Roma,
+  Italy }}, {April} 2007.
+
+\bibitem[{Dan}10]{MelMicKum10}
+{Daniel Mellinger, Nathan Michael and Vijay Kumar}.
+\newblock {Trajectory Generation and Control for Precise Aggressive Maneuvers
+  with Quadrotors}.
+\newblock {\em {International Symposium on Experimental Robotics, Delhi,
+  India}}, {December} 2010.
+
+\bibitem[{Dav}71]{Lue71}
+{David G. Luenberger}.
+\newblock {An Introduction to Observers}.
+\newblock {\em {IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. AC-16, NO. 6}},
+  {December} 1971.
+
+\bibitem[{Dou}09]{EasLamTur09}
+{Douglas Eastman, Paul Lambrechts and Arkadiy Turevskiy}.
+\newblock {Design and Verification of Motion Control Algorithms Using
+  Simulation}.
+\newblock {\em {The MathWorks, Inc.}}, {2009}.
+
+\bibitem[DP73]{DouPeu73}
+David~H. Douglas and Thomas~K. Peucker.
+\newblock Algorithms for the reduction of the number of points required to
+  represent a digitized line or its caricature.
+\newblock {\em Cartographica: The International Journal for Geographic
+  Information and Geovisualization}, pages 112--122, October 1973.
+
+\bibitem[{Erd}02]{AltOstMah02}
+{Erdinc Altug, James P. Ostrowski, Robert Mahony}.
+\newblock {Control of a Quadrotor Helicopter Using Visual Feedback}.
+\newblock {\em {IEEE International Conference of Robotics and Automation,
+  Washington, DC }}, 2002.
+
+\bibitem[{Erd}03]{AltOstTay03}
+{Erdinc¸ Altug, James P. Ostrowski, Camillo J. Taylor}.
+\newblock {Quadrotor Control Using Dual Camera Visual Feedback}.
+\newblock {\em {IEEE International Conference on Robotics and Automation,
+  Taipei, Taiwan}}, 2003.
+
+\bibitem[{Gar}08]{GarKae08}
+{Gary Bradski and Adrian Kaehler}.
+\newblock {\em {Learning OpenCV}}.
+\newblock {O'Reilly}, {First Edition} edition, 2008.
+
+\bibitem[HSE10]{HSE10}
+{Hochschule Esslingen University of Applied Sciences}.
+\newblock http://www.hs-esslingen.de, September 2010.
+
+\bibitem[{Joh}86]{Can86}
+{John Canny}.
+\newblock {A Computational Approach to Edge Detection}.
+\newblock {\em {IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE,
+  VOL. PAMI-8, NO. 6}}, {November} 1986.
+
+\bibitem[{Joh}09]{StoBaiHayMil09}
+{John Stowers, Andrew Bainbridge-Smith, Michael Hayes and Steven Mills}.
+\newblock {Optical Flow for Heading Estimation of a Quadrotor Helicopter}.
+\newblock Technical report, {University of Canterbury, New Zealand}, 2009.
+
+\bibitem[{Jue}09]{EckDreGer09}
+{Juergen Eckert, Falko Dressler and Reinhard German}.
+\newblock {An Indoor Localization Framework for Four-rotor Flying Robots Using
+  Low-power Sensor Nodes}.
+\newblock Technical report, {University of Erlangen Dept. of Computer Science},
+  February 2009.
+
+\bibitem[{Kar}10]{WenMasZel10}
+{Karl E. Wenzel, Andreas Masselli and Andreas Zell}.
+\newblock {Automatic Take Off, Tracking and Landing of a Miniature UAV on a
+  Moving Carrier Vehicle}.
+\newblock Technical report, {Department of Computer Science, University of
+  Tuebingen}, 2010.
+
+\bibitem[{Mar}08]{Fac08}
+{Martin Fach}.
+\newblock {\em {Navigation und Regelung eines Luftschiffes mittels optischer,
+  inertialer und GPS Sensoren}}.
+\newblock PhD thesis, {Institut für Flugmechanik und Flugregelung, University
+  of Stuttgart}, {2008}.
+
+\bibitem[Mat10]{Mat10}
+{Model Based Design, The MathWorks, Inc.}
+\newblock {http://www.mathworks.co.uk/model-based-design/}, September 2010.
+
+\bibitem[{Mic}10]{BloWeiScaSie10}
+{Michael Bloesch, Stephan Weiss, Davide Scaramuzza and Roland Siegwart}.
+\newblock {Vision Based MAV Navigation in Unknown and Unstructured
+  Environments}.
+\newblock Technical report, {Autonomous Systems Lab, ETH Zuerich}, 2010.
+
+\bibitem[{Nat}10]{MicMelLinKum10}
+{Nathan Michael, Daniel Mellinger, Quentin Lindsey and Vijay Kumar}.
+\newblock {The GRASP Multiple Micro UAV Testbed}.
+\newblock Technical report, {GRASP Laboratory, University of Pennsylvania},
+  2010.
+
+\bibitem[{Nir}02]{BulHeiEst02}
+{Nirupama Bulusu, John Heidemann and Deborah Estrin}.
+\newblock {GPS-less Low Cost Outdoor Localization For Very Small Devices}.
+\newblock Technical report, {University of Southern California / Information
+  Sciences Institute}, 2002.
+
+\bibitem[Ope10]{OpenCV2_0}
+Opencv 2.0 c reference.
+\newblock {http://opencv.willowgarage.com/}, 2010.
+
+\bibitem[{Ped}05]{CasLozAle05}
+{Pedro Castillo, Rogelio Lozano and Alejandro Dzul}.
+\newblock {Stabilization of a Mini Rotorcraft with Four Rotors}.
+\newblock {\em {IEEE Control Systems Magazine}}, {December} 2005.
+
+\bibitem[{Rac}10]{EsmSna08}
+{Rachely Esman and Yoad Snapir}.
+\newblock Opencv and mex-files quick guide, 2010.
+
+\bibitem[{Ric}01]{DorBis01}
+{Richard C. Dorf, Robert H. Bishop}.
+\newblock {\em {Modern Control Systems}}.
+\newblock {Prendice-Hall, Inc.}, ninth edition edition, 2001.
+
+\bibitem[{Rog}01]{Pre01}
+{Roger R. Pressman}.
+\newblock {\em {Software Engineering, A Practitioner's Approach}}.
+\newblock {McGraw-Hill, Inc.}, fifth edition edition, 2001.
+
+\bibitem[{Sam}04]{BourMurSie04}
+{Samir Bouabdalla, Pierpaolo Murrieri, Roland Siegwart}.
+\newblock {Design and Control of an Indoor Micro Quadrotor}.
+\newblock Technical report, {Autonomous Systems Laboratory Swiss Federal
+  Institute of Technology, University of Pisa}, 2004.
+
+\bibitem[{Sam}07]{Bou07}
+{Samir Bouabdallah}.
+\newblock {\em {Design and Control of Quadrotors with Application to Autonomous
+  Flying}}.
+\newblock PhD thesis, {École Polytechnique Fédérale de Lausanne (EPFL)}, 2007.
+
+\bibitem[{Sco}04]{EttNecIfjWas04}
+{Scott M. Ettinger, Michael C. Nechyba, Peter G. Ifju and Martin Waszak}.
+\newblock {Vision-Guided Flight Stability and Control for Micro Air Vehicles}.
+\newblock Technical report, {Intel Corporation, University of Florida, NASA
+  Langley Research Center}, March 2004.
+
+\bibitem[{Seb}08]{BluHolLinMolSurViaTre08}
+{Sebastian Blumenthal, Dirk Holz, Thorsten Linder, Peter Molitor, Hartmut
+  Surmann and Viatcheslav Tretyakov}.
+\newblock {Teleoperated Visual Inspection and Surveillance with Unmanned Ground
+  and Aerial Vehicles}.
+\newblock Technical report, {Department of Computer Science, University of
+  Applied Sciences Bonn-Rhein-Sieg}, {Fraunhofer Institute for Intelligent
+  Analysis and Information Systems (IAIS)}, 2008.
+
+\bibitem[{Sla}09]{GrzGriBur09}
+{Slawomir Grzonka, Giorgio Grisetti, Wolfram Burgard}.
+\newblock {Towards a Navigation System for Autonomous Indoor Flying}.
+\newblock Technical report, {Autonomous Systems Lab, Department of Computer
+  Science, University of Freiburg}, 2009.
+
+\bibitem[{ST }05]{ST05_1}
+{ST Microelectronics}.
+\newblock {MEMS Inertial Sensor LIS3LV02DQ Rev 1 Datasheet}, {October} 2005.
+
+\bibitem[{Sve}08]{LanSuePro08}
+{Sven Lange, Niko Sünderhauf, and Peter Protzel}.
+\newblock {Autonomous Landing for a Multirotor UAV Using Vision}.
+\newblock {\em {Intl. Conf. on SIMULATION, MODELING and PROGRAMMING for
+  AUTONOMOUS ROBOTS, Venice, Italy}}, {November} 2008.
+
+\bibitem[{Sve}09]{LanSuePro09}
+{Sven Lange, Niko Sünderhauf, Peter Protzel}.
+\newblock {A Vision Based Onboard Approach for Landing and Position Control of
+  an Autonomous Multirotor UAV in GPS-Denied Environments}.
+\newblock Technical report, {Department of Electrical Engineering and
+  Information Technology, Chemnitz University of Technology}, 2009.
+
+\bibitem[{Ved}08]{Sik08}
+{Vedran Sikiric}.
+\newblock {Control of Quadrocopter}.
+\newblock Master's thesis, {Royal Institute of Technology Sweden, School of
+  Computer Science and Communication}, {2008}.
+
+\end{thebibliography}
