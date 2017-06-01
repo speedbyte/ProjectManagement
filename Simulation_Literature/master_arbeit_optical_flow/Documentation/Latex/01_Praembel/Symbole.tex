@@ -1,0 +1,48 @@
+% Symbole
+% *******
+
+
+% alle Symbole siehe 98_Sonstiges/symbols-a4.pdf
+
+% -------------------------------------------------------
+% textcomp-Paket
+% Das Ergänzungspaket textcomp stellt verschiedene Symbole für den Textmodus
+% bereit (mathcomp analog für Mathematikmodus).
+% Es baut auf den EC-Schriften auf (hier: cmr).
+% Verwendet man andere Schriften, so stehen nicht alle Symbole zur Verfügung.
+
+% Mit der Paket-Option force kann man erwzingen, dass Zeichen immer ausgegeben werden,
+% auch wenn die Gefahr besteht, dass das Symbol in der Schriftart nicht verfügbar ist
+% -> man bekommt dann evtl. ein gefülltes Viereck
+
+% Oder besser:  [force,almostfull].  Im Gegensatz zu [force] alleine
+% werden dann wenigstens diejenigen Zeichen automatisch durch CM
+% ersetzt, die in nicht-CM-Fonts so gut wie immer fehlen, nämlich
+% \t und \textcircled.
+
+% Symbole:      98_Sonstiges/textcomp.pdf
+% Hinweise:     98_Sonstiges/textcomptst.pdf
+
+\usepackage{textcomp}
+\usepackage{mathcomp}
+% Textmodus:        \textleaf
+% Mathematikmodus:  $\tcleaf$
+% -------------------------------------------------------
+
+% -------------------------------------------------------
+% marvosym-Paket - verträgt sich nicht mit dem textcomp-Paket: entweder oder
+
+% Weitere Symbole
+
+% Doku: 98_Sonstiges/marvodoc.pdf
+
+% Paket überschreibt den Mathematik-Befehl "\Rightarrow" -> nachfolgend ein Workarround, um den ursprünglichen Befehl zu "retten".
+
+% \let\OldRightarrow\Rightarrow % alte Bedeutung retten
+% \usepackage{marvosym} %\Rightarrow wird umdefiniert
+% \let\Rightarrow\OldRightarrow % alte Bedeutung wird restauriert.
+
+% \let: Low-Level-TeX-Anweisung um einem Makro die Definition eines anderen Makros zuzuweisen. 
+%--------------------------------------------------------
+
+% Weitere Pakete: wasysym, pifont, latexsym

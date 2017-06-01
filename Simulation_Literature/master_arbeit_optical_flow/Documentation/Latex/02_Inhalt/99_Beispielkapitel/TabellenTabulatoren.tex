@@ -1,0 +1,37 @@
+% TabellenTabulatoren
+% *******************
+
+\subsection{Tabellen und Tabulatoren}
+
+Tabulatorumgebung:
+
+\begin{tabbing}
+    Überschrift1 \hspace{1cm} \= Überschrift2 \hspace{1cm} \= Überschrift3\\
+    1 \> lala \> lulu\\
+    1 \> lala \> lulu\\
+    1 \> lala \> lulu\\
+\end{tabbing}
+
+Angabe einer Musterzeile, für die Tabulator-Positionen (\texttt{kill}-Befehl):
+
+\begin{tabbing}
+    Musterbreite1 \hspace{1cm} \= Musterbreite2 \hspace{1cm} \= Musterbreite3  \= \kill
+    Überschrift1 \hspace{1cm} \> Überschrift2 \hspace{1cm} \> Überschrift3\\
+    1 \> lala \> lulu\\
+    1 \> lala \> lulu\\
+    1 \> lala \> lulu\\
+\end{tabbing}
+
+Horizontaler Abstand links:
+
+\begin{tabbing}
+    \hspace*{2cm} \= Musterbreite1 \hspace{1cm} \= Musterbreite2 \hspace{1cm} \= Musterbreite3  \= \+ \kill
+    Überschrift1 \hspace{1cm} \> Überschrift2 \hspace{1cm} \> Überschrift3\\
+    1 \> lala \> lulu\\
+    1 \> lala \> lulu\\
+    1 \> lala \> lulu\\
+\end{tabbing}
+
+% siehe LaTeX Praxisbuch, ISBN: 3772361099, Seite 93 bzw. Listing 3.3
+% \hspace* -> fügt auch Leerraum am Anfang einer Zeile ein
+% \+ bzw. \- der linke Rand wird einen Tabstop weiter bzw. zurück gesetzt, kann mehrmals verwendet werden

@@ -1,0 +1,27 @@
+% Standardbezeichnungen
+% *********************
+
+% Ändern der Standardbezeichnungen wie Literaturverzeichnis - das Paket babel macht das auch
+% -> erst nach der babel-Einbindung nochmal ändern (wenn nötig)
+% siehe:Paket-Doku von babel
+% und: ngerman.sty
+% und: LaTeX-Begleiter, z. B. auf Seite 56 (Beispiel 2-3-5) und 605 (2. Auflage)
+% ------------------------------------------------------------------------------------
+
+\addto\captionsngerman{%
+    \renewcommand\refname{Bibliographical reference}%
+    \renewcommand\abstractname{Abstract}%
+    \renewcommand\appendixname{Appendix}%
+    \renewcommand\contentsname{Content}% % oder nur: Inhalt
+    \renewcommand\listfigurename{List of figures}%
+    \renewcommand\listtablename{List of Tables}%
+    \renewcommand\indexname{Index}%
+    \renewcommand\figurename{Figure}%
+    \renewcommand\tablename{Table}%  % oder: Tafel
+    \renewcommand\partname{Teil}%
+    \renewcommand\chaptername{Chapter}
+    \renewcommand\seename{see}
+    \renewcommand\pagename{Page}
+}
+
+% ------------------------------------------------------------------------------------

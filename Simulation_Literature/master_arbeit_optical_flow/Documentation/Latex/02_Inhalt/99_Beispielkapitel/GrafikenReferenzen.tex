@@ -1,0 +1,21 @@
+% Grafik und Referenzen
+% *********************
+
+\subsection[Grafiken und Referenzen]{Grafiken und Referenzen bzw. Verweise}
+
+In diesem (Unter-)Kapitel werden Grafiken eingebunden und Verweise darauf erzeugt. Wir beginnen mit der leichtesten Übung -- der Einbindung eines Fotos mit Bildunterschrift:
+
+\begin{figure}
+    \centering
+        \includegraphics[width=0.9\textwidth]{03_Grafiken/Foto.jpg}
+
+    % In der Praembel unter Standardpakete ist das Standardverzeichnis für Grafiken
+    % definiert - daher reicht hier der Dateiname ohne (relativer oder absoluter) Pfadangabe.
+
+    \caption[Foto einer Asynchronmaschine (LOF-Eintrag)]{Foto einer Asynchronmaschine (Dokument-Eintrag)}
+    \label{fig:Foto.jpg}
+\end{figure}
+
+\blindtext
+
+Mit Hilfe eines selbst definierten Befehles erzeuge ich nun einen Verweis auf das Foto: In \myfigref{fig:Foto.jpg} sehen Sie einen Motor. 

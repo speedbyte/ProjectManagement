@@ -1,0 +1,14 @@
+\subsubsection{Controllability}\label{chapter_controllabilityIMPL}
+
+Now the part of the process, that has to be controlled, is filtered out. Next step is, to check whether the process is controllable or not. To do so, the rank of the controllability matrix has to be the same as the number of state variables in the process. The easiest way to prove the controllability is, to use the ctrb() command in MATLAB. It returns the rank of the controllability matrix, which has to be compared with the number of state variables. With the linmod() function, it is possible to get the state space matrices of a Simulink model. 
+
+Like figures \ref{fig:MATLAB Dynamics1} and \ref{fig:MATLAB Dynamics2} are showing, there are nine state variables that have to be controlled. These nine state variables, are the four motor delays (\ref{chapter_GREEN_SECTION}), the rate and the angle of phi, the rate and the angle of theta and the rate of psi. The angle of psi is not important, because it need not be controlled.
+
+\begin{lstlisting}
+	System = linmod('dynamics_reduced');
+	StateSpace = ss(System.a, System.b, System.c, System.d);
+	rank(ctrb(StateSpace))  
+	% ans = 4                 
+\end{lstlisting}
+
+As the code snippet reveals, only four of the nine state variables can be controlled. Now there are two options to choose from. One is, to cancel the development process of the state space controller. But that is not the engineers way. The other option is, to continue reducing the model to gain full controllability. The next section deals with that.

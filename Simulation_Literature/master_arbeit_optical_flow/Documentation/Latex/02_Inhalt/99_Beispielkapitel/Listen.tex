@@ -1,0 +1,68 @@
+% Listen und Aufzählungen
+% ***********************
+
+\subsection[Listen und Aufzählungen]{Listen und Aufzählungen}
+
+Nachfolgend ein paar Listen und Aufzählungen. Die erste Liste ist eines selbst definierte Liste:
+
+    \begin{myItemize}
+        \item Liste - aber mit Strichen!
+        \item Liste - aber mit Strichen!
+        \item Liste - aber mit Strichen!
+    \end{myItemize}
+
+So sieht eine Standard-Liste aus:
+
+    \begin{itemize}
+        \item Standard-Liste
+        \item Standard-Liste
+        \item Standard-Liste
+    \end{itemize}
+
+\blindtext
+
+Eine sogenannte \texttt{description}-Umgebung:
+
+    \begin{description}
+        \item[soso] Soso beschreibt eigentlich gar nichts, es ist aber dennoch gut geeignet. Man könnte auch anderen sinnfreie Buchstabenkombinationen verwenden.
+        \item[sosososo] Soso beschreibt eigentlich gar nichts, es ist aber dennoch gut geeignet. Man könnte auch anderen sinnfreie Buchstabenkombinationen verwenden.
+        \item[soso] Soso beschreibt eigentlich gar nichts, es ist aber dennoch gut geeignet. Man könnte auch anderen sinnfreie Buchstabenkombinationen verwenden.
+    \end{description}
+
+Aufzählungen, die flexibel mit dem \texttt{enumerate}-Paket gestaltet werden können:
+
+    \begin{enumerate}[{Element} a)]
+        \item Aufzählungselement
+        \item \textbf{referenziertes} Aufzählungselement\label{list:bla}
+        \item Aufzählungselement
+        \item Aufzählungselement
+    \end{enumerate}
+
+    \begin{enumerate}[{Element} A)]
+        \item Aufzählungselement
+        \item Aufzählungselement
+        \item Aufzählungselement
+    \end{enumerate}
+
+Man kann auf auf einzelne Einträge verweisen, so zum Beispiel auf das \textbf{referenzierte} Aufzählungselement~\ref{list:bla}. Eine weitere Aufzählung, die mit dem \texttt{enumerate}-Paket erfolgt:
+
+    \begin{enumerate}[{A}-1]
+        \item Aufzählungselement
+        \item Aufzählungselement
+        \item Aufzählungselement
+        \item Aufzählungselement
+    \end{enumerate}
+
+Auch eine römische Nummerierung ist möglich -- aber mir gefällt das nicht:
+
+    \begin{enumerate}[{Element} i)]
+        \item Aufzählungselement
+        \item Aufzählungselement
+        \item Aufzählungselement
+    \end{enumerate}
+
+    \begin{enumerate}[{Element} I)]
+        \item Aufzählungselement
+        \item Aufzählungselement
+        \item Aufzählungselement
+    \end{enumerate}    

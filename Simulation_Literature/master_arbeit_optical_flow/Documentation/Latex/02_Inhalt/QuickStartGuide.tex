@@ -1,0 +1,24 @@
+\subsection{Quick Start Guide}\label{chapter_QSG}
+
+Follow the steps below for quickly use and change the state space controller in MATLAB Simulink.
+
+\begin{enumerate}
+	\item Use Matlab version R2009b or higher
+	\item Switch to directory 'StateSpaceController' in Matlab
+	\item If necessary, change the poles in 'Test\_Reglerauslegung.m' (\textit{place} command)
+	\item Run 'Test\_Reglerauslegung.m'
+	\item feedback- and pre-intensification factors are calculated
+	\item Switch to directory 'BasicProject' in Matlab
+	\item Open 'System\_Design\_Quadrocopter.mdl' (this may take some time)
+	\item Open the Control-block and make sure, the switches enable the state space controller
+	\item Start the Simulation
+\end{enumerate}
+
+To adjust the controller in C:
+
+\begin{enumerate}
+	\item Open 'Project.mcp' in Metroworks Codewarrior
+	\item Switch to the function 'Controll' in 'flightcontrol.c'
+	\item Adjust the KR- and KV-factors according to the Matlab variables K\_ret and KV  
+	\item Flash the new software to the quadrocopter
+\end{enumerate}

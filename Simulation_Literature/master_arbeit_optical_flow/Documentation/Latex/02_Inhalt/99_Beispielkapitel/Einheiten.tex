@@ -1,0 +1,29 @@
+% Einheiten
+% *********
+
+\subsection{Einheiten}
+
+Einheiten mit dem \texttt{units}-Paket:
+
+\begin{itemize}
+    \item Textmodus: serifenlos und fett {\sffamily\bfseries\unit{m}}
+    \item Mathemodus: serifenlos und fett {\sffamily\bfseries$\unit{m}$} $\to$ Im Mathematikmodus werden Textattribute ignoriert (außer der Schriftgröße.
+    \item Textmodus: serifenlos und kursiv {\sffamily\itshape\unit[1]{m}}
+    \item Mathemodus: serifenlos und kursiv {\sffamily\itshape$\unit[1]{m}$}
+    \item Textmodus: serifenlos und kursiv {\sffamily\bfseries\unitfrac{m}{s}}
+    \item Mathemodus: serifenlos und kursiv {\sffamily\bfseries$\unitfrac{m}{s}$}  
+\end{itemize}
+
+Beispiel mit komplexeren Ausdrücken:
+
+Die Masse betrug $\unit[2\cdot 10^{-3}]{kg}$ (Mathemodus) oder \unit[2$\cdot$ 10\textsuperscript{-3}]{kg} (Textmodus) -- also nimmt man lieber den Mathemodus!
+
+Weiteres Beispiel: $\unit[(2\pm 0,2)\cdot 10^{-3}]{kg}$ oder $\unitfrac[(2\pm 0,2)\cdot 10^{-3}]{kg}{m^3}$. Man kann auch nur nur \emph{schöne Brüche} verwenden: \nicefrac[\bfseries]{Zähler}{Nenner}. Der \texttt{nicefrac}-Befehl hat drei Parameter. Der optionale Parameter ist für ein so genanntes \texttt{fontcommand} und kann Formatierungen oder einen mathematischen Schriftsatz beinhalten. Beispiele:
+
+\begin{itemize}
+    \item {\bfseries\itshape\nicefrac{1}{2}}
+    \item {\nicefrac[\texttt]{1}{2}}
+    \item {$\nicefrac[\mathcal]{A}{B}$}
+\end{itemize}
+
+

@@ -1,0 +1,8 @@
+\section{Implementation in C}\label{chapter_IMPLC}
+
+At the beginning of chapter \ref{chapter_DESIGN_AND_IMPL} figure \ref{fig:Abstract} shows, that for the implementation in C, the state space controller may have to be discretized. In this project it is not necessary to do so, because the fastest pole of the whole system is less than a tenth as fast as the sampling rate. That is an engineer's rule of thumb and therefore not explained in detail.
+
+So the state space controller can directly be transfered from the Matlab/Simulink to the existing quadrocopter C project. In this quadrocopter software is an existing function called 'Controll'. This function is called cyclic every 5ms and calculates the new motor forces. So the only thing to change, implementing the state space controller instead of the PID controller, is, to write a new 'Controll' function.
+
+The 'Controll' function can be found in the appendix (chapter \ref{chapter_CFUNC}). It is easy to understand the code, by looking at the C code and at the Matlab/Simulink model at the same time.
+

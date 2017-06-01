@@ -1,0 +1,71 @@
+% Spezialpakete
+% *************
+
+% Kommentar-Umgebung
+% ------------------
+
+% Wenn als optionales Argument myComment drin steht, dann wird die entsprechende Umgebumg im Code eingebunden -    ansonsten nicht.
+
+% aktiviert:
+\usepackage[myComment]{optional}
+
+% deaktiviert:
+% \usepackage[NotmyComment]{optional}
+
+% Verwendung im Code:
+% \opt{myComment}{Kommentar - wie z. B.: Hier fehlt noch ein Bild}
+
+% --------------------------------------------------------------------------------------
+
+% Blindtext zum Testen von Textausgaben
+\usepackage{blindtext}
+
+% bessere Unterstützung der ref-Befehle - siehe LaTeX-Begleiter ab Seite 72 (2. Auflage)
+\usepackage[ngerman]{varioref}
+\newcommand\eqvref[1]{\eqref{#1}\ \vpageref{#1}}
+
+% Kann verwendet werden um bei Makros ohne Argument korrekte Leerzeichen folgen
+% siege LaTeX Begleiter Seite 86 f., 2. Auflage
+\usepackage{xspace}
+
+
+% Verwenden von URLs im Text
+% Latex-Begleiter auf Seite 100 f., 2. Auflage
+% hyphens-Option: Umbruch auch an Bindestrichen erlaubt, sonst nur an // , Doppelpunkten und Punkten
+\usepackage[hyphens]{url}
+% Stil der Link-Formatierung festlegen - kann auch im Text neu geändert werden!
+% tt (Typewriter), rm (Roman), sf (Sans Serif), same (wie restlicher text)
+\urlstyle{tt}
+
+% Programmcode einbinden
+% ----------------------
+
+\usepackage{listings}
+\lstset{language=Matlab}
+\lstset{%
+backgroundcolor=\color{myListingBackground},
+basicstyle=\ttfamily,
+keywordstyle=\ttfamily\color{myListingKeyword},
+commentstyle=\ttfamily\color{myListingComment},
+identifierstyle=, % nothing happens
+stringstyle=\ttfamily\color{myListingStrings},
+showstringspaces=false,
+breaklines=true,
+breakautoindent=true
+numberblanklines=true,
+numberstyle=\scriptsize\color{black}\sffamily,
+tabsize=3,
+numbers=left
+} % no special string spaces
+
+% Farbdefinitionen speziell für Listings
+%\xdefinecolor{myListingGreen}{RGB}{23,23,255}  %0..255
+
+\xdefinecolor{myListingComment}{RGB}{34,139,34}
+\xdefinecolor{myListingBackground}{rgb}{0.9,0.9,0.9}
+\xdefinecolor{myListingKeyword}{rgb}{0,0.1,0.8}
+\xdefinecolor{myListingStrings}{RGB}{160,32,240}
+
+%Zeilenabstand in Aufzählungen kleiner
+\usepackage{mdwlist}
+

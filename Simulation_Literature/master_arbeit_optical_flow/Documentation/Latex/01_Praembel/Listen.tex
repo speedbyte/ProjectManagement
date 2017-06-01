@@ -1,0 +1,30 @@
+% Listen
+% ******
+
+% Weitere Infos zu Listen siehe
+% - LaTeX-Begleiter ab S. 135
+% - 98_Sonstiges\LaTeX-Dokumente\"LaTeX - Fortgeschrittene Anwendungen Fernuni Hagen.pdf"
+
+% Listen anpassen
+% ---------------
+
+% itemize
+\renewcommand\labelitemi{\textbullet}                       %Standard: \textbullet
+\renewcommand\labelitemii{\normalfont\bfseries\textendash}  %Standard: \normalfont\bfseries\textdash
+\renewcommand\labelitemiii{\textasteriskcentered}           %Standard: \textasteriskcentered -> *
+\renewcommand\labelitemiv{\textperiodcentered}              %Standard: \textperiodcentered
+
+% Beispiel für eine eigene itemize-Umgebung
+\newenvironment{myItemize}
+{\renewcommand\labelitemi{\normalfont\bfseries\textendash}\begin{itemize}}
+{\end{itemize}}
+
+% siehe Latex-Begleiter Seite 136 ff.
+% Aufzählungen (enumerate-Umgebung) flexibler handhaben
+\usepackage{enumerate}
+
+% description
+% Ändern der Formatierung des description-Labels
+% siehe Latex-Begleiter auf Seite 139
+\renewcommand\descriptionlabel[1]%
+{\hspace{\labelsep}\textbf{#1}} %Standard: \hspace{\labelsep}\textbf{#1}
